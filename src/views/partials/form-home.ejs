@@ -1,0 +1,35 @@
+<div class="container justify-content-center">
+    <div class="row m-5 text-start col-12 blur p-3 rounded-3">
+        <p class="form-text mb-0 pb-2 col-5">Selecciona tu juego</p>
+        <div class="col-8 bg-black p-3 rounded-3">
+            <form>
+                <div class="row gx-5 mt-3">
+                    <div class="col-12">
+                        <select
+                            id="juegoInput"
+                            class="form-select bg-input text-white-50 border-0"
+                        >
+                            <option selected disabled>Seleccionar juego</option>
+                            <% for(oneGame of games) { %>
+                            <option value="game/<%= oneGame.juego_id %>">
+                                <%= oneGame.nombre %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-3 bg-black text-white text-center mx-2 rounded-3">
+            <p class="unit-text m-3 pt-4"><strong>$ --</strong> /k</p>
+            <p class="text-info">-- k in Stock</p>
+            <p class="form-resumen m-3 pt-5 pb-1 border-bottom">RESUMEN</p>
+            <p class="text-info"><strong>Juego:</strong> --</p>
+            <p class="text-info"><strong>Servidor:</strong> --</p>
+            <p class="text-info"><strong>Cantidad:</strong> --</p>
+            <p class="form-resumen m-3 py-2 border-top">
+                <strong>Total: </strong> $ --
+            </p>
+        </div>
+    </div>
+</div>

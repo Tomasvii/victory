@@ -1,0 +1,1 @@
+Victory Gold page

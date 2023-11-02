@@ -1,0 +1,90 @@
+<div class="container justify-content-center">
+    <div class="row m-5 text-start col-12 blur p-3 rounded-3">
+        <p class="form-text mb-0 pb-2 col-8">
+            Comprar oro en <%=game.nombre%>
+        </p>
+        <div class="col-8 bg-black p-3 rounded-3 ">
+            <form>
+                <div class="row gx-5 mt-3">
+                    <div class="col-4">
+                        <select
+                            id="juegoInput"
+                            class="form-select bg-input text-white-50 border-0"
+                        >
+                            <% for(oneGame of games) { %>
+                            <option value="game/<%= oneGame.juego_id %>" 
+                                <% if (oneGame.juego_id == game.juego_id) { %>
+                                <%="selected"%>
+                                <% } %>
+                                >
+                                <%= oneGame.nombre %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select
+                            class="form-select bg-input text-white-50 border-0"
+                            id="serverInput"
+                        >
+                            <% for(oneServer of servers) { %>
+                            <option
+                                value="<%= oneServer.servidor_id %>"
+                                <% if (oneServer.servidor_id == server[0].servidor_id) { %>
+                                <%="selected"%>
+                                <% } %>
+                                >
+                                <%= oneServer.nombre %>
+                            </option>
+                             <% } %>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select
+                            class="form-select bg-input text-white-50 border-0"
+                            id="faccionInput"
+                        >
+                            <option selected disabled>Seleccionar Facción</option>
+                            <option value="1">Alianza</option>
+                            <option value="2">Horda</option>
+                        </select>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="cantidad" class="form-label">Cantidad de oro /K:</label>
+                      <input
+                            type="number"
+                            id="cantidad"
+                            class="form-control bg-input text-white-50 border-0 rounded-2"
+                            placeholder="600"
+                        />
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="personaje" class="form-label">Personaje:</label>
+                        <input
+                        type="text"
+                        id="personaje"
+                            class="form-control bg-input text-white-50 border-0 rounded-2"
+                            placeholder="Nombre de personaje"
+                        >
+                        </input>
+                    </div>
+                </div>
+            </form>
+            <div class="col-12 text-center p-5 mt-4">
+              <p class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <button type="submit" class="btn btn-primary form-submit px-5 mt-1">Comprar</button>
+            </div>
+        </div>
+        <div class="col-3 bg-black text-white text-center mx-2 rounded-3">
+            <p class="unit-text m-3 pt-4"><strong>$ --</strong> /k</p>
+            <p class="text-info">-- k in Stock</p>
+            <p class="form-resumen m-3 pt-5 pb-1 border-bottom">RESUMEN</p>
+            <p class="text-info"><strong>Juego:</strong> <%=game.nombre%></p>
+            <p class="text-info"><strong>Servidor:</strong> <%=server[0].nombre%></p>
+            <p class="text-info"><strong>Cantidad:</strong> --</p>
+            <p class="form-resumen m-3 py-2 border-top">
+                <strong>Total: </strong> $ --
+            </p>
+        </div>
+    </div>
+</div>

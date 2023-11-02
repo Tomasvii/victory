@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head') %>
+    </head>
+    <body class="body">
+        <header class="blur mb-5"><%- include('./partials/header') %></header>
+        <main>
+            <%- include('./partials/form-home') %>
+            <button type="button" onclick="x()">Enviar</button>
+        </main>
+        <footer class="footer"><%- include('./partials/footer') %></footer>
+        <!-- Start of victorygoldhelp Zendesk Widget script -->
+        <script
+            id="ze-snippet"
+            src="https://static.zdassets.com/ekr/snippet.js?key=011e03a8-d35b-4073-8e6b-b5f8243bc051"
+        ></script>
+        <!-- End of victorygoldhelp Zendesk Widget script -->
+        <script type="text/javascript">
+            function x() {
+                window.zESettings = {
+                    webWidget: {
+                        contactForm: {
+                            ticketForms: [{ id: "2" }],
+                        },
+                    },
+                };
+            }
+        </script>
+    </body>
+</html>
