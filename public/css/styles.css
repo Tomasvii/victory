@@ -94,9 +94,24 @@
 
 /* Formulario */
 
-.form-text {
+.mobile-form {
+    display: block;
+}
+
+.form-text-mobile {
     font-size: 1.5em;
     color: white;
+}
+
+.form-text-desktop {
+    font-size: 2.5em;
+    color: white;
+}
+
+@media (min-width: 1280px) {
+    .mobile-form {
+        display: none;
+    }
 }
 
 /* dfgsdfg */

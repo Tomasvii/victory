@@ -1,92 +1,229 @@
-<div class="w-100 d-flex justify-content-center">
-    <div class="d-flex align-content-center col-10 mt-3">
-        <img
-            src="/images/minis/osrs.webp"
-            alt="logo-osrs"
-            class="align-self-center logo-osrs"
-        />
-        <h2 class="form-text mb-0 pb-2">Comprar oro en <%=game.nombre%></h2>
+<div class="mobile-form">
+    <div class="w-100 mobile justify-content-center">
+        <div class="d-flex align-content-center col-10 mt-3">
+            <img
+                src="/images/minis/osrs.webp"
+                alt="logo-osrs"
+                class="align-self-center"
+            />
+            <h2 class="form-text-mobile mb-0 pb-2">Comprar oro en <%=game.nombre%></h2>
+        </div>
+    </div>
+    
+    <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
+        <div class="d-flex flex-column col-10 bg-gray justify-content-center">
+            <form id="form-venta">
+                <div class="m-3">
+                    <select
+                        id="juegoInput"
+                        required
+                        class="form-select shadow py-2"
+                    >
+                        <% for(oneGame of games) { %>
+                        <option value="game/<%= oneGame.juego_id %>"
+                            <% if (oneGame.juego_id == game.juego_id) { %>
+                            <%="selected"%>
+                            <% } %>
+                            >
+                            <%= oneGame.nombre %>
+                        </option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="m-3">
+                    <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
+                    <input
+                            type="number"
+                            required
+                            id="cantidad-input"
+                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                            placeholder="600"
+                        />
+                </div>
+                <div class="m-3">
+                    <label for="personaje-input" class="form-label">Personaje:</label>
+                    <input
+                    type="text"
+                    required
+                    id="personaje-input"
+                        class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                        placeholder="Nombre de personaje"
+                    >
+                    </input>
+                </div>
+                <div class="m-3">
+                    <label for="pago-input" class="form-label">Método de pago:</label>
+                    <select
+                    id="pago-input"
+                    required
+                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                    >
+                        <option selected disabled>-Seleccionar-</option>
+                        <option value="Binance USDT">Binance USDT</option>
+                        <option value="VISA">VISA</option>
+                        <option value = "Master Card">Master Card</option>
+                        <option value = "PagoMóvil">PagoMóvil</option>
+                        <option disabled>-Transferencia bancaria-</option>
+                        <option value="Banco Venezuela">Banco Venezuela</option>
+                        <option value="Bancolombia">Bancolombia</option>
+                        <option value="Nequi">Nequi</option>
+                        <option value="Zinli">Zinli</option>
+                        <option value="Yappy">Yappy (Banco Panamá)</option>
+                        <option value="Wise">Wise</option>
+                    </select>
+                </div>
+                <div class="m-3">
+                    <label for="entrega-input" class="form-label">Método de entrega:</label>
+                    <select
+                    id="entrega-input"
+                    required
+                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                    >
+                        <option selected disabled>-Seleccionar-</option>
+                        <option value="Trade">Trade</option>
+                        <option value="Drop">Drop</option>
+                    </select>
+                </div>
+            </form>
+            <div class="col-12 text-center py-4">
+              <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
+        <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=server[0].price %></strong> /k</p>
+            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
+            <div class=" mx-4 border-bottom text-center mb-3">
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Juego:</p>
+                <p class="text-white-50"><strong><%=game.nombre%></strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Cantidad: </p>
+                <p id="cantidad" class="text-white-50"><strong>--</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between border-top">
+                <p class="form-resumen py-3 text-white-50">Total: </p>
+                <p class="py-3 text-white" id="total"><strong> --</strong></p>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="w-100 p-3 rounded-3 shadow d-flex justify-content-center">
-    <div class="d-flex flex-column col-10 bg-gray justify-content-center">
-        <form id="form-venta">
-            <div class="m-3">
-                <select
-                    id="juegoInput"
-                    required
-                    class="form-select shadow py-2"
-                >
-                    <% for(oneGame of games) { %>
-                    <option value="game/<%= oneGame.juego_id %>"
-                        <% if (oneGame.juego_id == game.juego_id) { %>
-                        <%="selected"%>
-                        <% } %>
+<div class="container justify-content-center desktop">
+    <div class="row m-5 text-start col-12 p-3 rounded-3">
+        <div class="col-12 d-flex">
+            <img src="/images/minis/osrs.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
+            <p class="form-text-desktop mb-0 pb-2 col-8">
+                Comprar oro en <%=game.nombre%>
+            </p>
+        </div>
+        <div class="col-8 bg-gray p-3 rounded-3 shadow">
+            <form id="form-venta2">
+                <div class="row gx-5 mt-3 m-auto">
+                    <div class="col-3">
+                        <select
+                            id="juegoInput2"
+                            required
+                            class="form-select shadow py-3"
                         >
-                        <%= oneGame.nombre %>
-                    </option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="m-3">
-                <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
-                <input
-                        type="number"
+                            <% for(oneGame of games) { %>
+                            <option value="game/<%= oneGame.juego_id %>" 
+                                <% if (oneGame.juego_id == game.juego_id) { %>
+                                <%="selected"%>
+                                <% } %>
+                                >
+                                <%= oneGame.nombre %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="cantidad-input2" class="form-label">Cantidad de oro /K:</label>
+                      <input
+                            type="number"
+                            required
+                            id="cantidad-input2"
+                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                            placeholder="600"
+                        />
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="personaje-input2" class="form-label">Personaje:</label>
+                        <input
+                        type="text"
                         required
-                        id="cantidad-input"
+                        id="personaje-input2"
+                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                            placeholder="Nombre de personaje"
+                        >
+                        </input>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="pago-input2" class="form-label">Método de pago:</label>
+                        <select
+                        id="pago-input2"
+                        required
                         class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                        placeholder="600"
-                    />
+                        >
+                        <option selected disabled>-Seleccionar-</option>
+                        <option value="Binance USDT">Binance USDT</option>
+                        <option value="VISA">VISA</option>
+                        <option value = "Master Card">Master Card</option>
+                        <option value = "PagoMóvil">PagoMóvil</option>
+                        <option disabled>-Transferencia bancaria-</option>
+                        <option value="Banco Venezuela">Banco Venezuela</option>
+                        <option value="Bancolombia">Bancolombia</option>
+                        <option value="Nequi">Nequi</option>
+                        <option value="Zinli">Zinli</option>
+                        <option value="Yappy">Yappy (Banco Panamá)</option>
+                        <option value="Wise">Wise</option>
+                    </select>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="entrega-input2" class="form-label">Método de entrega:</label>
+                        <select
+                        id="entrega-input2"
+                        required
+                        class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                        >
+                        <option selected disabled>-Seleccionar-</option>
+                        <option value="Trade">Trade</option>
+                        <option value="Drop">Drop</option>
+                    </select>
+                    </div>
+                </div>
+            </form>
+            <div class="col-12 text-center py-4">
+              <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
             </div>
-            <div class="m-3">
-                <label for="personaje-input" class="form-label">Personaje:</label>
-                <input
-                type="text"
-                required
-                id="personaje-input"
-                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                    placeholder="Nombre de personaje"
-                >
-                </input>
+        </div>
+        <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /k</p>
+            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
+            <div class=" mx-4 border-bottom text-center mb-3">
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
-            <div class="m-3">
-                <label for="pago-input" class="form-label">Método de pago:</label>
-                <select
-                id="pago-input"
-                required
-                class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                >
-                    <option selected disabled>-Seleccionar-</option>
-                    <option value="Binance USDT">Binance USDT</option>
-                    <option value="VISA">VISA</option>
-                    <option value = "Master Card">Master Card</option>
-                    <option value = "PagoMóvil">PagoMóvil</option>
-                    <option disabled>-Transferencia bancaria-</option>
-                    <option value="Banco Venezuela">Banco Venezuela</option>
-                    <option value="Bancolombia">Bancolombia</option>
-                    <option value="Nequi">Nequi</option>
-                    <option value="Zinli">Zinli</option>
-                    <option value="Yappy">Yappy (Banco Panamá)</option>
-                    <option value="Wise">Wise</option>
-                </select>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Juego:</p>
+                <p><strong><%=game.nombre%></strong></p>
             </div>
-            <div class="m-3">
-                <label for="entrega-input" class="form-label">Método de entrega:</label>
-                <select
-                id="entrega-input"
-                required
-                class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                >
-                    <option selected disabled>-Seleccionar-</option>
-                    <option value="Trade">Trade</option>
-                    <option value="Drop">Drop</option>
-                </select>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Cantidad: </p>
+                <p id="cantidad2"><strong>--</strong></p>
             </div>
-        </form>
-        <div class="col-12 text-center py-4">
-          <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-          <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+            <div class="d-flex mx-4 justify-content-between border-top">
+                <p class="form-resumen py-3 text-white-50">Total: </p>
+                <p class="py-3" id="total21"><strong> --</strong></p>
+            </div>
         </div>
     </div>
 </div>
