@@ -16,9 +16,25 @@
     border-color: #353a4f;
 }
 
+.nav-btn {
+    background: none;
+    border: none;
+}
+
+.nav-btn:hover {
+    transition: 0.2s;
+    border-top: 2px solid #ffc950;
+}
+
 .logo-icon {
     max-height: 75%;
     max-width: 75%;
+    align-self: center;
+}
+
+.logo-icon-2 {
+    max-height: 50%;
+    max-width: 50%;
     align-self: center;
 }
 
