@@ -137,9 +137,10 @@
                             id="juegoInput2"
                             required
                             class="form-select shadow py-3"
+                            
                         >
                             <% for(oneGame of games) { %>
-                            <option value="game/<%= oneGame.juego_id %>" 
+                            <option value="<%= oneGame.juego_id %>" 
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>

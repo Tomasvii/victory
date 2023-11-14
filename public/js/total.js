@@ -39,3 +39,11 @@ unitInput2.addEventListener("input", function () {
         totalDisplay22.innerHTML = `Total: <strong>$ --</strong>`;
     }
 });
+
+/* Redirect game in desktop */
+window.onload = function () {
+    var select = document.getElementById("juegoInput2");
+    select.addEventListener("change", function () {
+        window.location.href = this.value; // Redirige a la nueva URL
+    });
+};
