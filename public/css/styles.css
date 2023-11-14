@@ -77,10 +77,27 @@
     display: flex;
 }
 
+.mobile-2 {
+    display: flex;
+}
+
+.tablet {
+    display: none;
+}
+
 @media (min-width: 769px) {
+    .mobile-2 {
+        display: none;
+    }
+    .tablet {
+        display: flex;
+    }
 }
 
 @media (min-width: 1280px) {
+    .tablet {
+        display: none;
+    }
     .mobile {
         display: none;
     }
