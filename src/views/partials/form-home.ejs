@@ -1,35 +1,124 @@
-<div class="container justify-content-center">
-    <div class="row m-5 text-start col-12 blur p-3 rounded-3">
-        <p class="form-text mb-0 pb-2 col-5">Selecciona tu juego</p>
-        <div class="col-8 bg-black p-3 rounded-3">
-            <form>
-                <div class="row gx-5 mt-3">
+<div class="mobile-form">
+    <div class="w-100 mobile justify-content-center">
+        <div class="d-flex align-content-center col-10 mt-3">
+            <h2 class="form-text-mobile mb-0 pb-2">Selecciona un juego</h2>
+        </div>
+    </div>
+
+    <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
+        <div class="d-flex flex-column col-10 bg-gray justify-content-center">
+            <form id="form-venta">
+                <div class="m-3">
+                    <select
+                        id="juegoInput"
+                        required
+                        class="form-select shadow py-2"
+                    >
+                        <option selected disabled>Seleccionar Juego</option>
+                        <% for(oneGame of games) { %>
+                        <option value="<%= oneGame.juego_id %>">
+                            <%= oneGame.nombre %>
+                        </option>
+                        <% } %>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
+        <div
+            class="d-flex flex-column col-10 bg-gray text-center justify-content-center"
+        >
+            <p class="unit-text m-3 pt-4">
+                <strong>$ </strong><strong id="price">--</strong> /k
+            </p>
+            <p class="white" style="color: #ffc950">-- k in Stock</p>
+            <div class="mx-4 border-bottom text-center mb-3">
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Juego:</p>
+                <p class="text-white-50"><strong> --</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Cantidad:</p>
+                <p id="cantidad" class="text-white-50"><strong>--</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between border-top">
+                <p class="form-resumen py-3 text-white-50">Total:</p>
+                <p class="py-3 text-white" id="total"><strong> --</strong></p>
+            </div>
+            <a
+                href="https://www.trustpilot.com/review/victorygold.net?languages=es"
+                target="_blank"
+                class="url"
+                ><img
+                    class="footer-trustpilot my-3"
+                    src="/images/trustpilot.png"
+                    alt="Logo Victory Gold"
+            /></a>
+        </div>
+    </div>
+</div>
+
+<div class="container justify-content-center desktop">
+    <div class="row m-5 text-start col-12 p-3 rounded-3">
+        <div class="col-12 d-flex">
+            <p class="form-text-desktop mb-0 pb-2 col-8">Comprar oro</p>
+        </div>
+        <div class="col-8 bg-gray p-3 rounded-3 shadow">
+            <form id="form-venta2">
+                <div class="row gx-5 mt-3 m-auto">
                     <div class="col-12">
                         <select
-                            id="juegoInput"
-                            class="form-select bg-input text-white-50 border-0"
+                            id="juegoInput2"
+                            required
+                            class="form-select shadow py-3"
                         >
-                            <option selected disabled>Seleccionar juego</option>
+                            <option selected disabled>Seleccionar Juego</option>
                             <% for(oneGame of games) { %>
-                            <option value="game/<%= oneGame.juego_id %>">
+                            <option value="<%= oneGame.juego_id %>">
                                 <%= oneGame.nombre %>
                             </option>
                             <% } %>
                         </select>
                     </div>
+                    <div class="col-6"></div>
                 </div>
             </form>
         </div>
-        <div class="col-3 bg-black text-white text-center mx-2 rounded-3">
-            <p class="unit-text m-3 pt-4"><strong>$ --</strong> /k</p>
-            <p class="text-info">-- k in Stock</p>
-            <p class="form-resumen m-3 pt-5 pb-1 border-bottom">RESUMEN</p>
-            <p class="text-info"><strong>Juego:</strong> --</p>
-            <p class="text-info"><strong>Servidor:</strong> --</p>
-            <p class="text-info"><strong>Cantidad:</strong> --</p>
-            <p class="form-resumen m-3 py-2 border-top">
-                <strong>Total: </strong> $ --
+        <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
+            <p class="unit-text m-3 pt-4">
+                <strong>$ </strong><strong id="price2"> --</strong> /k
             </p>
+            <p class="white" style="color: #ffc950">-- k in Stock</p>
+            <div class="mx-4 border-bottom text-center mb-3">
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Juego:</p>
+                <p><strong>--</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Cantidad:</p>
+                <p id="cantidad2"><strong>--</strong></p>
+            </div>
+            <div class="d-flex flex-column">
+                <div class="d-flex mx-4 justify-content-between border-top">
+                    <p class="form-resumen py-3 text-white-50">Total:</p>
+                    <p class="py-3" id="total21"><strong> --</strong></p>
+                </div>
+                <a
+                    href="https://www.trustpilot.com/review/victorygold.net?languages=es"
+                    target="_blank"
+                    class="url my-3"
+                    ><img
+                        class="footer-trustpilot"
+                        src="/images/trustpilot.png"
+                        alt="Logo Victory Gold"
+                /></a>
+            </div>
         </div>
     </div>
 </div>

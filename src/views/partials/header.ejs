@@ -1,16 +1,251 @@
-<nav class="header-main navbar d-flex">
-    <div class="w-100 flex-row col-12 header-desktop">
-        <div class="col-3 d-flex align-items-center justify-content-center">
-            <div class="dropdow">
+<nav class="w-100 navbar d-flex">
+    <div class="w-100 d-flex col-12">
+        <div class="col-2  desktop align-center justify-content-end">
+            <div
+                class="amarillo align-self-center d-flex"
+            >
+                <div class="d-flex w-75"> 
+                    <a href="/" class="d-flex"><img
+                        class="logo mx-auto py-1 col-6"
+                        src="/images/icons/logo.svg"
+                        alt="Logo Victory Gold"
+                    /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 mobile align-center justify-content-center">
+            <button
+                class="btn btn-warning blur amarillo align-self-center"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#staticBackdrop"
+                aria-controls="staticBackdrop"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div
+                class="offcanvas blur offcanvas-start min-vw-100 min-vh-100"
+                data-bs-backdrop="static"
+                tabindex="-1"
+                id="staticBackdrop"
+                data-bs-scroll="true"
+                aria-labelledby="staticBackdropLabel"
+            >
+                <div
+                    class="offcanvas-header col-12 d-flex align-content-center amarillo w-100"
+                >
+                    <img
+                        class="logo-icon-2 mx-1 "
+                        src="/images/icons/logo.svg"
+                        alt="Logo Victory Gold"
+                    />
+                    <h3 class="w-100 py-2 mx-3 mt-2">Victory Gold</h3>
+                    <button
+                        type="button"
+                        class="btn-close d-flex align-center text-ce col-3 mx-1 justify-content-center amarillo"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                    >
+                        <i class="fa-solid fa-x"></i>
+                    </button>
+                </div>
+                <div
+                    class="offcanvas-body flex-column d-flex justify-content-between"
+                >
+                    <ul
+                        class="nav border-top border-bottom-0 border-warning flex-column"
+                    >
+                        <li class="nav-item mt-4">
+                            <a
+                                class="nav-link"
+                                data-bs-toggle="collapse"
+                                href="#comprar"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                                >Comprar ▼</a
+                            >
+                            <div class="collapse" id="comprar">
+                                <div class="card card-body blur amarillo">
+                                    <nav
+                                        class="nav border-bottom-0 flex-column"
+                                    >
+                                        <a class="nav-link" href="#"
+                                            >WoW Classic</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW Hardcore</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW WOTLK</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW Retail</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >RuneScape</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >Albion Online</a
+                                        >
+                                    </nav>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                data-bs-toggle="collapse"
+                                href="#vender"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                                >Vender ▼</a
+                            >
+                            <div class="collapse" id="vender">
+                                <div class="card card-body blur amarillo">
+                                    <nav
+                                        class="nav border-bottom-0 flex-column"
+                                    >
+                                        <a class="nav-link" href="#"
+                                            >WoW Classic</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW Hardcore</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW WOTLK</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW Retail</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >RuneScape</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >Albion Online</a
+                                        >
+                                    </nav>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                data-bs-toggle="collapse"
+                                href="#productos"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseExample"
+                                >Productos ▼</a
+                            >
+                            <div class="collapse" id="productos">
+                                <div class="card card-body blur amarillo">
+                                    <nav
+                                        class="nav border-bottom-0 flex-column"
+                                    >
+                                        <a class="nav-link" href="#"
+                                            >WoW Classic</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW Hardcore</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW WOTLK</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >WoW Retail</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >RuneScape</a
+                                        >
+                                        <a class="nav-link" href="#"
+                                            >Albion Online</a
+                                        >
+                                    </nav>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-auto justify-content-center d-flex flex-column align-items-center">
+                        <div class="header-icons  d-flex gap-4 mx-5">
+                            <a href="#" class="url"
+                                ><i class="fa-brands fa-discord header-icon"></i
+                            >
+                            <a href="#" class="url"
+                                ><i class="fa-brands fa-whatsapp header-icon"></i></a>
+                            <a href="#" class="url"
+                                ><i class="fa-brands fa-facebook header-icon"></i></a>
+                        </div>
+                        <span class="text-center amarillo"
+                        >© Victory LLC all rights reserved.</span
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 d-flex mb-1">
+            <div class="mobile w-100 justify-content-center">
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="/" class="d-flex"><img
+                        class="logo mx-auto py-1 col-6"
+                        src="/images/icons/logo.svg"
+                        alt="Logo Victory Gold"
+                    /></a>
+                </div>
+            </div>
+            <div class="desktop col-12 align-content-center mt-4">
+                <div class="dropdown col-2 d-flex align-content-center ">
+                    <button class="btn btn-secondary dropdown-toggle w-100 nav-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        COMPRAR ORO
+                    </button>
+                    <ul class="dropdown-menu bg-gray" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item text-white" href="#">WoW Classic</a></li>
+                        <li><a class="dropdown-item text-white" href="#">WoW Hardcore</a></li>
+                        <li><a class="dropdown-item text-white" href="#">WoW WOTLK</a></li>
+                        <li><a class="dropdown-item text-white" href="#">WoW Retail</a></li>
+                        <li><a class="dropdown-item text-white" href="#">RuneScape</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Albion Online</a></li>
+                    </ul>
+                </div>
+                <div class="button col-2 d-flex align-content-center ">
+                    <button class="btn btn-secondary w-100 nav-btn" type="button">
+                        TIENDA
+                    </button>
+                </div>
+                <div class="button col-2 d-flex align-content-center">
+                    <button class="btn btn-secondary w-100 nav-btn" type="button">
+                        TASA
+                    </button>
+                </div>
+                <div class="dropdown col-2 d-flex align-content-center">
+                    <button class="btn btn-secondary dropdown-toggle w-100 nav-btn"  type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        VENDER ORO
+                    </button>
+                    <ul class="dropdown-menu bg-gray" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item text-white" href="#">WoW Classic</a></li>
+                        <li><a class="dropdown-item text-white" href="#">WoW Hardcore</a></li>
+                        <li><a class="dropdown-item text-white" href="#">WoW WOTLK</a></li>
+                        <li><a class="dropdown-item text-white" href="#">WoW Retail</a></li>
+                        <li><a class="dropdown-item text-white" href="#">RuneScape</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Albion Online</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 align-items-center justify-content-center mobile">
+            <div class="dropdown position-static">
                 <button
-                    class="btn btn-secondary blur dropdown-toggle  p-2"
+                    class="btn btn-secondary blur dropdown-toggle p-2"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                 >
-                    Español 🇪🇸
+                    Es 🇪🇸
                 </button>
-                <ul class="dropdown-menu bg-gray">
+                <ul class="dropdown-menu blur w-100 text-center">
                     <li>
                         <a class="dropdown-item text-white" href="#"
                             >🇪🇸 Español (ES)</a
@@ -24,30 +259,31 @@
                 </ul>
             </div>
         </div>
-        <div class="col-6">
-            <div class="d-flex justify-content-center">
-                <div class="d-flex justify-content-between align-items-center">
+        <div class="col-4 justify-content-end align-items-center desktop">
+            <div class="col-3 align-items-center justify-content-center">
+                <div class="dropdow">
                     <button
+                        class="btn btn-secondary blur dropdown-toggle p-2"
                         type="button"
-                        class="btn btn-outline-warning py-3 m-5 col-3"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                     >
-                        COMPRAR
+                        Español 🇪🇸
                     </button>
-                    <img
-                        class="footer-logo mx-auto py-3"
-                        src="/images/icons/logo.svg"
-                        alt="Logo Victory Gold"
-                    />
-                    <button
-                        type="button"
-                        class="btn btn-outline-warning py-3 m-5 col-3"
-                    >
-                        VENDER
-                    </button>
+                    <ul class="dropdown-menu blur w-100 text-center">
+                        <li>
+                            <a class="dropdown-item text-white" href="#"
+                                >🇪🇸 Español (ES)</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item text-white" href="#"
+                                >🇺🇸 English (EN)</a
+                            >
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="col-3 justify-content-end d-flex align-items-center">
             <div class="header-icons d-flex gap-4 mx-5">
                 <a href="#" class="url"
                     ><i class="fa-brands fa-discord header-icon"></i
@@ -58,28 +294,5 @@
                     ><i class="fa-brands fa-facebook header-icon"></i></a>
             </div>
         </div>
-    </div>
-    <div class=" min-vw-100 flex-row col-12 header-mobile">
-        <div class="col-3 d-flex align-center">
-            <button class="btn btn-primary h-25 align-self-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-            <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <div class="offcanvas offcanvas-start bg-black"  tabindex="-1" id="staticBackdrop" >
-                asfsadfasd
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="d-flex justify-content-center">
-                <div class="d-flex justify-content-center align-items-center">
-                    <img
-                        class="footer-logo mx-auto py-3"
-                        src="/images/icons/logo.svg"
-                        alt="Logo Victory Gold"
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="col-3">dfgh</div>
     </div>
 </nav>

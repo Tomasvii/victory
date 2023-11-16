@@ -15,6 +15,10 @@ function comprar() {
     const personaje = document.getElementById("personaje-input").value;
     const metodo = document.getElementById("pago-input").value;
     const entrega = document.getElementById("entrega-input").value;
+    const cantidad2 = document.getElementById("cantidad-input2").value;
+    const personaje2 = document.getElementById("personaje-input2").value;
+    const metodo2 = document.getElementById("pago-input2").value;
+    const entrega2 = document.getElementById("entrega-input2").value;
 
     if (
         cantidad != false &&
@@ -33,6 +37,26 @@ function comprar() {
                 metodo +
                 "     \nMétodo de entrega: " +
                 entrega,
+        });
+        const comprar = document.getElementById("comprar");
+        comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+    } else if (
+        cantidad2 != false &&
+        personaje2 != false &&
+        metodo2 != "-Seleccionar-" &&
+        entrega2 != "-Seleccionar-"
+    ) {
+        window.Tawk_API.maximize();
+        window.Tawk_API.setAttributes({
+            name:
+                "Cantidad: " +
+                cantidad2 +
+                "k     \nPersonaje: " +
+                personaje2 +
+                "     \nMétodo de pago: " +
+                metodo2 +
+                "     \nMétodo de entrega: " +
+                entrega2,
         });
         const comprar = document.getElementById("comprar");
         comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
