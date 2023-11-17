@@ -4,8 +4,15 @@
         <%- include('./partials/head') %>
     </head>
     <body class="body">
-        <header class="blur mb-5"><%- include('./partials/header') %></header>
-        <main><%- include('./partials/form-albion') %></main>
+        <header class="blur d-flex position-sticky top-0">
+            <%- include('./partials/header') %>
+        </header>
+        <main>
+            <%-include('./partials/forms/form-albion') %>
+            <%-include('./partials/cards')%> <%-include('./partials/text/text')
+            %>
+        </main>
         <footer class="footer"><%- include('./partials/footer') %></footer>
+        <script src="/js/tawk/tawk-osrs.js"></script>
     </body>
 </html>

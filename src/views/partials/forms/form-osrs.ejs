@@ -1,21 +1,11 @@
 <div class="mobile-form">
     <div class="w-100 mobile justify-content-center">
         <div class="d-flex align-content-center col-10 mt-3">
-            <% switch (game.juego_id) {
-                case 1: %> 
-                <img src="/images/minis/wow-classic.webp" alt="WoW classic logo"  class="align-self-center m-2">
-            <% break; 
-                case 2: %> 
-                <img src="/images/minis/wow-classic.webp" alt="WoW Hardcore logo"  class="align-self-center m-2">
-            <% break; 
-                case 3: %> 
-                <img src="/images/minis/world-of-warcraft-wotlk.webp" alt="WoTLK logo" class="align-self-center m-2">
-            <% break; 
-                case 4: %> 
-                <img src="/images/minis/world-of-warcraft.webp" alt="WoW Retail logo"  class="align-self-center m-2">
-            <% break; 
-                default: %>
-                <% break; } %>
+            <img
+                src="/images/minis/osrs.webp"
+                alt="logo-osrs"
+                class="align-self-center m-2"
+            />
             <h2 class="form-text-mobile mb-0 pb-2">Comprar oro en <%=game.nombre%></h2>
         </div>
     </div>
@@ -38,28 +28,6 @@
                             <%= oneGame.nombre %>
                         </option>
                         <% } %>
-                    </select>
-                </div>
-                <div class="m-3">
-                    <select
-                    id="serverInput"
-                    required
-                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                    >
-                        <option selected disabled>-Seleccionar Servidor-</option>
-                        <% for(oneServer of servers) { %>
-                        <option
-                            value="<%= oneServer.servidor_id %>">
-                            <%= oneServer.nombre %>
-                        </option>
-                         <% } %>
-                    </select>
-                </div>
-                <div class="m-3">
-                    <select id="faccionInput"
-                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                    >
-                        <option selected disabled>-Seleccionar Facción-</option>
                     </select>
                 </div>
                 <div class="m-3">
@@ -126,18 +94,18 @@
     
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
         <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> --</strong> /k</p>
-            <p class="white" style="color:#ffc950 ;">-- k in Stock</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=server[0].price %></strong> /k</p>
+            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Juego:</p>
-                <p class="text-white-50"><strong><%=game.nombre%></strong></p>
+                <p class="text-white"><strong><%=game.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Cantidad: </p>
-                <p id="cantidad" class="text-white-50"><strong>--</strong></p>
+                <p id="cantidad" class="text-white"><strong>--</strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between border-top">
                 <p class="form-resumen py-3 text-white-50">Total: </p>
@@ -158,21 +126,7 @@
 <div class="container justify-content-center desktop">
     <div class="row m-5 text-start col-12 p-3 rounded-3">
         <div class="col-12 d-flex">
-            <% switch (game.juego_id) {
-                case 1: %> 
-                <img src="/images/minis/wow-classic.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                case 2: %> 
-                <img src="/images/minis/wow-classic.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                case 3: %> 
-                <img src="/images/minis/world-of-warcraft-wotlk.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                case 4: %> 
-                <img src="/images/minis/world-of-warcraft.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                default: %>
-                <% break; } %>
+            <img src="/images/minis/osrs.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
             <p class="form-text-desktop mb-0 pb-2 col-8">
                 Comprar oro en <%=game.nombre%>
             </p>
@@ -198,28 +152,7 @@
                             <% } %>
                         </select>
                     </div>
-                    <div class="col-4">
-                        <select
-                        id="serverInput2"
-                        required
-                        class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
-                        >
-                        <option selected disabled>-Seleccionar Servidor-</option>
-                        <% for(oneServer of servers) { %>
-                        <option
-                            value="<%= oneServer.servidor_id %>">
-                            <%= oneServer.nombre %>
-                        </option>
-                         <% } %>
-                    </select>
-                    </div>
-                    <div class="col-4">
-                        
-                        <select id="faccionInput2"
-                        class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
-                        >
-                        <option selected disabled>-Seleccionar Facción-</option>
-                    </select>
+                    <div class="col-6">
                     </div>
                     <div class="col-5 mt-4">
                       <label for="cantidad-input2" class="form-label">Cantidad de oro /K:</label>
@@ -283,8 +216,8 @@
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2">--</strong> /k</p>
-            <p class="white" style="color:#ffc950 ;">-- k in Stock</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /k</p>
+            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
@@ -315,3 +248,4 @@
 </div>
 
 <script src="/js/total.js"></script>
+

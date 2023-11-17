@@ -4,7 +4,7 @@ const router = Router();
 const mainController = require("../controllers/mainController");
 router.get("/", mainController.home);
 
-const gameRouter = require("./gameRouter");
-router.use("/game", gameRouter);
+const buyRouter = require("./buyRouter");
+router.use("/buy/game", buyRouter);
 
 module.exports = router;
