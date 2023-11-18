@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Comprar oro <%= game.nombre %> | Victory Gold</title>
         <%- include('./partials/head') %>
     </head>
     <body class="body">
@@ -9,10 +10,14 @@
         </header>
         <main>
             <%-include('./partials/forms/form-game') %>
-            <%-include('./partials/cards')%> <%-include('./partials/text/text')
-            %>
+            <%-include('./partials/cards')%> <% switch (game.juego_id) { case 1:
+            %> <%-include('./partials/text/text-classic')%> <% break; case 2: %>
+            <%-include('./partials/text/text-hardcore')%> <% break; case 3: %>
+            <%-include('./partials/text/text-wotlk')%> <% break; case 4: %>
+            <%-include('./partials/text/text-retail')%> <% break; default: %> <%
+            break; } %>
         </main>
         <footer class="footer"><%- include('./partials/footer') %></footer>
-        <script src="/js/tawk/tawk-osrs.js"></script>
+        <script src="/js/tawk/tawk-wow.js"></script>
     </body>
 </html>

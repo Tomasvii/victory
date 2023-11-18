@@ -20,7 +20,7 @@
                         class="form-select shadow py-2"
                     >
                         <% for(oneGame of games) { %>
-                        <option value="<%= oneGame.juego_id %>"
+                        <option value="<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                             <% if (oneGame.juego_id == game.juego_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -38,7 +38,7 @@
                     >
                         <% for(oneServer of server) { %>
                             <option
-                                value="<%= oneServer.servidor_id %>">
+                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
                                 <%= oneServer.nombre %>
                             </option>
                              <% } %>
@@ -160,7 +160,7 @@
                             
                         >
                             <% for(oneGame of games) { %>
-                            <option value="<%= oneGame.juego_id %>" 
+                            <option value="<%= oneGame.juego_id %>"  data-name="<%= oneGame.nombre %>"
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>
@@ -178,7 +178,7 @@
                         >
                         <% for(oneServer of server) { %>
                             <option
-                                value="<%= oneServer.servidor_id %>">
+                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"> 
                                 <%= oneServer.nombre %>
                             </option>
                              <% } %>

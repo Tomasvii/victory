@@ -30,7 +30,7 @@
                         class="form-select shadow py-2"
                     >
                         <% for(oneGame of games) { %>
-                        <option value="<%= oneGame.juego_id %>"
+                        <option value="<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                             <% if (oneGame.juego_id == game.juego_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -48,7 +48,7 @@
                     >
                         <% for(oneServer of servers) { %>
                         <option
-                            value="<%= oneServer.servidor_id %>"
+                            value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"
                             <% if (oneServer.servidor_id == server[0].servidor_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -64,7 +64,7 @@
                     >
                         <% for(oneFaction of factions) { %>
                         <option
-                            value="<%= oneFaction.faccion_id %>"
+                            value="<%= oneFaction.faccion_id %>" data-name="<%= oneFaction.nombre %>"
                             <% if (oneFaction.faccion_id == faction.faccion_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -208,7 +208,7 @@
                             
                         >
                             <% for(oneGame of games) { %>
-                            <option value="<%= oneGame.juego_id %>" 
+                            <option value="<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>
@@ -226,7 +226,7 @@
                         >
                         <% for(oneServer of servers) { %>
                         <option
-                            value="<%= oneServer.servidor_id %>"
+                            value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"
                             <% if (oneServer.servidor_id == server[0].servidor_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -242,7 +242,7 @@
                         >
                         <% for(oneFaction of factions) { %>
                             <option
-                                value="<%= oneFaction.faccion_id %>"
+                                value="<%= oneFaction.faccion_id %>" data-name="<%= oneFaction.nombre %>"
                                 <% if (oneFaction.faccion_id == faction.faccion_id) { %>
                                 <%="selected"%>
                                 <% } %>
@@ -310,7 +310,7 @@
             </form>
             <div class="col-12 text-center py-4">
               <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">

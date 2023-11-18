@@ -4,7 +4,7 @@ var Tawk_API = Tawk_API || {},
     var s1 = document.createElement("script"),
         s0 = document.getElementsByTagName("script")[0];
     s1.async = true;
-    s1.src = "https://embed.tawk.to/654000bea84dd54dc486d725/1he105qoq";
+    s1.src = "https://embed.tawk.to/654000bea84dd54dc486d725/1hffpb8o6";
     s1.charset = "UTF-8";
     s1.setAttribute("crossorigin", "*");
     s0.parentNode.insertBefore(s1, s0);
@@ -25,6 +25,20 @@ function comprar() {
                   document.getElementById("juegoInput2").selectedIndex
               ].getAttribute("data-name")
         : null;
+    const server = document.getElementById("serverInput")
+        ? document
+              .getElementById("serverInput")
+              .options[
+                  document.getElementById("serverInput").selectedIndex
+              ].getAttribute("data-name")
+        : null;
+    const server2 = document.getElementById("serverInput2")
+        ? document
+              .getElementById("serverInput2")
+              .options[
+                  document.getElementById("serverInput2").selectedIndex
+              ].getAttribute("data-name")
+        : null;
     const cantidad = document.getElementById("cantidad-input").value;
     const cantidad2 = document.getElementById("cantidad-input2").value;
     const personaje = document.getElementById("personaje-input").value;
@@ -38,12 +52,15 @@ function comprar() {
         cantidad != false &&
         personaje != false &&
         metodo != "-Seleccionar-" &&
-        entrega != "-Seleccionar-"
+        entrega != "-Seleccionar-" &&
+        server != "-Seleccionar Servidor-"
     ) {
         window.Tawk_API.maximize();
         window.Tawk_API.setAttributes({
             name:
                 game +
+                " - " +
+                server +
                 " - " +
                 cantidad +
                 "k - PJ: " +
@@ -59,12 +76,15 @@ function comprar() {
         cantidad2 != false &&
         personaje2 != false &&
         metodo2 != "-Seleccionar-" &&
-        entrega2 != "-Seleccionar-"
+        entrega2 != "-Seleccionar-" &&
+        server2 != "-Seleccionar Servidor-"
     ) {
         window.Tawk_API.maximize();
         window.Tawk_API.setAttributes({
             name:
                 game2 +
+                " - " +
+                server2 +
                 " - " +
                 cantidad2 +
                 "k - PJ: " +
