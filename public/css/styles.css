@@ -234,7 +234,7 @@ input[type="number"] {
     font-size: 3em;
 }
 
-/* text */
+/* Text */
 
 .bg-text {
     background-color: #0e0e11;
@@ -242,6 +242,125 @@ input[type="number"] {
 
 .text-title {
     font-size: 2em;
+}
+
+/* Home */
+
+.bg-none {
+    background: none;
+}
+
+.bg-gradient {
+    background-image: linear-gradient(
+        to bottom,
+        transparent -50%,
+        #0e0e11 100%
+    );
+}
+
+.home-bg {
+    width: 100%;
+    min-height: 80vh;
+    margin: auto;
+    background-image: linear-gradient(to bottom, transparent 0%, #0e0e11 100%),
+        url("/images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-top {
+    max-width: 1920px;
+}
+
+.card.home-card.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
+.card.home-card2.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
+.card.home-card3.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
+.card.home-card4.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
+.card.home-card5.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
+.card.home-card6.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.75em);
+    }
+}
+
+.home-card {
+    /*min-height: 500px;*/
+    /*min-height: 300px;*/
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/wotlk.png");
+    background-size: cover;
+    background-position: center;
+}
+.home-card2 {
+    /*min-height: 500px;*/
+    /*min-height: 300px;*/
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/wow-hardcore.png");
+    background-size: cover;
+    background-position: center;
+}
+.home-card3 {
+    /*min-height: 500px;*/
+    /*min-height: 300px;*/
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/wow-classic.png");
+    background-size: cover;
+    background-position: center;
+}
+.home-card4 {
+    /*min-height: 500px;*/
+    /*min-height: 300px;*/
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/wow-retail.png");
+    background-size: cover;
+    background-position: center;
+}
+.home-card5 {
+    /*min-height: 500px;*/
+    /*min-height: 300px;*/
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/osrs.png");
+    background-size: cover;
+    background-position: center;
+}
+.home-card6 {
+    /*min-height: 500px;*/
+    /*min-height: 300px;*/
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/albion.png");
+    background-size: cover;
+    background-position: center;
 }
 
 /* Footer */

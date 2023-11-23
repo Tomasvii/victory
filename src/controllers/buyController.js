@@ -2,6 +2,13 @@ const path = require("path");
 const db = require("../database/models");
 
 module.exports = {
+    buy: async (req, res) => {
+        const games = await db.Games.findAll();
+        return res.render("buy", {
+            games: games,
+        });
+    },
+
     games: async (req, res) => {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(req.params.gameId);
