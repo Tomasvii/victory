@@ -4128,6 +4128,7 @@ fieldset:disabled .btn {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    z-index: 1000 !important;
     padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
 .navbar > .container,
@@ -4654,7 +4655,7 @@ fieldset:disabled .btn {
 }
 
 .card-img-overlay {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
@@ -6276,6 +6277,7 @@ fieldset:disabled .btn {
 
 .carousel {
     position: relative;
+    z-index: 1;
 }
 
 .carousel.pointer-event {
@@ -6418,11 +6420,11 @@ fieldset:disabled .btn {
 }
 
 .carousel-indicators {
-    position: absolute;
+    position: relative;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     justify-content: center;
     padding: 0;
@@ -6458,7 +6460,7 @@ fieldset:disabled .btn {
 }
 
 .carousel-caption {
-    position: absolute;
+    position: relative;
     right: 15%;
     bottom: 1.25rem;
     left: 15%;
