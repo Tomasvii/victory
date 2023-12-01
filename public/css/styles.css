@@ -350,6 +350,14 @@ input[type="number"] {
     background-size: cover;
     background-position: center;
 }
+.home-card7 {
+    min-height: 200px;
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent 50%, #0e0e11 100%),
+        url("/images/home-cards/wow-som.png");
+    background-size: cover;
+    background-position: center;
+}
 
 /* Home mid */
 
