@@ -14,8 +14,9 @@
             %> <%-include('./partials/text/text-classic')%> <% break; case 2: %>
             <%-include('./partials/text/text-classic')%> <% break; case 3: %>
             <%-include('./partials/text/text-wotlk')%> <% break; case 4: %>
-            <%-include('./partials/text/text-retail')%> <% break; default: %> <%
-            break; } %>
+            <%-include('./partials/text/text-retail')%> <% break; case 7: %>
+            <%-include('./partials/text/text-classic')%> <% break; default: %>
+            <% break; } %>
         </main>
         <footer class="footer"><%- include('./partials/footer') %></footer>
         <script src="/js/tawk/tawk-soporte.js"></script>
