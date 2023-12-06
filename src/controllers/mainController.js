@@ -33,7 +33,7 @@ module.exports = {
                 {
                     price_data: {
                         product_data: {
-                            name: req.body.game + " GOLD",
+                            name: req.body.game + " Currency",
                             description:
                                 req.body.quantity +
                                 " K " +

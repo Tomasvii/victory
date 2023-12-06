@@ -10,7 +10,7 @@ var Tawk_API = Tawk_API || {},
     s0.parentNode.insertBefore(s1, s0);
 })();
 
-function comprar() {
+async function comprar() {
     const game = document.getElementById("juegoInput")
         ? document
               .getElementById("juegoInput")
@@ -49,52 +49,92 @@ function comprar() {
     const entrega2 = document.getElementById("entrega-input2").value;
 
     if (
-        cantidad != false &&
-        personaje != false &&
-        metodo != "-Seleccionar-" &&
-        entrega != "-Seleccionar-" &&
-        server != "-Seleccionar Servidor-"
+        metodo == "VISA" ||
+        metodo == "Master Card" ||
+        metodo2 == "VISA" ||
+        metodo2 == "Master Card"
     ) {
-        window.Tawk_API.maximize();
-        window.Tawk_API.setAttributes({
-            name:
-                game +
-                " - " +
-                server +
-                " - " +
-                cantidad +
-                "k - PJ: " +
-                personaje +
-                " - Pago: " +
-                metodo +
-                " - Entrega: " +
-                entrega,
-        });
-        const comprar = document.getElementById("comprar");
-        comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
-    } else if (
-        cantidad2 != false &&
-        personaje2 != false &&
-        metodo2 != "-Seleccionar-" &&
-        entrega2 != "-Seleccionar-" &&
-        server2 != "-Seleccionar Servidor-"
-    ) {
-        window.Tawk_API.maximize();
-        window.Tawk_API.setAttributes({
-            name:
-                game2 +
-                " - " +
-                server2 +
-                " - " +
-                cantidad2 +
-                "k - PJ: " +
-                personaje2 +
-                " - Pago: " +
-                metodo2 +
-                " - Entrega: " +
-                entrega2,
-        });
-        const comprar = document.getElementById("comprar2");
-        comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+        const quantity = cantidad || "" + cantidad2 || "";
+        const char = personaje || "" + personaje2 || "";
+        const gamee = game || "" + game2 || "";
+        const serverr = server || "" + server2 || "";
+        let delivery = "";
+        if (entrega == "-Seleccionar-") {
+            delivery = entrega2;
+        } else {
+            delivery = entrega;
+        }
+        try {
+            const res = await fetch("/create-checkout-session", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    quantity: quantity,
+                    char: char,
+                    delivery: delivery,
+                    server: "",
+                    faction: "",
+                    game: gamee,
+                    server: serverr,
+                }),
+            });
+            const data = await res.json();
+            console.log(data);
+            window.location.href = data.url;
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        if (
+            cantidad != false &&
+            personaje != false &&
+            metodo != "-Seleccionar-" &&
+            entrega != "-Seleccionar-" &&
+            server != "-Seleccionar Servidor-"
+        ) {
+            window.Tawk_API.maximize();
+            window.Tawk_API.setAttributes({
+                name:
+                    game +
+                    " - " +
+                    server +
+                    " - " +
+                    cantidad +
+                    "k - PJ: " +
+                    personaje +
+                    " - Pago: " +
+                    metodo +
+                    " - Entrega: " +
+                    entrega,
+            });
+            const comprar = document.getElementById("comprar");
+            comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+        } else if (
+            cantidad2 != false &&
+            personaje2 != false &&
+            metodo2 != "-Seleccionar-" &&
+            entrega2 != "-Seleccionar-" &&
+            server2 != "-Seleccionar Servidor-"
+        ) {
+            window.Tawk_API.maximize();
+            window.Tawk_API.setAttributes({
+                name:
+                    game2 +
+                    " - " +
+                    server2 +
+                    " - " +
+                    cantidad2 +
+                    "k - PJ: " +
+                    personaje2 +
+                    " - Pago: " +
+                    metodo2 +
+                    " - Entrega: " +
+                    entrega2,
+            });
+            const comprar = document.getElementById("comprar2");
+            comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+        }
     }
 }

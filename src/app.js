@@ -4,12 +4,15 @@ const session = require("express-session");
 const cookies = require("cookie-parser");
 const mainRouter = require("./routers/mainRouter");
 const methodOverride = require("method-override");
+const env = require("dotenv");
+env.config();
 
 const app = express();
 
+const KEY = process.env.SECRET_APP;
 app.use(
     session({
-        secret: "0894d6e7-891d-43a3-ba9d-069fc0ccf374",
+        secret: KEY,
         resave: false,
         saveUninitialized: false,
     })
