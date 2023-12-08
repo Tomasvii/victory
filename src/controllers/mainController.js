@@ -5,9 +5,9 @@ config.config();
 
 const Stripe = require("stripe");
 
-const SKT = process.env.STRIPE_SKT;
+const SK = process.env.STRIPE_SKT;
 
-const stripe = new Stripe(SKT);
+const stripe = new Stripe(SK);
 
 module.exports = {
     home: async (req, res) => {
@@ -44,9 +44,7 @@ module.exports = {
                                 req.body.char +
                                 " " +
                                 req.body.delivery,
-                            images: [
-                                "https://b.stripecdn.com/docs-statics-srv/assets/e9d184fcb37d32f21df2171a070f5fbc.png",
-                            ],
+                            images: [game[0].logo],
                         },
                         currency: "USD",
                         unit_amount: server[0].price * 100,
@@ -55,15 +53,57 @@ module.exports = {
                 },
             ],
             mode: "payment",
-            success_url: "http://localhost:3000/success",
-            cancel_url: "http://localhost:3000/cancel",
+            success_url: "https://5b79-190-137-77-66.ngrok-free.app/success",
+            cancel_url: "http://localhost:3000/",
         });
         return res.json(session);
     },
-    cancel: (req, res) => {
-        return res.send("Compra cancelada");
+    webhook: async (req, res) => {
+        const payload = req.body;
+        const sig = req.headers["stripe-signature"];
+
+        try {
+            // Verificar la firma del webhook
+            const event = stripe.webhooks.constructEvent(
+                payload,
+                sig,
+                "whsec_tXdAtDXjb9okoaah6tMS7XyTC0jbVHE5"
+            );
+
+            // Manejar el evento según su tipo
+            switch (event.type) {
+                case "payment_intent.succeeded":
+                    // Guardar información relevante en tu base de datos u otro almacenamiento
+                    // Puedes utilizar una librería de base de datos como Sequelize o Mongoose aquí
+                    // Ejemplo: await db.guardarInformacionDePago(event.data.object);
+                    break;
+                // Puedes manejar otros eventos según tus necesidades
+
+                default:
+                    console.log(`Evento no manejado: ${event.type}`);
+            }
+
+            res.json({ received: true });
+        } catch (err) {
+            console.error(
+                "Error al manejar el webhook de Stripe:",
+                err.message
+            );
+            res.status(400).send(`Webhook Error: ${err.message}`);
+        }
     },
     success: (req, res) => {
-        return res.send("Gracias por tu compra :D");
+        const checkoutSessionId = req.query.payment_intent;
+
+        // Obtén más detalles sobre la sesión de pago desde tu servidor o la API de Stripe
+        // Esto podría implicar una llamada a tu servidor o a la API de Stripe
+        // Ejemplo ficticio:
+        const paymentDetails = getPaymentDetailsFromServer(checkoutSessionId);
+
+        console.log("ID de la sesión de pago en éxito:", checkoutSessionId);
+        console.log("Detalles del pago:", paymentDetails);
+
+        // Muestra información al cliente según sea necesario
+        return res.send(`Gracias por tu compra :D ${checkoutSessionId}`);
     },
 };

@@ -72,6 +72,7 @@ async function comprar() {
         const char = personaje || "" + personaje2 || "";
         const gamee = game || "" + game2 || "";
         const serverr = server || "" + server2 || "";
+        const factionn = faction || "" + faction2 || "";
         let delivery = "";
         if (entrega == "-Seleccionar-") {
             delivery = entrega2;
@@ -92,6 +93,7 @@ async function comprar() {
                     faction: "",
                     game: gamee,
                     server: serverr,
+                    faction: factionn,
                 }),
             });
             const data = await res.json();

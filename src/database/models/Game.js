@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        logo: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     };
 
     let config = {
