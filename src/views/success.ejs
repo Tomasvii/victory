@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Victory Gold</title>
+        <title>Recibo | Victory Gold</title>
         <%- include('./partials/head') %>
     </head>
     <body class="body">
@@ -9,11 +9,10 @@
             <%- include('./partials/header') %>
         </header>
         <main>
-            <%-include('./partials/home-top') %>
-            <%-include('./partials/home-mid')%>
-            <%-include('./partials/text/text-buy') %>
+            <%-include('./partials/success') %> <%-include('./partials/cards')%>
+            <%-include('./partials/text/text-osrs') %>
         </main>
         <footer class="footer"><%- include('./partials/footer') %></footer>
-        <script src="/js/tawk/tawk-soporte.js"></script>
+        <script src="/js/tawk/tawk-stripe.js"></script>
     </body>
 </html>

@@ -6,6 +6,7 @@ config.config();
 const Stripe = require("stripe");
 
 const SK = process.env.STRIPE_SKT;
+const SWH = process.env.STRIPE_WH;
 
 const stripe = new Stripe(SK);
 
@@ -22,7 +23,6 @@ module.exports = {
                 nombre: req.body.game,
             },
         });
-        console.log(game[0]);
         const server = await db.Servers.findAll({
             where: {
                 juego_id: game[0].juego_id,
@@ -52,35 +52,55 @@ module.exports = {
                     quantity: req.body.quantity,
                 },
             ],
+            metadata: {
+                description:
+                    req.body.game +
+                    "-" +
+                    req.body.quantity +
+                    " K-" +
+                    req.body.server +
+                    "-" +
+                    req.body.faction +
+                    "-" +
+                    req.body.char +
+                    "-" +
+                    req.body.delivery,
+            },
             mode: "payment",
-            success_url: "https://5b79-190-137-77-66.ngrok-free.app/success",
+            success_url:
+                "https://e413-181-94-115-111.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
             cancel_url: "http://localhost:3000/",
         });
         return res.json(session);
     },
     webhook: async (req, res) => {
-        const payload = req.body;
         const sig = req.headers["stripe-signature"];
+        const payload = req.rawBody;
 
         try {
-            // Verificar la firma del webhook
-            const event = stripe.webhooks.constructEvent(
-                payload,
-                sig,
-                "whsec_tXdAtDXjb9okoaah6tMS7XyTC0jbVHE5"
-            );
+            const event = stripe.webhooks.constructEvent(payload, sig, SWH);
 
-            // Manejar el evento según su tipo
-            switch (event.type) {
-                case "payment_intent.succeeded":
-                    // Guardar información relevante en tu base de datos u otro almacenamiento
-                    // Puedes utilizar una librería de base de datos como Sequelize o Mongoose aquí
-                    // Ejemplo: await db.guardarInformacionDePago(event.data.object);
-                    break;
-                // Puedes manejar otros eventos según tus necesidades
+            if (event.type === "checkout.session.completed") {
+                const checkoutSessionCompleted = event.data.object;
 
-                default:
-                    console.log(`Evento no manejado: ${event.type}`);
+                await db.Stripes.create({
+                    url_id: checkoutSessionCompleted.id,
+                    transaction_id: event.id,
+                    email: checkoutSessionCompleted.customer_details.email,
+                    amount: checkoutSessionCompleted.amount_total / 100,
+                    payment_intent: event.data.object.payment_intent,
+                    details: checkoutSessionCompleted.metadata.description,
+                });
+                await db.Orders.create({
+                    url_id: checkoutSessionCompleted.id,
+                    transaction_id: event.id,
+                    email: checkoutSessionCompleted.customer_details.email,
+                    amount: checkoutSessionCompleted.amount_total / 100,
+                    payment_intent: event.data.object.payment_intent,
+                    details: checkoutSessionCompleted.metadata.description,
+                });
+            } else {
+                console.log(`Evento no manejado: ${event.type}`);
             }
 
             res.json({ received: true });
@@ -92,18 +112,47 @@ module.exports = {
             res.status(400).send(`Webhook Error: ${err.message}`);
         }
     },
-    success: (req, res) => {
-        const checkoutSessionId = req.query.payment_intent;
+    success: async (req, res) => {
+        const transactionId = req.params.transactionId;
+        const transaction = await db.Stripes.findAll({
+            where: {
+                url_id: transactionId,
+            },
+        });
 
-        // Obtén más detalles sobre la sesión de pago desde tu servidor o la API de Stripe
-        // Esto podría implicar una llamada a tu servidor o a la API de Stripe
-        // Ejemplo ficticio:
-        const paymentDetails = getPaymentDetailsFromServer(checkoutSessionId);
+        /*
+        // Los últimos dígitos de la tarjeta:
 
-        console.log("ID de la sesión de pago en éxito:", checkoutSessionId);
-        console.log("Detalles del pago:", paymentDetails);
+        const paymentIntent = await stripe.paymentIntents.retrieve(
+            transaction[0].payment_intent
+        );
 
-        // Muestra información al cliente según sea necesario
-        return res.send(`Gracias por tu compra :D ${checkoutSessionId}`);
+        
+        const latestChargeId = paymentIntent.latest_charge;
+
+        const charge = await stripe.charges.retrieve(latestChargeId);
+
+        console.log(
+            "Últimos 4 dígitos de la tarjeta:",
+            charge.payment_method_details.card.last4
+        );
+        console.log(
+            "Marca de la tarjeta:",
+            charge.payment_method_details.card.brand
+        );
+        */
+
+        const details = transaction[0].details.split("-");
+
+        return res.render("success", {
+            transaction: transaction[0],
+            details: details,
+        });
+    },
+    admin_log: async (req, res) => {
+        return res.render("admin-log");
+    },
+    admin: async (req, res) => {
+        return res.render("admin");
     },
 };

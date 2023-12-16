@@ -15,7 +15,7 @@ unitInput.addEventListener("input", function () {
     const pricePerUnit = parseFloat(priceUnit.innerText);
     const total = unitValue * pricePerUnit;
     if (!isNaN(total)) {
-        quantity.innerHTML = `<strong>${unitValue.toLocaleString()}</strong>`;
+        quantity.innerHTML = `<strong>${unitValue.toLocaleString()} K</strong>`;
         totalDisplay.innerHTML = `<strong>$ ${total.toLocaleString()}</strong>`;
         totalDisplay2.innerHTML = `Total: <strong>$ ${total.toLocaleString()}</strong>`;
     } else {
@@ -30,7 +30,7 @@ unitInput2.addEventListener("input", function () {
     const pricePerUnit2 = parseFloat(priceUnit2.innerText);
     const total2 = unitValue2 * pricePerUnit2;
     if (!isNaN(total2)) {
-        quantity2.innerHTML = `<strong>${unitValue2.toLocaleString()}</strong>`;
+        quantity2.innerHTML = `<strong>${unitValue2.toLocaleString()} K</strong>`;
         totalDisplay21.innerHTML = `<strong>$ ${total2.toLocaleString()}</strong>`;
         totalDisplay22.innerHTML = `Total: <strong>$ ${total2.toLocaleString()}</strong>`;
     } else {
