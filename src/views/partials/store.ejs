@@ -1,0 +1,85 @@
+<div class="w-100">
+    <div class="gallery-wrap">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+        <div class="item item-4"></div>
+        <div class="item item-5"></div>
+    </div>
+</div>
+
+<div class="container justify-content-center desktop mobile">
+    <div
+        class="row m-5 text-center col-12 p-3 rounded-3 justify-content-center"
+    >
+        <div class="col-12 d-flex justify-content-center">
+            <img
+                src="/images/icons/logo.svg"
+                alt="logo Victory Gold"
+                style="width: 2em; height: 2em"
+                class="align-self-center m-2"
+            />
+            <p class="form-text-desktop mb-0 pb-2">Tienda</p>
+        </div>
+        <div class="bg-gray d-flex text-white justify-content-center">
+            <div class="d-flex justify-content-center">
+                <% for (const oneCategory of categories) { %> <% if
+                (oneCategory.selected == true) { %>
+                <button
+                    class="p-3 my-3 text-white border-0"
+                    style="width: 7em; background-color: #353a4f"
+                >
+                    <%= oneCategory.category %>
+                </button>
+                <% } else { %>
+                <a href="/store/<%= oneCategory.value %>" class="url">
+                    <button
+                        class="p-3 my-3 bg-input text-white border-0"
+                        style="width: 7em"
+                    >
+                        <%= oneCategory.category %>
+                    </button>
+                </a>
+                <% } %> <% } %>
+            </div>
+        </div>
+        <div class="w-100 bg-gray p-3 rounded-3 shadow">
+            <div class="container text-center">
+                <div class="row row-cols-4">
+                    <% for (const oneProduct of products) { %>
+                        <div class="col mb-5">
+                            <a href="/store/product/<%= oneProduct.id %>" class="url store-product d-flex justify-content-center h-100">
+                                <div class="rounded-3 bg-input d-flex flex-column" style="width: 15rem; height: 100%;">
+                                    <img src="/images/products/<%= oneProduct.id %>.jpg" class="card-img-top rounded-3 mb-3" style="height: 13em;" alt="<%= oneProduct.nombre %> image" />
+                                    <div class="card-body p-3 pt-1 flex-grow-1 d-flex flex-column justify-content-between">
+                                        <div>
+                                            <h5 class="card-title text-white"><%= oneProduct.nombre %></h5>
+                                            </div>
+                                        <p class="card-text mt-3 text-white d-flex flex-column">
+                                            <small class="text-warning"><%= oneProduct.region %></small>
+                                            <strong>$<%= oneProduct.price %></strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".item-1").addClass("expanded");
+
+        $(".item").click(function () {
+            $(".item").removeClass("expanded");
+
+            $(this).addClass("expanded");
+        });
+    });
+</script>

@@ -17,8 +17,12 @@ router.get("/success/:transactionId", mainController.success);
 
 router.get(`/${ADMIN}`, mainController.admin_log);
 router.post("/admin", authenticateAdmin, mainController.admin);
+router.post("/updateOrder", mainController.updateOrder);
 
 const buyRouter = require("./buyRouter");
 router.use("/buy", buyRouter);
+
+const storeRouter = require("./storeRouter");
+router.use("/store", storeRouter);
 
 module.exports = router;

@@ -29,6 +29,9 @@ module.exports = {
             },
         });
         const session = await stripe.checkout.sessions.create({
+            invoice_creation: {
+                enabled: true,
+            },
             line_items: [
                 {
                     price_data: {
@@ -68,8 +71,8 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://e413-181-94-115-111.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
-            cancel_url: "http://localhost:3000/",
+                "https://d7a9-181-94-115-111.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://d7a9-181-94-115-111.ngrok-free.app",
         });
         return res.json(session);
     },
@@ -153,6 +156,40 @@ module.exports = {
         return res.render("admin-log");
     },
     admin: async (req, res) => {
-        return res.render("admin");
+        /*const pag = req.query.page || 1;
+        const limit = req.query.pageSize || 20;*/
+
+        const orders = await db.Orders.findAll({
+            order: [
+                ["delivered", "ASC"],
+                ["created_at", "ASC"],
+            ],
+            /*limit: limit,
+            offset: (pag - 1) * limit,*/
+        });
+
+        return res.render("admin", {
+            orders,
+            /*pag,
+            limit,*/
+        });
+    },
+    updateOrder: async (req, res) => {
+        const ADMIN = process.env.ADMIN;
+        try {
+            const orderId = req.body.orderId;
+            const delivered = req.body.delivered === "on";
+            const proof = req.body.proof;
+
+            await db.Orders.update(
+                { delivered: delivered, proof: proof },
+                { where: { id: orderId } }
+            );
+
+            res.redirect(`/${ADMIN}`);
+        } catch (error) {
+            console.error("Error al actualizar la orden:", error);
+            res.status(500).send("Error interno del servidor");
+        }
     },
 };

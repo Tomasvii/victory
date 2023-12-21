@@ -1,24 +1,4 @@
-<div class="mobile-form">
-    <div class="w-100 mobile justify-content-center">
-        <div
-            class="d-flex justify-content-center align-content-center col-10 mt-3"
-        >
-            <img
-                src="/images/icons/logo.svg"
-                alt="Logo Victory Gold"
-                style="width: 2em; height: 2em"
-                class="align-self-center justify-center mx-2"
-            />
-            <h2 class="form-text-mobile mb-0 pb-2">Panel de administrador</h2>
-        </div>
-    </div>
-
-    <div
-        class="w-100 p-3 mb-5 rounded-3 shadow mobile justify-content-center"
-    ></div>
-</div>
-
-<div class="container justify-content-center desktop">
+<div class="container justify-content-center desktop mobile" style="max-width: 100%">
     <div class="row m-5 text-center col-12 p-3 rounded-3">
         <div class="col-12 d-flex justify-content-center">
             <img
@@ -29,8 +9,75 @@
             />
             <p class="form-text-desktop mb-0 pb-2">Panel de administrador</p>
         </div>
-        <div
-            class="w-100 d-flex justify-content-center bg-gray p-3 rounded-3 shadow"
-        ></div>
+        <div class="w-100 bg-gray p-3 rounded-3 shadow">
+            <div class="w-100 text-center">
+                <div class="row mb-3 pb-3 border-bottom border-warning align-items-center">
+                    <div class="col text-warning">Transaction ID</div>
+                    <div class="col text-warning">URL de pago</div>
+                    <div class="col text-warning">Fecha de creación</div>
+                    <div class="col text-warning">Fecha de actualización</div>
+                    <div class="col-4 text-warning">Detalles</div>
+                    <div class="col text-warning">Email</div>
+                    <div class="col text-warning">Precio</div>
+                    <div class="col text-warning">Pagado</div>
+                    <div class="col text-warning">Prueba</div>
+                    <div class="col-1 text-warning">Guardar cambios</div>
+                </div>
+
+            <% for(oneOrder of orders) { %>
+                <form onsubmit="return confirm('¿Guardar cambios?')" action="/updateOrder" method="post">
+                    <div class="row p-3 align-items-center <%= oneOrder.id % 2 === 0 ? 'blur' : 'bg-gray' %>">
+                        <div class="col text-truncate text-white">
+                            <%= oneOrder.transaction_id%>
+                        </div>
+                        <div class="col text-truncate text-white">
+                            <%= oneOrder.url_id%>
+                        </div>
+                        <div class="col text-truncate text-white">
+                            <%= oneOrder.created_at%>
+                        </div>
+                        <div class="col text-truncate text-white">
+                            <%= oneOrder.updated_at%>
+                        </div>
+                        <div class="col-4 text-truncate text-white">
+                            <% if (oneOrder.details) { %>
+                                <% const detailsArray = oneOrder.details.split("-"); %>
+                                <% for (let detail of detailsArray) { %>
+                                    <%= detail %>
+                                <% } %>
+                            <% } else { %>
+                                Sin detalles
+                            <% } %>
+                        </div>
+                        <div class="col text-truncate text-white">
+                            <%= oneOrder.email%>
+                        </div>
+                        <div class="col text-truncate text-white">
+                            $<%= oneOrder.amount%>
+                        </div>
+                        <div class="col text-truncate text-white form-switch">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                role="switch"
+                                name="delivered"
+                                id="order<%= oneOrder.id %>"
+                                <% if (oneOrder.delivered) { %>
+                                checked
+                                <% } %>
+                            />
+                        </div>
+                        <div class="col text-truncate text-white">
+                            <input type="text" name="proof" class="form-control py-2 bg-input text-white border-0 rounded-2 shadow" placeholder="URL a imagen" value=<%= oneOrder.proof%>>
+                        </div>
+                        <div class="col-1 text-truncate text-white">
+                            <button type="submit" class="btn btn-outline-warning">Save</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="orderId" value="<%= oneOrder.id %>">
+                </form>
+            <% } %>
+            </div>
+        </div>
     </div>
 </div>
