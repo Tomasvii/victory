@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Recibo | Victory Gold</title>
+        <%- include('./partials/head') %>
+    </head>
+    <body class="body">
+        <header class="blur d-flex position-sticky top-0 z-3">
+            <%- include('./partials/header') %>
+        </header>
+        <main>
+            <%-include('./partials/success-store') %>
+            <%-include('./partials/cards')%>
+            <%-include('./partials/text/text-buy') %>
+        </main>
+        <footer class="footer"><%- include('./partials/footer') %></footer>
+        <script src="/js/tawk/tawk-stripe.js"></script>
+    </body>
+</html>

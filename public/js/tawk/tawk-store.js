@@ -17,8 +17,8 @@ async function comprar() {
     const game2 = document.getElementById("productName2")
         ? document.getElementById("productName2").innerText
         : null;
-    const cantidad = document.getElementById("cantidad3").innerText;
-    const cantidad2 = document.getElementById("cantidad2").innerText;
+    const cantidad = document.getElementById("cantidad3").innerText.trim();
+    const cantidad2 = document.getElementById("cantidad2").innerText.trim();
     const metodo = document.getElementById("pago-input").value;
     const metodo2 = document.getElementById("pago-input2").value;
 
@@ -28,10 +28,10 @@ async function comprar() {
         metodo2 == "VISA" ||
         metodo2 == "Master Card"
     ) {
-        const quantity = cantidad || "" + cantidad2 || "" - 1;
+        const quantity = parseInt(cantidad) + parseInt(cantidad2) - 1;
         const gamee = game || "" + game2 || "";
         try {
-            const res = await fetch("/create-checkout-session", {
+            const res = await fetch("/create-checkout-session-store", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

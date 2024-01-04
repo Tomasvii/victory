@@ -12,8 +12,10 @@ const mainController = require("../controllers/mainController");
 router.get("/", mainController.home);
 
 router.post("/create-checkout-session", mainController.check);
+router.post("/create-checkout-session-store", mainController.checkStore);
 router.post("/webhook", mainController.webhook);
 router.get("/success/:transactionId", mainController.success);
+router.get("/success-store/:transactionId", mainController.successStore);
 
 router.get(`/${ADMIN}`, mainController.admin_log);
 router.post("/admin", authenticateAdmin, mainController.admin);

@@ -82,11 +82,6 @@ module.exports = {
                 nombre: req.body.game,
             },
         });
-        const server = await db.Servers.findAll({
-            where: {
-                juego_id: game[0].juego_id,
-            },
-        });
         const session = await stripe.checkout.sessions.create({
             invoice_creation: {
                 enabled: true,
@@ -95,42 +90,21 @@ module.exports = {
                 {
                     price_data: {
                         product_data: {
-                            name: req.body.game + " Currency",
-                            description:
-                                req.body.quantity +
-                                " K " +
-                                req.body.server +
-                                " " +
-                                req.body.faction +
-                                " " +
-                                req.body.char +
-                                " " +
-                                req.body.delivery,
-                            images: [game[0].logo],
+                            name: req.body.game + " x" + req.body.quantity,
+                            images: [game[0].image],
                         },
                         currency: "USD",
-                        unit_amount: server[0].price * 100,
+                        unit_amount: game[0].price * 100,
                     },
                     quantity: req.body.quantity,
                 },
             ],
             metadata: {
-                description:
-                    req.body.game +
-                    "-" +
-                    req.body.quantity +
-                    " K-" +
-                    req.body.server +
-                    "-" +
-                    req.body.faction +
-                    "-" +
-                    req.body.char +
-                    "-" +
-                    req.body.delivery,
+                description: req.body.game + "-" + req.body.quantity,
             },
             mode: "payment",
             success_url:
-                "https://d7a9-181-94-115-111.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
+                "https://d7a9-181-94-115-111.ngrok-free.app/success-store/{CHECKOUT_SESSION_ID}",
             cancel_url: "https://d7a9-181-94-115-111.ngrok-free.app",
         });
         return res.json(session);
@@ -207,6 +181,21 @@ module.exports = {
         const details = transaction[0].details.split("-");
 
         return res.render("success", {
+            transaction: transaction[0],
+            details: details,
+        });
+    },
+    successStore: async (req, res) => {
+        const transactionId = req.params.transactionId;
+        const transaction = await db.Stripes.findAll({
+            where: {
+                url_id: transactionId,
+            },
+        });
+
+        const details = transaction[0].details.split("-");
+
+        return res.render("success-store", {
             transaction: transaction[0],
             details: details,
         });
