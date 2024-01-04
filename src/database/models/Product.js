@@ -27,6 +27,22 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DECIMAL(10, 0).UNSIGNED,
             allowNull: false,
         },
+        original_price: {
+            type: DataTypes.DECIMAL(10, 0).UNSIGNED,
+            allowNull: false,
+        },
+        entrega: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        requisitos_minimos: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        requisitos_recomendados: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     };
 
     let config = {

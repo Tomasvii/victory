@@ -1,0 +1,584 @@
+<div class="container justify-content-center desktop">
+    <div class="row m-5 text-start col-12 p-3 rounded-3">
+        <div class="col-12 d-flex">
+            <img
+                src="/images/icons/logo.svg"
+                alt="logo Victory Gold"
+                style="width: 2em; height: 2em"
+                class="align-self-center m-2"
+            />
+            <p class="form-text-desktop mb-0 pb-2 col-8" id="productName2">
+                <%= product.nombre %>
+            </p>
+        </div>
+        <div class="col-8 d-flex bg-gray p-3 rounded-3 shadow">
+            <div class="col-4 d-flex align-items-center">
+                <img
+                    src="/images/products/<%= product.id %>.jpg"
+                    class="card-img-top rounded-3 mb-3"
+                    style="height: 13em"
+                    alt="<%= product.nombre %> image"
+                />
+            </div>
+            <div class="text-white p-5 gap-3 w-100">
+                <div class="d-flex row row-cols-2">
+                    <div class="d-flex col gap-3">
+                        <div
+                            class="d-flex border align-items-center justify-content-center border-warning"
+                            style="width: 50px; height: 50px"
+                        >
+                            <i class="fa-solid fa-gamepad p-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p
+                                class="text-white-50 mb-0"
+                                style="font-size: 0.75em"
+                            >
+                                Plataforma:
+                            </p>
+                            <p class="text-white mb-0">
+                                <%= product.plataforma %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex col gap-3">
+                        <div
+                            class="d-flex border align-items-center justify-content-center border-warning"
+                            style="width: 50px; height: 50px"
+                        >
+                            <i class="fa-solid fa-earth-americas p-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p
+                                class="text-white-50 mb-0"
+                                style="font-size: 0.75em"
+                            >
+                                Región:
+                            </p>
+                            <p class="text-white mb-0"><%= product.region %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex row row-cols-2 mt-5">
+                    <div class="d-flex col gap-3">
+                        <div
+                            class="d-flex border align-items-center justify-content-center border-warning"
+                            style="width: 50px; height: 50px"
+                        >
+                            <i class="fa-solid fa-key p-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p
+                                class="text-white-50 mb-0"
+                                style="font-size: 0.75em"
+                            >
+                                Tipo:
+                            </p>
+                            <p class="text-white mb-0">
+                                <%= product.entrega %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="d-flex mt-5 flex-column"
+                    style="border-top: 1px solid #445474"
+                >
+                    <p
+                        class="text-white-50 mt-5 w-75 mb-0"
+                        style="font-size: 0.8em"
+                    >
+                        <% if (product.descripcion.length > 100) { %> <%=
+                        product.descripcion.slice(0, 100) + '...' %> <% } else {
+                        %> <%= product.descripcion %> <% } %>
+                    </p>
+                    <p class="d-flex">
+                        <a href="#descripcion" class="url text-warning d-flex"
+                            >Leer más</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
+            <div class="d-flex flex-column p-3 h-100 justify-content-between">
+                <div class="d-flex flex-column mt-3">
+                    <div
+                        class="d-flex justify-content-center align-items-center text-center"
+                    >
+                        <div
+                            class="d-flex justify-content-center align-content-center border border-warning w-25"
+                            style="border-radius: 50%"
+                        >
+                            <img
+                                src="/images/icons/logo.svg"
+                                alt="logo Victory Gold"
+                                style="width: 5em"
+                                class="m-2 p-3"
+                            />
+                        </div>
+                        <p class="m-1">
+                            Victory Gold
+                            <i
+                                class="text-warning fa-solid fa-circle-check"
+                            ></i>
+                            <a
+                                href="https://www.trustpilot.com/review/victorygold.net?languages=es"
+                                target="_blank"
+                                class="url mt-4"
+                                ><img
+                                    class="footer-trustpilot"
+                                    style="width: 90%"
+                                    src="/images/trustpilot.png"
+                                    alt="Logo Victory Gold"
+                            /></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex mx-4 justify-content-between mt-3">
+                    <p class="text-white-50 align-self-center mb-0">
+                        Cantidad:
+                    </p>
+                    <div class="d-flex align-items-center text-center">
+                        <button
+                            class="btn btn-secondary"
+                            id="decrementar"
+                            onclick="decrementarCantidad()"
+                        >
+                            -
+                        </button>
+                        <p id="cantidad2" class="mb-0 mx-2">
+                            <strong>1</strong>
+                        </p>
+                        <button
+                            class="btn btn-secondary"
+                            id="incrementar"
+                            onclick="incrementarCantidad()"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column justify-content-end">
+                    <div class="col-12 text-center">
+                        <p
+                            id="total22"
+                            class="form-total-text mt-5"
+                            style="font-size: 1.5em"
+                        >
+                            Total:
+                            <strong
+                                >$
+                                <span id="totalAmount"
+                                    ><%= product.price %></span
+                                ></strong
+                            >
+                        </p>
+
+                        <label for="pago-input2" class="form-label"
+                            >Método de pago:</label
+                        >
+                        <select
+                            id="pago-input2"
+                            required
+                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow mb-1"
+                        >
+                            <option selected disabled>-Seleccionar-</option>
+                            <option value="Binance USDT">Binance USDT</option>
+                            <option value="VISA">VISA</option>
+                            <option value="Master Card">Master Card</option>
+                            <option value="PagoMóvil">PagoMóvil</option>
+                            <option disabled>-Transferencia bancaria-</option>
+                            <option value="Banco Venezuela">
+                                Banco Venezuela
+                            </option>
+                            <option value="Bancolombia">Bancolombia</option>
+                            <option value="Nequi">Nequi</option>
+                            <option value="Zinli">Zinli</option>
+                            <option value="Yappy">Yappy (Banco Panamá)</option>
+                            <option value="Wise">Wise</option>
+                        </select>
+
+                        <button
+                            type="submit"
+                            onclick="comprar()"
+                            id="comprar2"
+                            class="w-100 btn btn-primary form-submit p-2 mt-1 shadow"
+                        >
+                            <strong>COMPRAR</strong>
+                        </button>
+                        <div class="d-flex flex-column p-3">
+                            <div class="d-flex row-cols-3 w-100">
+                                <div class="col">
+                                    <img
+                                        style="width: 3em;"
+                                        src="/images/payments/1.png"
+                                        alt="Visa"
+                                />
+                                </div>
+                                <div class="col">
+                                    <img
+                                        style="width: 3em;"
+                                        src="/images/payments/2.png"
+                                        alt="MasterCard"
+                                />
+                                </div>
+                                <div class="col">
+                                    <img
+                                        style="width: 3em;"
+                                        src="/images/payments/3.png"
+                                        alt="Binance"
+                                />
+                                </div>
+                            </div>
+                            <div class="d-flex row-cols-3 w-100">
+                                <div class="col">
+                                    <img
+                                        style="width: 3em;"
+                                        src="/images/payments/4.png"
+                                        alt="BDV"
+                                />
+                                </div>
+                                <div class="col">
+                                    <img
+                                        style="width: 3em;"
+                                        src="/images/payments/5.png"
+                                        alt="Nequi"
+                                />
+                                </div>
+                                <div class="col">
+                                    <img
+                                        style="width: 3em;"
+                                        src="/images/payments/6.png"
+                                        alt="Bancolombia"
+                                />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container justify-content-center mobile">
+    <div class="row text-start col-12 rounded-3">
+        <div class="w-100 mobile justify-content-center">
+        <div class="d-flex align-content-center col-10 my-3">
+            <img
+                src="/images/icons/logo.svg"
+                alt="logo Victory Gold"
+                style="width: 3em; height: 3em"
+                class="align-self-center m-2"
+            />
+            <h2 class="form-text-mobile mb-0 pb-2" style="font-size: 1.5em;" id="productName"><%=product.nombre%></h2>
+        </div>
+    </div>
+        <div class="col-12 d-flex flex-column bg-gray p-3 rounded-3 shadow">
+            <div class="w-100 d-flex align-items-center">
+                <img
+                    src="/images/products/<%= product.id %>.jpg"
+                    class="card-img-top rounded-3 mb-3"
+                    style="height: 13em"
+                    alt="<%= product.nombre %> image"
+                />
+            </div>
+            <div class="text-white p-3 gap-3 w-100">
+                <div class="d-flex flex-column">
+                    <div class="d-flex gap-3 m-3">
+                        <div
+                            class="d-flex border align-items-center justify-content-center border-warning"
+                            style="width: 50px; height: 50px"
+                        >
+                            <i class="fa-solid fa-gamepad p-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p
+                                class="text-white-50 mb-0"
+                                style="font-size: 0.75em"
+                            >
+                                Plataforma:
+                            </p>
+                            <p class="text-white mb-0">
+                                <%= product.plataforma %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex col gap-3 m-3">
+                        <div
+                            class="d-flex border align-items-center justify-content-center border-warning"
+                            style="width: 50px; height: 50px"
+                        >
+                            <i class="fa-solid fa-earth-americas p-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p
+                                class="text-white-50 mb-0"
+                                style="font-size: 0.75em"
+                            >
+                                Región:
+                            </p>
+                            <p class="text-white mb-0"><%= product.region %></p>
+                        </div>
+                    </div>
+                    <div class="d-flex col gap-3 m-3">
+                        <div
+                            class="d-flex border align-items-center justify-content-center border-warning"
+                            style="width: 50px; height: 50px"
+                        >
+                            <i class="fa-solid fa-key p-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p
+                                class="text-white-50 mb-0"
+                                style="font-size: 0.75em"
+                            >
+                                Tipo:
+                            </p>
+                            <p class="text-white mb-0">
+                                <%= product.entrega %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="d-flex flex-column"
+                    style="border-top: 1px solid #445474"
+                >
+                    <p
+                        class="text-white-50 mt-3 w-100 mb-0"
+                        style="font-size: 0.8em"
+                    >
+                        <% if (product.descripcion.length > 100) { %> <%=
+                        product.descripcion.slice(0, 100) + '...' %> <% } else {
+                        %> <%= product.descripcion %> <% } %>
+                    </p>
+                    <p class="d-flex">
+                        <a href="#descripcion2" class="url text-warning d-flex"
+                            >Leer más</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="position-fixed fixed-bottom bg-gray fixed-bottom w-100 h-25 mobile text-white">
+    <div class="d-flex flex-column p-3 w-100 h-100 justify-content-between">
+        <div class="d-flex mx-4 justify-content-between">
+            <p class="text-white-50 align-self-center mb-0">
+                Cantidad:
+            </p>
+            <div class="d-flex align-items-center text-center">
+                <button
+                    class="btn btn-secondary"
+                    id="decrementar"
+                    onclick="decrementarCantidad2()"
+                >
+                    -
+                </button>
+                <p id="cantidad3" class="mb-0 mx-2">
+                    <strong id="productCantidad">1</strong>
+                </p>
+                <button
+                    class="btn btn-secondary"
+                    id="incrementar"
+                    onclick="incrementarCantidad2()"
+                >
+                    +
+                </button>
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-end">
+            <div class="col-12 text-center">
+                <select
+                    id="pago-input"
+                    required
+                    class="form-control py-2 mt-3 bg-input text-white border-0 rounded-2 shadow mb-1"
+                >
+                    <option selected disabled>-Método de pago-</option>
+                    <option value="Binance USDT">Binance USDT</option>
+                    <option value="VISA">VISA</option>
+                    <option value="Master Card">Master Card</option>
+                    <option value="PagoMóvil">PagoMóvil</option>
+                    <option disabled>-Transferencia bancaria-</option>
+                    <option value="Banco Venezuela">
+                        Banco Venezuela
+                    </option>
+                    <option value="Bancolombia">Bancolombia</option>
+                    <option value="Nequi">Nequi</option>
+                    <option value="Zinli">Zinli</option>
+                    <option value="Yappy">Yappy (Banco Panamá)</option>
+                    <option value="Wise">Wise</option>
+                </select>
+                <button
+                    type="submit"
+                    onclick="comprar()"
+                    id="comprar"
+                    class="w-100 btn btn-primary form-submit p-2 mt-1 shadow"
+                >
+                    <strong>COMPRAR <strong
+                        >($
+                        <span id="totalAmount2"
+                            ><%= product.price %></span
+                        ></strong
+                    >)</strong>
+                </button>
+                <p
+                    id="total22"
+                    class="form-total-text mt-5"
+                    style="font-size: 1em"
+                >
+                    Total:
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-100 desktop justify-content-center">
+    <div class="w-75 p-3 rounded-3 shadow">
+        <h2 class="text-center mb-3 mt-5 text-white">Otros productos que podrían interesarte</h2>
+        <div class="container text-center bg-gray rounded-3">
+            <div class="row row-cols-4">
+                <% if (products.length > 0) { %> <% for (const oneProduct of
+                products) { %>
+                <div class="col my-5">
+                    <a
+                        href="/store/product/<%= oneProduct.id %>"
+                        class="url store-product d-flex justify-content-center h-100"
+                    >
+                        <div
+                            class="rounded-3 bg-input d-flex flex-column"
+                            style="width: 15rem; height: 100%"
+                        >
+                            <img
+                                src="/images/products/<%= oneProduct.id %>.jpg"
+                                class="card-img-top rounded-3 mb-3"
+                                style="height: 13em"
+                                alt="<%= oneProduct.nombre %> image"
+                            />
+                            <div
+                                class="card-body p-1 pt-1 flex-grow-1 d-flex flex-column justify-content-between"
+                            >
+                                <div>
+                                    <h5 class="card-title text-white" style="height: 100px">
+                                        <%= oneProduct.nombre %>
+                                    </h5>
+                                </div>
+                                <p
+                                    class="card-text m-0 text-white d-flex flex-column"
+                                >
+                                    <small class="text-warning"
+                                        ><%= oneProduct.region %></small
+                                    >
+                                    <div class="card-text text-white gap-2 d-flex flex-column align-items-center">
+                                        <strong
+                                            >$<%= oneProduct.price %></strong
+                                        >
+                                        <div class="d-flex flex-column">
+                                            <p class="text-white-50 m-0" style="text-decoration: line-through; font-size: 0.75em;">$<%= oneProduct.original_price %></p>
+                                            <%
+                                                var porcentaje = ((oneProduct.original_price - oneProduct.price) / oneProduct.original_price) * 100;
+                                            %>
+                                            <p class="text-warning m-0 p-1 border border-warning rounded-3" style="font-size: 0.6em;">- <%= porcentaje.toFixed(2) %>%</p>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% } %> <% } else { %>
+                <div class="w-100 mb-5 d-flex justify-content-center">
+                    <p
+                        class="text-center text-warning"
+                        style="font-size: 3em"
+                    >
+                        Coming soon...
+                    </p>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-100 mobile justify-content-center">
+    <div class="w-100 p-3 rounded-3 shadow">
+        <h2 class="text-center mb-3 mt-5 text-white">Otros productos que podrían interesarte</h2>
+        <div class="w-100 bg-gray p-3 rounded-3 shadow">
+            <div class="container text-center">
+                <div class="d-flex flex-column">
+                    <% if (products.length > 0) { %> <% for (const oneProduct of
+                    products) { %>
+                    <div
+                        class="d-flex w-100 bg-input rounded-3 shadow mb-3"
+                        style="height: 140px"
+                    >
+                    <a
+                            href="/store/product/<%= oneProduct.id %>"
+                            class="url store-product d-flex justify-content-center h-100"
+                        >
+                            <div class="d-flex align-items-center">
+                                <img
+                                    src="/images/products/<%= oneProduct.id %>.jpg"
+                                    class="card-img-top rounded-3 m-2"
+                                    style="width: 5em; height: 5em"
+                                    alt="<%= oneProduct.nombre %> image"
+                                />
+                            </div>
+                            <div class="d-flex col">
+                                <div
+                                    class="d-flex h-100 flex-column justify-content-between m-2"
+                                >
+                                    <h5
+                                        class="card-title"
+                                        style="font-size: 0.8em; color: whitesmoke"
+                                    >
+                                        <strong><%= oneProduct.nombre %></strong>
+                                    </h5>
+                                    <div class="d-flex flex-column">
+                                        <p
+                                            class="card-text text-white m-0 d-flex flex-column text-start"
+                                        >
+                                            <small class="d-flex text-warning"
+                                                ><%= oneProduct.region %></small
+                                            >
+                                            <div class="card-text text-white gap-2 d-flex text-start align-items-center">
+                                                <strong
+                                                    >$<%= oneProduct.price %></strong
+                                                >
+                                                <div class="d-flex flex-column ">
+                                                    <p class="text-white-50 m-0" style="text-decoration: line-through; font-size: 0.75em;">$<%= oneProduct.original_price %></p>
+                                                    <%
+                                                        var porcentaje = ((oneProduct.original_price - oneProduct.price) / oneProduct.original_price) * 100;
+                                                    %>
+                                                    <p class="text-warning m-0 p-1 border border-warning rounded-3" style="font-size: 0.6em;">- <%= porcentaje.toFixed(2) %>%</p>
+                                                </div>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <% } %> <% } else { %>
+                    <div class="w-100 mb-5 d-flex justify-content-center">
+                        <p
+                            class="text-center text-warning"
+                            style="font-size: 3em"
+                        >
+                            Coming soon...
+                        </p>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/product.js"></script>

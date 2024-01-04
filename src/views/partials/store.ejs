@@ -1,14 +1,22 @@
-<div class="w-100">
+<div class="w-100 desktop">
     <div class="gallery-wrap">
         <div class="item item-1"></div>
         <div class="item item-2"></div>
         <div class="item item-3"></div>
         <div class="item item-4"></div>
-        <div class="item item-5"></div>
     </div>
 </div>
 
-<div class="container justify-content-center desktop mobile">
+<div class="w-100 mobile">
+    <div class="w-100 row row-cols-4" style="height: 25vh">
+        <div class="col item-1"></div>
+        <div class="col item-2"></div>
+        <div class="col item-3"></div>
+        <div class="col item-4"></div>
+    </div>
+</div>
+
+<div class="container justify-content-center desktop">
     <div
         class="row m-5 text-center col-12 p-3 rounded-3 justify-content-center"
     >
@@ -26,7 +34,7 @@
                 <% for (const oneCategory of categories) { %> <% if
                 (oneCategory.selected == true) { %>
                 <button
-                    class="p-3 my-3 text-white border-0"
+                    class="p-3 my-3 text-warning border-0"
                     style="width: 7em; background-color: #353a4f"
                 >
                     <%= oneCategory.category %>
@@ -46,26 +54,245 @@
         <div class="w-100 bg-gray p-3 rounded-3 shadow">
             <div class="container text-center">
                 <div class="row row-cols-4">
-                    <% for (const oneProduct of products) { %>
-                        <div class="col mb-5">
-                            <a href="/store/product/<%= oneProduct.id %>" class="url store-product d-flex justify-content-center h-100">
-                                <div class="rounded-3 bg-input d-flex flex-column" style="width: 15rem; height: 100%;">
-                                    <img src="/images/products/<%= oneProduct.id %>.jpg" class="card-img-top rounded-3 mb-3" style="height: 13em;" alt="<%= oneProduct.nombre %> image" />
-                                    <div class="card-body p-3 pt-1 flex-grow-1 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="card-title text-white"><%= oneProduct.nombre %></h5>
+                    <% if (products.length > 0) { %> <% for (const oneProduct of
+                    products) { %>
+                    <div class="col mb-5">
+                        <a
+                            href="/store/product/<%= oneProduct.id %>"
+                            class="url store-product d-flex justify-content-center h-100"
+                        >
+                            <div
+                                class="rounded-3 bg-input d-flex flex-column"
+                                style="width: 15rem; height: 100%"
+                            >
+                                <img
+                                    src="/images/products/<%= oneProduct.id %>.jpg"
+                                    class="card-img-top rounded-3 mb-3"
+                                    style="height: 13em"
+                                    alt="<%= oneProduct.nombre %> image"
+                                />
+                                <div
+                                    class="card-body p-1 pt-1 flex-grow-1 d-flex flex-column justify-content-between"
+                                >
+                                    <div>
+                                        <h5 class="card-title text-white" style="height: 100px">
+                                            <%= oneProduct.nombre %>
+                                        </h5>
+                                    </div>
+                                    <p
+                                        class="card-text m-0 text-white d-flex flex-column"
+                                    >
+                                        <small class="text-warning"
+                                            ><%= oneProduct.region %></small
+                                        >
+                                        <div class="card-text text-white gap-2 d-flex flex-column align-items-center">
+                                            <strong
+                                                >$<%= oneProduct.price %></strong
+                                            >
+                                            <div class="d-flex flex-column">
+                                                <p class="text-white-50 m-0" style="text-decoration: line-through; font-size: 0.75em;">$<%= oneProduct.original_price %></p>
+                                                <%
+                                                    var porcentaje = ((oneProduct.original_price - oneProduct.price) / oneProduct.original_price) * 100;
+                                                %>
+                                                <p class="text-warning m-0 p-1 border border-warning rounded-3" style="font-size: 0.6em;">- <%= porcentaje.toFixed(2) %>%</p>
                                             </div>
-                                        <p class="card-text mt-3 text-white d-flex flex-column">
-                                            <small class="text-warning"><%= oneProduct.region %></small>
-                                            <strong>$<%= oneProduct.price %></strong>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% } %> <% } else { %>
+                    <div class="w-100 mb-5 d-flex justify-content-center">
+                        <p
+                            class="text-center text-warning"
+                            style="font-size: 3em"
+                        >
+                            Coming soon...
+                        </p>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container justify-content-center mobile">
+    <div
+        class="row m-5 text-center col-12 p-3 rounded-3 justify-content-center"
+    >
+        <div class="col-12 d-flex justify-content-center">
+            <img
+                src="/images/icons/logo.svg"
+                alt="logo Victory Gold"
+                style="width: 3em; height: 3em"
+                class="align-self-center m-2"
+            />
+            <p class="form-text-desktop mb-0 pb-2">Tienda</p>
+        </div>
+        <div class="bg-gray d-flex text-white justify-content-center">
+            <div class="col-3 mobile align-center justify-content-center">
+                <button
+                    class="btn btn-warning blur amarillo align-self-center mt-3"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#staticBackdrop1"
+                    aria-controls="staticBackdrop1"
+                >
+                    <div
+                        class="d-flex gap-1 justify-content-center align-content-center"
+                    >
+                        <p class="m-auto">Filtros</p>
+                        <i class="fa-solid fa-sliders m-auto"></i>
+                    </div>
+                </button>
+
+                <div
+                    class="offcanvas offcanvas-end min-vw-100 min-vh-100 bg-gray"
+                    data-bs-backdrop="static"
+                    tabindex="-1"
+                    id="staticBackdrop1"
+                    data-bs-scroll="true"
+                    aria-labelledby="staticBackdropLabel1"
+                >
+                    <div
+                        class="offcanvas-header col-12 d-flex align-content-center amarillo w-100"
+                    >
+                        <img
+                            class="logo-icon-2 mx-1"
+                            src="/images/icons/logo.svg"
+                            alt="Logo Victory Gold"
+                        />
+                        <h3 class="w-100 py-2 mx-3 mt-2">Victory Gold</h3>
+                        <button
+                            type="button"
+                            class="btn-close d-flex align-center text-ce col-3 mx-1 justify-content-center amarillo"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                        >
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </div>
+                    <div
+                        class="offcanvas-body flex-column d-flex justify-content-between"
+                    >
+                        <ul
+                            class="nav border-top border-bottom-0 border-warning flex-column"
+                        >
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    data-bs-toggle="collapse"
+                                    href="#vender"
+                                    role="button"
+                                    aria-expanded="false"
+                                    aria-controls="collapseExample"
+                                    ><button
+                                        class="w-100 p-3 m-1 col text-warning border-0"
+                                        style="background-color: #353a4f"
+                                    >
+                                        Plataforma ▼
+                                    </button>
+                                </a>
+                                <div class="collapse" id="vender">
+                                    <div class="card card-body blur amarillo">
+                                        <% for (const oneCategory of categories)
+                                        { %> <% if (oneCategory.selected ==
+                                        true) { %>
+                                        <button
+                                            class="p-1 m-1 col text-warning border-0"
+                                            style="background-color: #353a4f"
+                                        >
+                                            <%= oneCategory.category %>
+                                        </button>
+                                        <% } else { %>
+                                        <a
+                                            href="/store/<%= oneCategory.value %>"
+                                            class="url p-1 m-1 col bg-input text-white border-0"
+                                        >
+                                            <button
+                                                class="bg-input text-white border-0"
+                                            >
+                                                <%= oneCategory.category %>
+                                            </button>
+                                        </a>
+                                        <% } %> <% } %>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 bg-gray p-3 rounded-3 shadow">
+            <div class="container text-center">
+                <div class="d-flex flex-column">
+                    <% if (products.length > 0) { %> <% for (const oneProduct of
+                    products) { %>
+                    <div
+                        class="d-flex w-100 bg-input rounded-3 shadow mb-3"
+                        style="height: 140px"
+                    >
+                    <a
+                            href="/store/product/<%= oneProduct.id %>"
+                            class="url store-product d-flex justify-content-center h-100"
+                        >
+                            <div class="d-flex align-items-center">
+                                <img
+                                    src="/images/products/<%= oneProduct.id %>.jpg"
+                                    class="card-img-top rounded-3 m-2"
+                                    style="width: 5em; height: 5em"
+                                    alt="<%= oneProduct.nombre %> image"
+                                />
+                            </div>
+                            <div class="d-flex col">
+                                <div
+                                    class="d-flex h-100 flex-column justify-content-between m-2"
+                                >
+                                    <h5
+                                        class="card-title"
+                                        style="font-size: 0.8em; color: whitesmoke"
+                                    >
+                                        <strong><%= oneProduct.nombre %></strong>
+                                    </h5>
+                                    <div class="d-flex flex-column">
+                                        <p
+                                            class="card-text text-white m-0 d-flex flex-column text-start"
+                                        >
+                                            <small class="d-flex text-warning"
+                                                ><%= oneProduct.region %></small
+                                            >
+                                            <div class="card-text text-white gap-2 d-flex text-start align-items-center">
+                                                <strong
+                                                    >$<%= oneProduct.price %></strong
+                                                >
+                                                <div class="d-flex flex-column ">
+                                                    <p class="text-white-50 m-0" style="text-decoration: line-through; font-size: 0.75em;">$<%= oneProduct.original_price %></p>
+                                                    <%
+                                                        var porcentaje = ((oneProduct.original_price - oneProduct.price) / oneProduct.original_price) * 100;
+                                                    %>
+                                                    <p class="text-warning m-0 p-1 border border-warning rounded-3" style="font-size: 0.6em;">- <%= porcentaje.toFixed(2) %>%</p>
+                                                </div>
+                                            </div>
                                         </p>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </a>
+                    <% } %> <% } else { %>
+                    <div class="w-100 mb-5 d-flex justify-content-center">
+                        <p
+                            class="text-center text-warning"
+                            style="font-size: 3em"
+                        >
+                            Coming soon...
+                        </p>
+                    </div>
                     <% } %>
                 </div>
-
             </div>
         </div>
     </div>

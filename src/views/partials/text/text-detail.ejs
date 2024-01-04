@@ -1,0 +1,505 @@
+<div class="desktop flex-column">
+    <div class="container d-flex justify-content-center">
+        <div class="card mb-3 border-0 col-12">
+            <div class="row g-0">
+                <div class="d-flex justify-content-center">
+                    <div class="card-body bg-text">
+                        <h3 class="card-title text-white m-3" id="descripcion">
+                            Descripción del producto:
+                        </h3>
+                        <p
+                            class="card-text text-white-50 m-4 bg-gray p-5 rounded-3"
+                        >
+                            <%= product.descripcion %>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="card-body bg-text">
+                        <h3 class="card-title text-white m-3" id="descripcion">
+                            Requisitos del sistema:
+                        </h3>
+                        <div
+                            class="d-flex flex-column text-white m-4 bg-gray p-5 rounded-3"
+                        >
+                            <div class="w-100 d-flex">
+                                <div class="w-50">
+                                    <h5 class="w-50">Requisitos mínimos:</h5>
+                                </div>
+                                <div class="w-50">
+                                    <h5 class="w-50">
+                                        Requisitos recomendados:
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="w-100 d-flex">
+                                <div class="w-100 d-flex">
+                                    <div class="text-white-50 m-3">
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong
+                                                        >Sistema
+                                                        operativo:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_minimos[0] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong>Procesador:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_minimos[1] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong>Gráfico:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_minimos[2] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong>Memoria:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_minimos[3] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong
+                                                        >Almacenamiento:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_minimos[4] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong
+                                                        >Notas
+                                                        adicionales:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_minimos[5] %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100 d-flex">
+                                    <div class="text-white-50 m-3">
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong
+                                                        >Sistema
+                                                        operativo:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_recomendados[0]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong>Procesador:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_recomendados[1]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong>Gráfico:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_recomendados[2]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong>Memoria:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_recomendados[3]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong
+                                                        >Almacenamiento:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_recomendados[4]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex row-cols-2 w-75 mt-3"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50 col">
+                                                <p>
+                                                    <strong
+                                                        >Notas
+                                                        adicionales:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="col">
+                                                <%= requisitos_recomendados[5]
+                                                %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mobile flex-column">
+    <div class="container d-flex justify-content-center">
+        <div class="card mb-3 border-0 col-12">
+            <div class="row g-0">
+                <div class="d-flex justify-content-center">
+                    <div class="card-body bg-text">
+                        <h3 class="card-title text-white m-3" id="descripcion2">
+                            Descripción del producto:
+                        </h3>
+                        <p
+                            class="card-text text-white-50 my-3 bg-gray p-5 rounded-3"
+                        >
+                            <%= product.descripcion %>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="card-body w-100 bg-text">
+                        <h3 class="card-title text-white m-3" id="descripcion">
+                            Requisitos del sistema:
+                        </h3>
+                        <div
+                            class="d-flex flex-column text-white my-3 bg-gray px-3 rounded-3"
+                        >
+                            <div class="w-100 d-flex py-3">
+                                <div class="w-100">
+                                    <h5 class="w-50">Requisitos mínimos:</h5>
+                                </div>
+                            </div>
+                            <div class="w-100 d-flex">
+                                <div class="w-100 d-flex">
+                                    <div class="text-white-50">
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong
+                                                        >Sistema
+                                                        operativo:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_minimos[0] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong>Procesador:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_minimos[1] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong>Gráfico:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_minimos[2] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong>Memoria:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_minimos[3] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p style="padding-right: 1em">
+                                                    <strong
+                                                        >Almacenamiento:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_minimos[4] %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong
+                                                        >Notas
+                                                        adicionales:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_minimos[5] %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 d-flex py-3 mt-5">
+                                <div class="w-100">
+                                    <h5 class="w-75">
+                                        Requisitos recomendados:
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="w-100 d-flex">
+                                <div class="w-100 d-flex">
+                                    <div class="text-white-50">
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong
+                                                        >Sistema
+                                                        operativo:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_recomendados[0]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong>Procesador:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_recomendados[1]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong>Gráfico:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_recomendados[2]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong>Memoria:</strong>
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_recomendados[3]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                            style="
+                                                border-bottom: 1px solid #353a4f;
+                                            "
+                                        >
+                                            <div class="w-50">
+                                                <p style="padding-right: 1em">
+                                                    <strong
+                                                        >Almacenamiento:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_recomendados[4]
+                                                %>
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="m-0 d-flex w-100 mt-3 justify-content-between"
+                                        >
+                                            <div class="w-50">
+                                                <p>
+                                                    <strong
+                                                        >Notas
+                                                        adicionales:</strong
+                                                    >
+                                                </p>
+                                            </div>
+                                            <p class="w-50">
+                                                <%= requisitos_recomendados[5]
+                                                %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

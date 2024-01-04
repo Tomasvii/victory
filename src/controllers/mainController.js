@@ -76,6 +76,65 @@ module.exports = {
         });
         return res.json(session);
     },
+    checkStore: async (req, res) => {
+        const game = await db.Products.findAll({
+            where: {
+                nombre: req.body.game,
+            },
+        });
+        const server = await db.Servers.findAll({
+            where: {
+                juego_id: game[0].juego_id,
+            },
+        });
+        const session = await stripe.checkout.sessions.create({
+            invoice_creation: {
+                enabled: true,
+            },
+            line_items: [
+                {
+                    price_data: {
+                        product_data: {
+                            name: req.body.game + " Currency",
+                            description:
+                                req.body.quantity +
+                                " K " +
+                                req.body.server +
+                                " " +
+                                req.body.faction +
+                                " " +
+                                req.body.char +
+                                " " +
+                                req.body.delivery,
+                            images: [game[0].logo],
+                        },
+                        currency: "USD",
+                        unit_amount: server[0].price * 100,
+                    },
+                    quantity: req.body.quantity,
+                },
+            ],
+            metadata: {
+                description:
+                    req.body.game +
+                    "-" +
+                    req.body.quantity +
+                    " K-" +
+                    req.body.server +
+                    "-" +
+                    req.body.faction +
+                    "-" +
+                    req.body.char +
+                    "-" +
+                    req.body.delivery,
+            },
+            mode: "payment",
+            success_url:
+                "https://d7a9-181-94-115-111.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://d7a9-181-94-115-111.ngrok-free.app",
+        });
+        return res.json(session);
+    },
     webhook: async (req, res) => {
         const sig = req.headers["stripe-signature"];
         const payload = req.rawBody;
