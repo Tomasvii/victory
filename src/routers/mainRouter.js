@@ -21,6 +21,10 @@ router.get(`/${ADMIN}`, mainController.admin_log);
 router.post("/admin", authenticateAdmin, mainController.admin);
 router.post("/updateOrder", mainController.updateOrder);
 
+router.get("/privacy", mainController.privacy);
+router.get("/copyright", mainController.copyright);
+router.get("/about-us", mainController.aboutUs);
+
 const buyRouter = require("./buyRouter");
 router.use("/buy", buyRouter);
 

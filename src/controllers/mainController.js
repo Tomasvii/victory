@@ -71,8 +71,8 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://d7a9-181-94-115-111.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
-            cancel_url: "https://d7a9-181-94-115-111.ngrok-free.app",
+                "https://4d4e-181-94-114-125.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://4d4e-181-94-114-125.ngrok-free.app",
         });
         return res.json(session);
     },
@@ -104,7 +104,7 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://d7a9-181-94-115-111.ngrok-free.app/success-store/{CHECKOUT_SESSION_ID}",
+                "https://4d4e-181-94-114-125.ngrok-free.app/success-store/{CHECKOUT_SESSION_ID}",
             cancel_url: "https://d7a9-181-94-115-111.ngrok-free.app",
         });
         return res.json(session);
@@ -234,10 +234,19 @@ module.exports = {
                 { where: { id: orderId } }
             );
 
-            res.redirect(`/${ADMIN}`);
+            return res.redirect(`/${ADMIN}`);
         } catch (error) {
             console.error("Error al actualizar la orden:", error);
-            res.status(500).send("Error interno del servidor");
+            return res.status(500).send("Error interno del servidor");
         }
+    },
+    privacy: (req, res) => {
+        return res.render("privacy");
+    },
+    copyright: (req, res) => {
+        return res.render("copyright");
+    },
+    aboutUs: (req, res) => {
+        return res.render("aboutUs");
     },
 };

@@ -418,7 +418,7 @@ input[type="number"] {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 25vh;
+    height: 35vh;
 }
 
 .item {
@@ -426,7 +426,7 @@ input[type="number"] {
     height: 100%;
     background-position: center;
     background-size: cover;
-    background-repeat: none;
+    background-repeat: no-repeat;
     transition: flex 0.3s ease;
 }
 
@@ -435,31 +435,31 @@ input[type="number"] {
 }
 
 .item-1 {
-    background-image: url("https://cdn-sliders.eneba.com/resized/10zaXoaynQPfv0CEf7Ny6JEwoGsG5X3fW04-UCzmfGw_1500x400_1x-1500x400_150_0.jpg");
+    background-image: url("/images/banner/1.jpg");
 }
 .item-1:not(.expanded) {
-    background-image: url("https://cdn-sliders.eneba.com/resized/10zaXoaynQPfv0CEf7Ny6JEwoGsG5X3fW04-UCzmfGw_200x400_1x-200x400_1800_0.jpg");
+    background-image: url("/images/banner/1.1.jpg");
 }
 
 .item-2 {
-    background-image: url("https://images.unsplash.com/photo-1492760864391-753aaae87234?auto=format&fit=crop&w=1336&q=80");
+    background-image: url("/images/banner/2.jpg");
 }
 .item-2:not(.expanded) {
-    background-image: url("https://cdn-sliders.eneba.com/resized/10zaXoaynQPfv0CEf7Ny6JEwoGsG5X3fW04-UCzmfGw_200x400_1x-200x400_1800_0.jpg");
+    background-image: url("/images/banner/2.1.jpg");
 }
 
 .item-3 {
-    background-image: url("https://images.unsplash.com/photo-1503631285924-e1544dce8b28?auto=format&fit=crop&w=1234&q=80");
+    background-image: url("/images/banner/3.jpg");
 }
 .item-3:not(.expanded) {
-    background-image: url("https://cdn-sliders.eneba.com/resized/10zaXoaynQPfv0CEf7Ny6JEwoGsG5X3fW04-UCzmfGw_200x400_1x-200x400_1800_0.jpg");
+    background-image: url("/images/banner/3.1.jpg");
 }
 
 .item-4 {
-    background-image: url("https://images.unsplash.com/photo-1510425463958-dcced28da480?auto=format&fit=crop&w=1352&q=80");
+    background-image: url("/images/banner/4.jpg");
 }
 .item-4:not(.expanded) {
-    background-image: url("https://cdn-sliders.eneba.com/resized/10zaXoaynQPfv0CEf7Ny6JEwoGsG5X3fW04-UCzmfGw_200x400_1x-200x400_1800_0.jpg");
+    background-image: url("/images/banner/4.1.jpg");
 }
 
 .store-product .card-img-top {

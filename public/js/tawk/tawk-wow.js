@@ -1,15 +1,3 @@
-var Tawk_API = Tawk_API || {},
-    Tawk_LoadStart = new Date();
-(function () {
-    var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = "https://embed.tawk.to/654000bea84dd54dc486d725/1hfi0al5q";
-    s1.charset = "UTF-8";
-    s1.setAttribute("crossorigin", "*");
-    s0.parentNode.insertBefore(s1, s0);
-})();
-
 async function comprar() {
     const game = document.getElementById("juegoInput")
         ? document
@@ -111,25 +99,29 @@ async function comprar() {
             server != "-Seleccionar Servidor-" &&
             faction != false
         ) {
-            window.Tawk_API.maximize();
-            window.Tawk_API.setAttributes({
-                name:
-                    game +
-                    " - " +
-                    server +
-                    " - " +
-                    faction +
-                    " - " +
-                    cantidad +
-                    "k - PJ: " +
-                    personaje +
-                    " - Pago: " +
-                    metodo +
-                    " - Entrega: " +
-                    entrega,
-            });
-            const comprar = document.getElementById("comprar");
-            comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+            const urlActual = window.location.href;
+            const nuevaURL =
+                urlActual +
+                (urlActual.includes("?") ? "&" : "?") +
+                "HelpCrunchInputText=" +
+                "Comprar%20oro%0A" +
+                game +
+                "%20-%20" +
+                server +
+                "%20-%20" +
+                faction +
+                "%0A" +
+                cantidad +
+                "%20M%0A" +
+                "Personaje:%20" +
+                personaje +
+                "%0A" +
+                "Método%20de%20pago:%20" +
+                metodo +
+                "%0A" +
+                "Método%20de%20entrega:%20" +
+                entrega;
+            window.location.href = nuevaURL;
         } else if (
             cantidad2 != false &&
             personaje2 != false &&
@@ -138,25 +130,29 @@ async function comprar() {
             server2 != "-Seleccionar Servidor-" &&
             faction2 != false
         ) {
-            window.Tawk_API.maximize();
-            window.Tawk_API.setAttributes({
-                name:
-                    game2 +
-                    " - " +
-                    server2 +
-                    " - " +
-                    faction2 +
-                    " - " +
-                    cantidad2 +
-                    "k - PJ: " +
-                    personaje2 +
-                    " - Pago: " +
-                    metodo2 +
-                    " - Entrega: " +
-                    entrega2,
-            });
-            const comprar = document.getElementById("comprar2");
-            comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+            const urlActual = window.location.href;
+            const nuevaURL =
+                urlActual +
+                (urlActual.includes("?") ? "&" : "?") +
+                "HelpCrunchInputText=" +
+                "Comprar%20oro%0A" +
+                game +
+                "%20-%20" +
+                server2 +
+                "%20-%20" +
+                faction2 +
+                "%0A" +
+                cantidad2 +
+                "%20M%0A" +
+                "Personaje:%20" +
+                personaje2 +
+                "%0A" +
+                "Método%20de%20pago:%20" +
+                metodo2 +
+                "%0A" +
+                "Método%20de%20entrega:%20" +
+                entrega2;
+            window.location.href = nuevaURL;
         }
     }
 }

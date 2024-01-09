@@ -20,6 +20,10 @@ module.exports = {
             group: ["nombre"],
         });
 
+        if (!game || !servers) {
+            return res.status(404).render("notFound");
+        }
+
         return res.render("games", {
             games: games,
             game: game,
@@ -78,6 +82,10 @@ module.exports = {
             },
         });
 
+        if (!game || !server[0]) {
+            return res.status(404).render("notFound");
+        }
+
         return res.render("server", {
             games: games,
             game: game,
@@ -105,6 +113,10 @@ module.exports = {
 
         const factions = await db.Factions.findAll();
         const faction = await db.Factions.findByPk(req.params.factionId);
+
+        if (!game || !servers[0] || !faction) {
+            return res.status(404).render("notFound");
+        }
 
         return res.render("faction", {
             games: games,

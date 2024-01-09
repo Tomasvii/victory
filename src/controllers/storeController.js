@@ -119,6 +119,11 @@ module.exports = {
                 id: req.params.id,
             },
         });
+
+        if (!product[0]) {
+            return res.status(404).render("notFound");
+        }
+
         const products = await db.Products.findAll({
             where: {
                 id: {

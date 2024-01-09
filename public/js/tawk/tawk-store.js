@@ -1,15 +1,3 @@
-var Tawk_API = Tawk_API || {},
-    Tawk_LoadStart = new Date();
-(function () {
-    var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = "https://embed.tawk.to/654000bea84dd54dc486d725/1hj7vu2os";
-    s1.charset = "UTF-8";
-    s1.setAttribute("crossorigin", "*");
-    s0.parentNode.insertBefore(s1, s0);
-})();
-
 async function comprar() {
     const game = document.getElementById("productName")
         ? document.getElementById("productName").innerText
@@ -53,23 +41,39 @@ async function comprar() {
             cantidad != false &&
             metodo != "-Método de pago-"
         ) {
-            window.Tawk_API.maximize();
-            window.Tawk_API.setAttributes({
-                name: cantidad + "x " + game + " - " + metodo,
-            });
-            const comprar = document.getElementById("comprar");
-            comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+            const urlActual = window.location.href;
+            const nuevaURL =
+                urlActual +
+                (urlActual.includes("?") ? "&" : "?") +
+                "HelpCrunchInputText=" +
+                cantidad +
+                "%20" +
+                "x" +
+                "%20" +
+                game +
+                "%0A" +
+                "Método%20de%20pago:%20" +
+                metodo;
+            window.location.href = nuevaURL;
         } else if (
             game2 != false &&
             cantidad2 != false &&
             metodo2 != "-Seleccionar-"
         ) {
-            window.Tawk_API.maximize();
-            window.Tawk_API.setAttributes({
-                name: cantidad2 + "x " + game2 + " - " + metodo2,
-            });
-            const comprar = document.getElementById("comprar2");
-            comprar.innerHTML = "<strong>ACTUALIZAR</strong>";
+            const urlActual = window.location.href;
+            const nuevaURL =
+                urlActual +
+                (urlActual.includes("?") ? "&" : "?") +
+                "HelpCrunchInputText=" +
+                cantidad2 +
+                "%20" +
+                "x" +
+                "%20" +
+                game2 +
+                "%0A" +
+                "Método%20de%20pago:%20" +
+                metodo2;
+            window.location.href = nuevaURL;
         }
     }
 }

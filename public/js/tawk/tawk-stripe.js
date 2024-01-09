@@ -1,22 +1,15 @@
-var Tawk_API = Tawk_API || {},
-    Tawk_LoadStart = new Date();
-(function () {
-    var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = "https://embed.tawk.to/654000bea84dd54dc486d725/1hhiunrja";
-    s1.charset = "UTF-8";
-    s1.setAttribute("crossorigin", "*");
-    s0.parentNode.insertBefore(s1, s0);
-})();
-
 function coordinar() {
     const id = document.getElementById("transaction_id").textContent;
 
-    window.Tawk_API.maximize();
-    window.Tawk_API.setAttributes({
-        name: "ID: " + id,
-    });
+    const urlActual = window.location.href;
+    const nuevaURL =
+        urlActual +
+        (urlActual.includes("?") ? "&" : "?") +
+        "HelpCrunchInputText=" +
+        "Hola,%20he%20comprado%20éste%20producto:%0A" +
+        "ID:%20" +
+        id;
+    window.location.href = nuevaURL;
 }
 
 function copy() {
