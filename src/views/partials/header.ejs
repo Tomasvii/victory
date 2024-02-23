@@ -112,25 +112,25 @@
                                     <nav
                                         class="nav border-bottom-0 flex-column"
                                     >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/1"
                                             >WoW Classic</a
                                         >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/2"
                                             >WoW Hardcore</a
                                         >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/3"
                                             >WoW WOTLK</a
                                         >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/4"
                                             >WoW Retail</a
                                         >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/7"
                                             >WoW SoD</a
                                         >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/5"
                                             >RuneScape</a
                                         >
-                                        <a class="nav-link" href="#"
+                                        <a class="nav-link" href="/sell/game/6"
                                             >Albion Online</a
                                         >
                                     </nav>
@@ -173,9 +173,9 @@
                 </div>
             </div>
             <div class="desktop col-12 align-content-center mt-4">
-                <div class="dropdown col-2 d-flex align-content-center ">
+                <div class="dropdown col-2 d-flex align-content-center">
                     <button class="btn btn-secondary dropdown-toggle w-100 nav-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        COMPRAR ORO
+                        COMPRAR ORO 
                     </button>
                     <ul class="dropdown-menu bg-gray" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item text-white" href="/buy/game/1">WoW Classic</a></li>
@@ -193,17 +193,17 @@
                     </a>
                 </div>
                 <div class="dropdown col-2 d-flex align-content-center">
-                    <button class="btn btn-secondary dropdown-toggle w-100 nav-btn"  type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle w-100 nav-btn"  type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                         VENDER ORO
                     </button>
                     <ul class="dropdown-menu bg-gray" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item text-white" href="#">WoW Classic</a></li>
-                        <li><a class="dropdown-item text-white" href="#">WoW Hardcore</a></li>
-                        <li><a class="dropdown-item text-white" href="#">WoW WOTLK</a></li>
-                        <li><a class="dropdown-item text-white" href="#">WoW Retail</a></li>
-                        <li><a class="dropdown-item text-white" href="#">WoW SoD</a></li>
-                        <li><a class="dropdown-item text-white" href="#">RuneScape</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Albion Online</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/1">WoW Classic</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/2">WoW Hardcore</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/3">WoW WOTLK</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/4">WoW Retail</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/7">WoW SoD</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/5">RuneScape</a></li>
+                        <li><a class="dropdown-item text-white" href="/sell/game/6">Albion Online</a></li>
                     </ul>
                 </div>
             </div>
@@ -269,3 +269,22 @@
         </div>
     </div>
 </nav>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var dropdownButton = document.getElementById("dropdownMenuButton");
+        var dropdownButton2 = document.getElementById("dropdownMenuButton2");
+
+        dropdownButton.addEventListener("mouseenter", function () {
+            if (!dropdownButton.classList.contains("show")) {
+                dropdownButton.click();
+            }
+        });
+        dropdownButton2.addEventListener("mouseenter", function () {
+            if (!dropdownButton2.classList.contains("show")) {
+                dropdownButton2.click();
+            }
+        });
+    });
+</script>

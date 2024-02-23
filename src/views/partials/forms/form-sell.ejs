@@ -7,7 +7,7 @@
                 style="width: 2em; height: 2em"
                 class="align-self-center mx-2"
             />
-            <h2 class="form-text-mobile mb-0 pb-2">Comprar oro</h2>
+            <h2 class="form-text-mobile mb-0 pb-2">Vender oro</h2>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                     >
                         <option selected disabled>Seleccionar Juego</option>
                         <% for(oneGame of games) { %>
-                        <option value="/buy/game/<%= oneGame.juego_id %>">
+                        <option value="/sell/game/<%= oneGame.juego_id %>">
                             <%= oneGame.nombre %>
                         </option>
                         <% } %>
@@ -77,7 +77,7 @@
                 style="width: 2em; height: 2em"
                 class="align-self-center m-2"
             />
-            <p class="form-text-desktop mb-0 pb-2 col-8">Comprar oro</p>
+            <p class="form-text-desktop mb-0 pb-2 col-8">Vender oro</p>
         </div>
         <div class="col-8 bg-gray p-3 rounded-3 shadow">
             <form id="form-venta2">
@@ -90,7 +90,7 @@
                         >
                             <option selected disabled>Seleccionar Juego</option>
                             <% for(oneGame of games) { %>
-                            <option value="/buy/game/<%= oneGame.juego_id %>">
+                            <option value="/sell/game/<%= oneGame.juego_id %>">
                                 <%= oneGame.nombre %>
                             </option>
                             <% } %>

@@ -33,7 +33,7 @@
                         class="form-select shadow py-2"
                     >
                         <% for(oneGame of games) { %>
-                        <option value="<%= oneGame.juego_id %>"
+                        <option value="/buy/game/<%= oneGame.juego_id %>"
                             <% if (oneGame.juego_id == game.juego_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -210,7 +210,7 @@
                             
                         >
                             <% for(oneGame of games) { %>
-                            <option value="<%= oneGame.juego_id %>" 
+                            <option value="/buy/game/<%= oneGame.juego_id %>" 
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>

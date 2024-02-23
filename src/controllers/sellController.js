@@ -2,9 +2,9 @@ const path = require("path");
 const db = require("../database/models");
 
 module.exports = {
-    buy: async (req, res) => {
+    sell: async (req, res) => {
         const games = await db.Games.findAll();
-        return res.render("buy", {
+        return res.render("sell", {
             games: games,
         });
     },
@@ -13,7 +13,7 @@ module.exports = {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(req.params.gameId);
 
-        const servers = await db.Servers.findAll({
+        const servers = await db.Servers_sell.findAll({
             where: {
                 juego_id: req.params.gameId,
             },
@@ -24,7 +24,7 @@ module.exports = {
             return res.status(404).render("notFound");
         }
 
-        return res.render("games", {
+        return res.render("games-sell", {
             games: games,
             game: game,
             servers: servers,
@@ -35,19 +35,19 @@ module.exports = {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(5);
 
-        const server = await db.Servers.findAll({
+        const server = await db.Servers_sell.findAll({
             where: {
                 juego_id: 5,
             },
         });
 
-        const ves = await db.Currencies.findAll({
+        const ves = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
 
-        return res.render("osrs", {
+        return res.render("osrs-sell", {
             games: games,
             game: game,
             server: server,
@@ -59,19 +59,18 @@ module.exports = {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(6);
 
-        const server = await db.Servers.findAll({
+        const server = await db.Servers_sell.findAll({
             where: {
                 juego_id: 6,
             },
         });
-
-        const ves = await db.Currencies.findAll({
+        const ves = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
 
-        return res.render("albion", {
+        return res.render("albion-sell", {
             games: games,
             game: game,
             server: server,
@@ -83,14 +82,14 @@ module.exports = {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(req.params.gameId);
 
-        const servers = await db.Servers.findAll({
+        const servers = await db.Servers_sell.findAll({
             where: {
                 juego_id: req.params.gameId,
             },
             group: ["nombre"],
         });
 
-        const server = await db.Servers.findAll({
+        const server = await db.Servers_sell.findAll({
             where: {
                 servidor_id: req.params.serverId,
             },
@@ -100,7 +99,7 @@ module.exports = {
             return res.status(404).render("notFound");
         }
 
-        return res.render("server", {
+        return res.render("server-sell", {
             games: games,
             game: game,
             servers: servers,
@@ -112,14 +111,14 @@ module.exports = {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(req.params.gameId);
 
-        const servers = await db.Servers.findAll({
+        const servers = await db.Servers_sell.findAll({
             where: {
                 juego_id: req.params.gameId,
             },
             group: ["nombre"],
         });
 
-        const server = await db.Servers.findAll({
+        const server = await db.Servers_sell.findAll({
             where: {
                 servidor_id: req.params.serverId,
             },
@@ -132,13 +131,13 @@ module.exports = {
             return res.status(404).render("notFound");
         }
 
-        const ves = await db.Currencies.findAll({
+        const ves = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
 
-        return res.render("faction", {
+        return res.render("faction-sell", {
             games: games,
             game: game,
             servers: servers,

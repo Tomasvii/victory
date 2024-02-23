@@ -71,8 +71,8 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://4d4e-181-94-114-125.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
-            cancel_url: "https://4d4e-181-94-114-125.ngrok-free.app",
+                "https://39aa-181-94-155-22.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://39aa-181-94-155-22.ngrok-free.app",
         });
         return res.json(session);
     },
@@ -94,7 +94,7 @@ module.exports = {
                             images: [game[0].image],
                         },
                         currency: "USD",
-                        unit_amount: game[0].price * 100,
+                        unit_amount: game[0].price * 100 * 1.03,
                     },
                     quantity: req.body.quantity,
                 },
@@ -104,8 +104,8 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://4d4e-181-94-114-125.ngrok-free.app/success-store/{CHECKOUT_SESSION_ID}",
-            cancel_url: "https://d7a9-181-94-115-111.ngrok-free.app",
+                "https://39aa-181-94-155-22.ngrok-free.app/success-store/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://39aa-181-94-155-22.ngrok-free.app",
         });
         return res.json(session);
     },
@@ -206,6 +206,8 @@ module.exports = {
     admin: async (req, res) => {
         /*const pag = req.query.page || 1;
         const limit = req.query.pageSize || 20;*/
+        const games = await db.Games.findAll();
+        const currencies = await db.Currencies.findAll();
 
         const orders = await db.Orders.findAll({
             order: [
@@ -218,6 +220,8 @@ module.exports = {
 
         return res.render("admin", {
             orders,
+            games: games,
+            currencies: currencies,
             /*pag,
             limit,*/
         });
@@ -240,6 +244,90 @@ module.exports = {
             return res.status(500).send("Error interno del servidor");
         }
     },
+    processPrices: async (req, res) => {
+        try {
+            const ADMIN = process.env.ADMIN;
+            const rawData = req.body.rawData;
+
+            const game = req.body.game;
+
+            const lines = rawData.split("\n").map((line) => line.trim());
+
+            const prices = lines.slice(1).map((price) => Number(price.trim()));
+            const validPrices = prices.filter((price) => !isNaN(price));
+
+            console.log("Precios procesados:", validPrices);
+
+            await updateDatabaseFromPrices(game, validPrices);
+            return res.redirect(`/${ADMIN}`);
+        } catch (error) {
+            console.error("Error al procesar los precios:", error);
+            res.status(500).send("Error interno del servidor");
+        }
+    },
+    processPrices_sell: async (req, res) => {
+        try {
+            const ADMIN = process.env.ADMIN;
+            const rawData = req.body.rawData;
+
+            const game = req.body.game;
+
+            const lines = rawData.split("\n").map((line) => line.trim());
+
+            const prices = lines.slice(1).map((price) => Number(price.trim()));
+            const validPrices = prices.filter((price) => !isNaN(price));
+
+            console.log("Precios procesados:", validPrices);
+
+            await updateDatabaseFromPrices_sell(game, validPrices);
+            return res.redirect(`/${ADMIN}`);
+        } catch (error) {
+            console.error("Error al procesar los precios:", error);
+            res.status(500).send("Error interno del servidor");
+        }
+    },
+    processPrices_currencies: async (req, res) => {
+        try {
+            const ADMIN = process.env.ADMIN;
+            const rawData = req.body.rawData;
+
+            const game = req.body.game;
+
+            const lines = rawData.split("\n").map((line) => line.trim());
+
+            const prices = lines.slice(1).map((price) => Number(price.trim()));
+            const validPrices = prices.filter((price) => !isNaN(price));
+
+            console.log("Precios procesados:", validPrices);
+
+            await updateCurrencies(game, validPrices);
+            return res.redirect(`/${ADMIN}`);
+        } catch (error) {
+            console.error("Error al procesar los precios:", error);
+            res.status(500).send("Error interno del servidor");
+        }
+    },
+    processPrices_currencies_sell: async (req, res) => {
+        try {
+            const ADMIN = process.env.ADMIN;
+            const rawData = req.body.rawData;
+
+            const game = req.body.game;
+
+            const lines = rawData.split("\n").map((line) => line.trim());
+
+            const prices = lines.slice(1).map((price) => Number(price.trim()));
+            const validPrices = prices.filter((price) => !isNaN(price));
+
+            console.log("Precios procesados:", game, validPrices);
+
+            await updateCurrencies_sell(game, validPrices);
+            return res.redirect(`/${ADMIN}`);
+        } catch (error) {
+            console.error("Error al procesar los precios:", error);
+            res.status(500).send("Error interno del servidor");
+        }
+    },
     privacy: (req, res) => {
         return res.render("privacy");
     },
@@ -249,4 +337,115 @@ module.exports = {
     aboutUs: (req, res) => {
         return res.render("aboutUs");
     },
+    terms: (req, res) => {
+        return res.render("terms");
+    },
+    contact: (req, res) => {
+        return res.render("contact");
+    },
 };
+
+async function updateDatabaseFromPrices(game, prices) {
+    try {
+        if (prices.length === 0) {
+            throw new Error("No se proporcionaron precios para actualizar");
+        }
+
+        let serversToUpdate;
+
+        if (game == "all") {
+            serversToUpdate = await db.Servers.findAll();
+        } else {
+            serversToUpdate = await db.Servers.findAll({
+                where: { juego_id: game },
+            });
+        }
+
+        for (let index = 0; index < prices.length; index++) {
+            const price = prices[index];
+
+            await serversToUpdate[index].update({ price: price });
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+async function updateDatabaseFromPrices_sell(game, prices) {
+    try {
+        if (prices.length === 0) {
+            throw new Error("No se proporcionaron precios para actualizar");
+        }
+
+        let serversToUpdate;
+
+        if (game == "all") {
+            serversToUpdate = await db.Servers_sell.findAll();
+        } else {
+            serversToUpdate = await db.Servers_sell.findAll({
+                where: { juego_id: game },
+            });
+        }
+
+        for (let index = 0; index < prices.length; index++) {
+            const price = prices[index];
+
+            await serversToUpdate[index].update({ price: price });
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+async function updateCurrencies(game, prices) {
+    try {
+        if (prices.length === 0) {
+            throw new Error("No se proporcionaron precios para actualizar");
+        }
+
+        let serversToUpdate;
+
+        if (game == "all") {
+            serversToUpdate = await db.Currencies.findAll();
+        } else {
+            serversToUpdate = await db.Currencies.findAll({
+                where: { moneda: game },
+            });
+        }
+
+        for (let index = 0; index < prices.length; index++) {
+            const price = prices[index];
+
+            await serversToUpdate[index].update({ precio: price });
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+async function updateCurrencies_sell(game, prices) {
+    try {
+        if (prices.length === 0) {
+            throw new Error("No se proporcionaron precios para actualizar");
+        }
+
+        let serversToUpdate;
+
+        if (game == "all") {
+            serversToUpdate = await db.Currencies_sell.findAll();
+        } else {
+            serversToUpdate = await db.Currencies_sell.findAll({
+                where: { moneda: game },
+            });
+        }
+
+        for (let index = 0; index < prices.length; index++) {
+            const price = prices[index];
+
+            await serversToUpdate[index].update({ precio: price });
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}

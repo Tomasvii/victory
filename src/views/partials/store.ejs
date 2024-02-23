@@ -1,18 +1,19 @@
 <div class="w-100 desktop">
     <div class="gallery-wrap">
-        <div class="item item-1"></div>
-        <div class="item item-2"></div>
-        <div class="item item-3"></div>
-        <div class="item item-4"></div>
+        <button class="item item-1 border-0"></button>
+        <button class="item item-2 border-0"></button>
+        <button class="item item-3 border-0"></button>
+        <button class="item item-4 border-0"></button>
     </div>
 </div>
 
+
 <div class="w-100 mobile">
     <div class="w-100 row row-cols-4" style="height: 25vh">
-        <div class="col item-1"></div>
-        <div class="col item-2"></div>
-        <div class="col item-3"></div>
-        <div class="col item-4"></div>
+        <a href="/store/BattleNet" class="col" style="background-image:url(/images/banner/1.1.jpg); background-position: center; background-size: cover;"></a>
+        <a href="/buy" class="col" style="background-image:url(/images/banner/2.1.jpg); background-position: center; background-size: cover;"></a>
+        <a href="/store/#tienda2" class="col" style="background-image:url(/images/banner/3.1.jpg); background-position: center; background-size: cover;"></a>
+        <a href="/sell" class="col" style="background-image:url(/images/banner/4.1.jpg); background-position: center; background-size: cover;"></a>
     </div>
 </div>
 
@@ -27,7 +28,7 @@
                 style="width: 2em; height: 2em"
                 class="align-self-center m-2"
             />
-            <p class="form-text-desktop mb-0 pb-2">Tienda</p>
+            <p class="form-text-desktop mb-0 pb-2" id="tienda">Tienda</p>
         </div>
         <div class="bg-gray d-flex text-white justify-content-center">
             <div class="d-flex justify-content-center">
@@ -129,7 +130,7 @@
                 style="width: 3em; height: 3em"
                 class="align-self-center m-2"
             />
-            <p class="form-text-desktop mb-0 pb-2">Tienda</p>
+            <p class="form-text-desktop mb-0 pb-2" id="tienda2">Tienda</p>
         </div>
         <div class="bg-gray d-flex text-white justify-content-center">
             <div class="col-3 mobile align-center justify-content-center">
@@ -310,3 +311,39 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var buttons = document.querySelectorAll(".item");
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (this.classList.contains("expanded")) {
+                    var itemNumber = this.classList[1].split('-')[1];
+                    var destination;
+
+                    switch (itemNumber) {
+                        case '1':
+                            destination = "/store/BattleNet";
+                            break;
+                        case '2':
+                            destination = "/buy";
+                            break;
+                        case '3':
+                            destination = "/store/#tienda";
+                            break;
+                        case '4':
+                            destination = "/sell";
+                            break;
+                        default:
+                            destination = "/";
+                    }
+
+                    window.location.href = destination;
+                }
+            });
+        });
+    });
+</script>
+
+
+

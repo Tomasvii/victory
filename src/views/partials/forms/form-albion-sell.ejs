@@ -1,25 +1,12 @@
 <div class="mobile-form">
     <div class="w-100 mobile justify-content-center">
         <div class="d-flex align-content-center col-10 mt-3">
-            <% switch (game.juego_id) {
-                case 1: %> 
-                <img src="/images/minis/wow-classic.webp" alt="WoW classic logo"  class="align-self-center m-2">
-            <% break; 
-                case 2: %> 
-                <img src="/images/minis/wow-classic.webp" alt="WoW Hardcore logo"  class="align-self-center m-2">
-            <% break; 
-                case 3: %> 
-                <img src="/images/minis/world-of-warcraft-wotlk.webp" alt="WoTLK logo" class="align-self-center m-2">
-            <% break; 
-                case 4: %> 
-                <img src="/images/minis/world-of-warcraft.webp" alt="WoW Retail logo"  class="align-self-center m-2">
-            <% break; 
-                case 7: %> 
-                <img src="/images/minis/wow-classic.webp" alt="WoW SoD logo"  class="align-self-center m-2">
-            <% break; 
-                default: %>
-                <% break; } %>
-            <h2 class="form-text-mobile mb-0 pb-2">Comprar oro en <%=game.nombre%></h2>
+            <img
+                src="/images/minis/albion-online.webp"
+                alt="logo Albion Online"
+                class="align-self-center m-2"
+            />
+            <h2 class="form-text-mobile mb-0 pb-2">Vender silver en <%=game.nombre%></h2>
         </div>
     </div>
     
@@ -33,7 +20,7 @@
                         class="form-select shadow py-2"
                     >
                         <% for(oneGame of games) { %>
-                        <option value="/buy/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
+                        <option value="/sell/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                             <% if (oneGame.juego_id == game.juego_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -49,45 +36,16 @@
                     required
                     class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
-                        <% for(oneServer of servers) { %>
-                        <option
-                            value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"
-                            <% if (oneServer.servidor_id == server[0].servidor_id) { %>
-                            <%="selected"%>
-                            <% } %>
-                            >
-                            <%= oneServer.nombre %>
-                        </option>
-                        <% } %>
+                        <% for(oneServer of server) { %>
+                            <option
+                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
+                                <%= oneServer.nombre %>
+                            </option>
+                             <% } %>
                     </select>
                 </div>
                 <div class="m-3">
-                    <select id="faccionInput"
-                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                    >
-                        <% for(oneFaction of factions) { %>
-                        <option
-                            value="<%= oneFaction.faccion_id %>" data-name="<%= oneFaction.nombre %>"
-                            <% if (oneFaction.faccion_id == faction.faccion_id) { %>
-                            <%="selected"%>
-                            <% } %>
-                            >
-                            <%= oneFaction.nombre %>
-                        </option>
-                         <% } %>
-                    </select>
-                </div>
-                <div class="m-3">
-                    <% switch (game.juego_id) {
-                        case 2: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
-                    <% break; 
-                        case 7: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
-                    <% break; 
-                        default: %>
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
-                        <% break; } %>
+                    <label for="cantidad-input" class="form-label">Cantidad de silver /M:</label>
                     <input
                             type="number"
                             required
@@ -116,8 +74,6 @@
                     >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Binance USDT">Binance USDT</option>
-                        <option value="VISA">VISA</option>
-                        <option value = "Master Card">Master Card</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -137,38 +93,22 @@
                     >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Trade">Trade</option>
-                        <option value="Correo">Correo</option>
-                        <% if (game.juego_id == 4 || game.juego_id == 3) { %>
-                            <option value="Guild Bank">Banco de Hermandad</option>
-                        <% } %>
+                        <option value="Isla">Isla</option>
                     </select>
                 </div>
             </form>
             <div class="col-12 text-center py-4">
               <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
             </div>
         </div>
     </div>
     
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
         <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
-            <% switch (game.juego_id) {
-                case 2: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
-                <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
-                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
-            <% break; 
-                case 7: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
-                <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
-                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
-            <% break; 
-                default: %>
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /k</p>
-                <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
-                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
-                <% break; } %>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /M</p>
+            <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
+            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
@@ -179,10 +119,6 @@
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Server:</p>
                 <p class="text-white"><strong><%=server[0].nombre%></strong></p>
-            </div>
-            <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Facción:</p>
-                <p class="text-white"><strong><%=faction.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Cantidad: </p>
@@ -207,23 +143,9 @@
 <div class="container justify-content-center desktop">
     <div class="row m-5 text-start col-12 p-3 rounded-3">
         <div class="col-12 d-flex">
-            <% switch (game.juego_id) {
-                case 1: %> 
-                <img src="/images/minis/wow-classic.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                case 2: %> 
-                <img src="/images/minis/wow-classic.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                case 3: %> 
-                <img src="/images/minis/world-of-warcraft-wotlk.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                case 4: %> 
-                <img src="/images/minis/world-of-warcraft.webp" alt="osrs-logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
-            <% break; 
-                default: %>
-                <% break; } %>
+            <img src="/images/minis/albion-online.webp" alt="logo Albion Online" style="width:2em ; height: 2em;" class="align-self-center m-2">
             <p class="form-text-desktop mb-0 pb-2 col-8">
-                Comprar oro en <%=game.nombre%>
+                Vender silver en <%=game.nombre%>
             </p>
         </div>
         <div class="col-8 bg-gray p-3 rounded-3 shadow">
@@ -237,7 +159,7 @@
                             
                         >
                             <% for(oneGame of games) { %>
-                            <option value="/buy/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
+                            <option value="/sell/game/<%= oneGame.juego_id %>"  data-name="<%= oneGame.nombre %>"
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>
@@ -247,51 +169,22 @@
                             <% } %>
                         </select>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <select
                         id="serverInput2"
                         required
                         class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
                         >
-                        <% for(oneServer of servers) { %>
-                        <option
-                            value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"
-                            <% if (oneServer.servidor_id == server[0].servidor_id) { %>
-                            <%="selected"%>
-                            <% } %>
-                            >
-                            <%= oneServer.nombre %>
-                        </option>
-                        <% } %>
-                    </select>
-                    </div>
-                    <div class="col-4">
-                        <select id="faccionInput2"
-                        class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
-                        >
-                        <% for(oneFaction of factions) { %>
+                        <% for(oneServer of server) { %>
                             <option
-                                value="<%= oneFaction.faccion_id %>" data-name="<%= oneFaction.nombre %>"
-                                <% if (oneFaction.faccion_id == faction.faccion_id) { %>
-                                <%="selected"%>
-                                <% } %>
-                                >
-                                <%= oneFaction.nombre %>
+                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"> 
+                                <%= oneServer.nombre %>
                             </option>
                              <% } %>
                     </select>
                     </div>
                     <div class="col-5 mt-4">
-                      <% switch (game.juego_id) {
-                        case 2: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
-                    <% break; 
-                        case 7: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
-                    <% break; 
-                        default: %>
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
-                        <% break; } %>
+                      <label for="cantidad-input2" class="form-label">Cantidad de silver /M:</label>
                       <input
                             type="number"
                             required
@@ -320,8 +213,6 @@
                         >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Binance USDT">Binance USDT</option>
-                        <option value="VISA">VISA</option>
-                        <option value = "Master Card">Master Card</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -341,36 +232,20 @@
                         >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Trade">Trade</option>
-                        <option value="Correo">Correo</option>
-                        <% if (game.juego_id == 4 || game.juego_id == 3) { %>
-                            <option value="Guild Bank">Banco de Hermandad</option>
-                        <% } %>
+                        <option value="Isla">Isla</option>
                     </select>
                     </div>
                 </div>
             </form>
             <div class="col-12 text-center py-4">
               <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
-            <% switch (game.juego_id) {
-                        case 2: %> 
-                        <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /g</p>
-                        <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
-                        <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
-                    <% break; 
-                        case 7: %> 
-                        <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /g</p>
-                        <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
-                        <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
-                    <% break; 
-                        default: %>
-                        <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /k</p>
-                        <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
-                        <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
-                        <% break; } %>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /M</p>
+            <p class="m-1">$ <%=server[0].price * ves[0].precio %> bs</p>
+            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
@@ -379,12 +254,8 @@
                 <p><strong><%=game.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Server:</p>
+                <p class="text-white-50">Juego:</p>
                 <p><strong><%=server[0].nombre%></strong></p>
-            </div>
-            <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Server:</p>
-                <p><strong><%=faction.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Cantidad: </p>
@@ -397,7 +268,7 @@
                 </div>
                 <a href="https://www.trustpilot.com/review/victorygold.net?languages=es"
                     target="_blank"
-                    class="url mb-3"
+                    class="url"
                 ><img
                     class="footer-trustpilot"
                     src="/images/trustpilot.png"

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Vender oro <%= game.nombre %> | Victory Gold</title>
+        <%- include('./partials/head') %>
+    </head>
+    <body class="body">
+        <header class="blur d-flex position-sticky top-0 z-3">
+            <%- include('./partials/header') %>
+        </header>
+        <main>
+            <%-include('./partials/forms/form-server-sell') %>
+            <%-include('./partials/cards-sell')%> <% switch (game.juego_id) {
+            case 1: %> <%-include('./partials/text/text-classic')%> <% break;
+            case 2: %> <%-include('./partials/text/text-classic')%> <% break;
+            case 3: %> <%-include('./partials/text/text-wotlk')%> <% break; case
+            4: %> <%-include('./partials/text/text-retail')%> <% break; case 7:
+            %> <%-include('./partials/text/text-classic')%> <% break; default:
+            %> <% break; } %>
+        </main>
+        <footer class="footer"><%- include('./partials/footer') %></footer>
+    </body>
+</html>

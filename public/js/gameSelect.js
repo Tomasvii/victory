@@ -25,26 +25,26 @@ const selectFaction2 =
 
 selectGame.addEventListener("change", function () {
     const selectedGameValue = selectGame.value;
-    window.location.href = `/buy/game/${selectedGameValue}`;
+    window.location.href = `${selectedGameValue}`;
 });
 
 selectGame2.addEventListener("change", function () {
     const selectedGameValue = selectGame2.value;
-    window.location.href = `/buy/game/${selectedGameValue}`;
+    window.location.href = `${selectedGameValue}`;
 });
 
 selectServer.addEventListener("change", function () {
     const selectedGameValue = selectGame.value;
     const selectedServerValue = selectServer.value;
 
-    window.location.href = `/buy/game/${selectedGameValue}/${selectedServerValue}`;
+    window.location.href = `${selectedGameValue}/${selectedServerValue}`;
 });
 
 selectServer2.addEventListener("change", function () {
     const selectedGameValue = selectGame2.value;
     const selectedServerValue = selectServer2.value;
 
-    window.location.href = `/buy/game/${selectedGameValue}/${selectedServerValue}`;
+    window.location.href = `${selectedGameValue}/${selectedServerValue}`;
 });
 
 selectFaction.addEventListener("change", function () {
@@ -52,7 +52,7 @@ selectFaction.addEventListener("change", function () {
     const selectedServerValue = selectServer.value;
     const selectedFactionValue = selectFaction.value;
 
-    window.location.href = `/buy/game/${selectedGameValue}/${selectedServerValue}/${selectedFactionValue}`;
+    window.location.href = `${selectedGameValue}/${selectedServerValue}/${selectedFactionValue}`;
 });
 
 selectFaction2.addEventListener("change", function () {
@@ -60,5 +60,5 @@ selectFaction2.addEventListener("change", function () {
     const selectedServerValue = selectServer2.value;
     const selectedFactionValue = selectFaction2.value;
 
-    window.location.href = `/buy/game/${selectedGameValue}/${selectedServerValue}/${selectedFactionValue}`;
+    window.location.href = `${selectedGameValue}/${selectedServerValue}/${selectedFactionValue}`;
 });
