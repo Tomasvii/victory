@@ -85,9 +85,6 @@
                         case 7: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
                     <% break; 
-                        case 4: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /100k:</label>
-                    <% break; 
                         default: %>
                         <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
                         <% break; } %>
@@ -172,12 +169,6 @@
                 <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
                 <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
-            <% break; 
-                case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /100k</p>
-                <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
-                <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
-                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; 
                 default: %>
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /k</p>
@@ -305,9 +296,6 @@
                         case 7: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
                     <% break; 
-                        case 4: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /100k:</label>
-                    <% break; 
                         default: %>
                         <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
                         <% break; } %>
@@ -390,12 +378,6 @@
                         <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
                         <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
                         <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
-                    <% break; 
-                        case 4: %> 
-                        <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /100k</p>
-                        <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
-                        <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
-                        <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
                     <% break; 
                         default: %>
                         <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /k</p>
