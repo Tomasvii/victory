@@ -53,8 +53,8 @@ module.exports = {
             },
         });
 
-        const ves = parseFloat(Number(vesDb[0].precio).toFixed(2));
-        const cop = parseFloat(Number(copDb[0].precio).toFixed(2));
+        const ves = Math.round(vesDb[0].precio * 100) / 100;
+        const cop = Math.round(copDb[0].precio * 100) / 100;
 
         return res.render("osrs-sell", {
             games: games,
@@ -87,8 +87,8 @@ module.exports = {
             },
         });
 
-        const ves = parseFloat(Number(vesDb[0].precio).toFixed(2));
-        const cop = parseFloat(Number(copDb[0].precio).toFixed(2));
+        const ves = Math.round(vesDb[0].precio * 100) / 100;
+        const cop = Math.round(copDb[0].precio * 100) / 100;
 
         return res.render("albion-sell", {
             games: games,
@@ -164,8 +164,8 @@ module.exports = {
             },
         });
 
-        const ves = parseFloat(Number(vesDb[0].precio).toFixed(2));
-        const cop = parseFloat(Number(copDb[0].precio).toFixed(2));
+        const ves = Math.round(vesDb[0].precio * 100) / 100;
+        const cop = Math.round(copDb[0].precio * 100) / 100;
 
         return res.render("faction-sell", {
             games: games,
