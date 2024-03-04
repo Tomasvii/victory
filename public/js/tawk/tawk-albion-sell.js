@@ -36,6 +36,59 @@ async function comprar() {
     const entrega = document.getElementById("entrega-input").value;
     const entrega2 = document.getElementById("entrega-input2").value;
 
+    if (cantidad == "" && cantidad2 == "") {
+        cantidad_input = document.getElementById("cantidad-input");
+        cantidad_input.classList.add("is-invalid");
+        cantidad_input = document.getElementById("invalid-cantidad");
+        cantidad_input.classList.add("d-flex");
+        cantidad_input.classList.remove("d-none");
+        cantidad_input = document.getElementById("cantidad-input2");
+        cantidad_input.classList.add("is-invalid");
+        cantidad_input = document.getElementById("invalid-cantidad2");
+        cantidad_input.classList.add("d-flex");
+        cantidad_input.classList.remove("d-none");
+    }
+
+    if (personaje == "" && personaje2 == "") {
+        personaje_input = document.getElementById("personaje-input");
+        personaje_input.classList.add("is-invalid");
+        personaje_input = document.getElementById("invalid-personaje");
+        personaje_input.classList.add("d-flex");
+        personaje_input.classList.remove("d-none");
+        personaje_input = document.getElementById("personaje-input2");
+        personaje_input.classList.add("is-invalid");
+        personaje_input = document.getElementById("invalid-personaje2");
+        personaje_input.classList.add("d-flex");
+        personaje_input.classList.remove("d-none");
+    }
+
+    if (metodo == "-Seleccionar-" && metodo2 == "-Seleccionar-") {
+        metodo_input = document.getElementById("pago-input");
+        metodo_input.classList.add("is-invalid");
+        metodo_input = document.getElementById("invalid-pago");
+        metodo_input.classList.add("d-flex");
+        metodo_input.classList.remove("d-none");
+        metodo_input = document.getElementById("pago-input2");
+        metodo_input.classList.add("is-invalid");
+        metodo_input = document.getElementById("invalid-pago2");
+        metodo_input.classList.add("d-flex");
+        metodo_input.classList.remove("d-none");
+    }
+
+    if (entrega == "-Seleccionar-" && entrega2 == "-Seleccionar-") {
+        entrega_input = document.getElementById("entrega-input");
+        entrega_input.classList.add("is-invalid");
+        entrega_input = document.getElementById("invalid-entrega");
+        entrega_input.classList.add("d-flex");
+        entrega_input.classList.remove("d-none");
+        entrega_input = document.getElementById("entrega-input2");
+        entrega_input.classList.add("is-invalid");
+        entrega_input = document.getElementById("invalid-entrega2");
+        entrega_input.classList.add("d-flex");
+        entrega_input.classList.remove("d-none");
+        return;
+    }
+
     if (
         metodo == "VISA" ||
         metodo == "Master Card" ||

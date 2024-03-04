@@ -41,17 +41,26 @@ module.exports = {
             },
         });
 
-        const ves = await db.Currencies_sell.findAll({
+        const vesDb = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
+        const copDb = await db.Currencies_sell.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = parseFloat(vesDb[0].precio).toFixed(2);
+        const cop = parseFloat(copDb[0].precio).toFixed(2);
 
         return res.render("osrs-sell", {
             games: games,
             game: game,
             server: server,
             ves: ves,
+            cop: cop,
         });
     },
 
@@ -64,17 +73,27 @@ module.exports = {
                 juego_id: 6,
             },
         });
-        const ves = await db.Currencies_sell.findAll({
+
+        const vesDb = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
+        const copDb = await db.Currencies_sell.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = parseFloat(vesDb[0].precio).toFixed(2);
+        const cop = parseFloat(copDb[0].precio).toFixed(2);
 
         return res.render("albion-sell", {
             games: games,
             game: game,
             server: server,
             ves: ves,
+            cop: cop,
         });
     },
 
@@ -131,11 +150,19 @@ module.exports = {
             return res.status(404).render("notFound");
         }
 
-        const ves = await db.Currencies_sell.findAll({
+        const vesDb = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
+        const copDb = await db.Currencies_sell.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = parseFloat(vesDb[0].precio).toFixed(2);
+        const cop = parseFloat(copDb[0].precio).toFixed(2);
 
         return res.render("faction-sell", {
             games: games,
@@ -145,6 +172,7 @@ module.exports = {
             factions: factions,
             faction: faction,
             ves: ves,
+            cop: cop,
         });
     },
 };

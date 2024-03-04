@@ -292,6 +292,9 @@ input[type="number"] {
 .card.home-card6.border-0:hover .card-title {
     animation: bounce 1.5s infinite ease;
 }
+.card.home-card7.border-0:hover .card-title {
+    animation: bounce 1.5s infinite ease;
+}
 
 @keyframes bounce {
     0%,

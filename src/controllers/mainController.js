@@ -5,7 +5,7 @@ config.config();
 
 const Stripe = require("stripe");
 
-const SK = process.env.STRIPE_SKT;
+const SK = process.env.STRIPE_SKL;
 const SWH = process.env.STRIPE_WH;
 
 const stripe = new Stripe(SK);
@@ -71,8 +71,8 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://39aa-181-94-155-22.ngrok-free.app/success/{CHECKOUT_SESSION_ID}",
-            cancel_url: "https://39aa-181-94-155-22.ngrok-free.app",
+                "https://www.victorygold.net/success/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://www.victorygold.net",
         });
         return res.json(session);
     },
@@ -104,8 +104,8 @@ module.exports = {
             },
             mode: "payment",
             success_url:
-                "https://39aa-181-94-155-22.ngrok-free.app/success-store/{CHECKOUT_SESSION_ID}",
-            cancel_url: "https://39aa-181-94-155-22.ngrok-free.app",
+                "https://www.victorygold.net/success-store/{CHECKOUT_SESSION_ID}",
+            cancel_url: "https://www.victorygold.net",
         });
         return res.json(session);
     },

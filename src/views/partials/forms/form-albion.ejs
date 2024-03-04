@@ -53,6 +53,7 @@
                             class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                             placeholder="600"
                         />
+                    <small class="text-danger m-3 d-none" id="invalid-cantidad">* Ingresa una cantidad.</small>
                 </div>
                 <div class="m-3">
                     <label for="personaje-input" class="form-label">Personaje:</label>
@@ -64,6 +65,7 @@
                         placeholder="Nombre de personaje"
                     >
                     </input>
+                    <small class="text-danger m-3 d-none" id="invalid-personaje">* Ingresa el nombre de tu personaje.</small>
                 </div>
                 <div class="m-3">
                     <label for="pago-input" class="form-label">Método de pago:</label>
@@ -85,6 +87,7 @@
                         <option value="Yappy">Yappy (Banco Panamá)</option>
                         <option value="Wise">Wise</option>
                     </select>
+                    <small class="text-danger m-3 d-none" id="invalid-pago">* Selecciona el método de pago.</small>
                 </div>
                 <div class="m-3">
                     <label for="entrega-input" class="form-label">Método de entrega:</label>
@@ -97,6 +100,7 @@
                         <option value="Trade">Trade</option>
                         <option value="Isla">Isla</option>
                     </select>
+                    <small class="text-danger m-3 d-none" id="invalid-entrega">* Selecciona el método de entrega.</small>
                 </div>
             </form>
             <div class="col-12 text-center py-4">
@@ -109,7 +113,8 @@
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
         <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
             <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /M</p>
-            <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
+            <p class="text-white m-1">$ <%=server[0].price * ves%> bs</p>
+            <p class="text-white m-1">$ <%=server[0].price * cop%> cop</p>
             <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
@@ -194,6 +199,7 @@
                             class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                             placeholder="600"
                         />
+                        <small class="text-danger m-3 d-none" id="invalid-cantidad2">* Ingresa una cantidad.</small>
                     </div>
                     <div class="col-5 mt-4">
                       <label for="personaje-input2" class="form-label">Personaje:</label>
@@ -205,6 +211,7 @@
                             placeholder="Nombre de personaje"
                         >
                         </input>
+                        <small class="text-danger m-3 d-none" id="invalid-personaje2">* Ingresa el nombre de tu personaje.</small>
                     </div>
                     <div class="col-5 mt-4">
                       <label for="pago-input2" class="form-label">Método de pago:</label>
@@ -226,6 +233,7 @@
                         <option value="Yappy">Yappy (Banco Panamá)</option>
                         <option value="Wise">Wise</option>
                     </select>
+                    <small class="text-danger m-3 d-none" id="invalid-pago2">* Selecciona el método de pago.</small>
                     </div>
                     <div class="col-5 mt-4">
                       <label for="entrega-input2" class="form-label">Método de entrega:</label>
@@ -238,6 +246,7 @@
                         <option value="Trade">Trade</option>
                         <option value="Isla">Isla</option>
                     </select>
+                    <small class="text-danger m-3 d-none" id="invalid-entrega2">* Selecciona el método de entrega.</small>
                     </div>
                 </div>
             </form>
@@ -248,7 +257,8 @@
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
             <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /M</p>
-            <p class="text-white m-1">$ <%=server[0].price * ves[0].precio%> bs</p>
+            <p class="text-white m-1">$ <%=server[0].price * ves%> bs</p>
+            <p class="text-white m-1">$ <%=server[0].price * cop%> cop</p>
             <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>

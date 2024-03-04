@@ -41,17 +41,26 @@ module.exports = {
             },
         });
 
-        const ves = await db.Currencies.findAll({
+        const vesDb = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
+        const copDb = await db.Currencies_sell.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = parseFloat(vesDb[0].precio).toFixed(2);
+        const cop = parseFloat(copDb[0].precio).toFixed(2);
 
         return res.render("osrs", {
             games: games,
             game: game,
             server: server,
             ves: ves,
+            cop: cop,
         });
     },
 
@@ -65,17 +74,26 @@ module.exports = {
             },
         });
 
-        const ves = await db.Currencies.findAll({
+        const vesDb = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
+        const copDb = await db.Currencies_sell.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = parseFloat(vesDb[0].precio).toFixed(2);
+        const cop = parseFloat(copDb[0].precio).toFixed(2);
 
         return res.render("albion", {
             games: games,
             game: game,
             server: server,
             ves: ves,
+            cop: cop,
         });
     },
 
@@ -132,11 +150,19 @@ module.exports = {
             return res.status(404).render("notFound");
         }
 
-        const ves = await db.Currencies.findAll({
+        const vesDb = await db.Currencies_sell.findAll({
             where: {
                 id: 1,
             },
         });
+        const copDb = await db.Currencies_sell.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = parseFloat(vesDb[0].precio).toFixed(2);
+        const cop = parseFloat(copDb[0].precio).toFixed(2);
 
         return res.render("faction", {
             games: games,
@@ -146,6 +172,7 @@ module.exports = {
             factions: factions,
             faction: faction,
             ves: ves,
+            cop: cop,
         });
     },
 };
