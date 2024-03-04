@@ -46,14 +46,15 @@ module.exports = {
                 id: 1,
             },
         });
+
         const copDb = await db.Currencies_sell.findAll({
             where: {
                 id: 2,
             },
         });
 
-        const ves = Number(vesDb[0].precio).toFixed(2);
-        const cop = Number(copDb[0].precio).toFixed(2);
+        const ves = parseFloat(Number(vesDb[0].precio).toFixed(2));
+        const cop = parseFloat(Number(copDb[0].precio).toFixed(2));
 
         return res.render("osrs-sell", {
             games: games,
@@ -79,14 +80,15 @@ module.exports = {
                 id: 1,
             },
         });
+
         const copDb = await db.Currencies_sell.findAll({
             where: {
                 id: 2,
             },
         });
 
-        const ves = Number(vesDb[0].precio).toFixed(2);
-        const cop = Number(copDb[0].precio).toFixed(2);
+        const ves = parseFloat(Number(vesDb[0].precio).toFixed(2));
+        const cop = parseFloat(Number(copDb[0].precio).toFixed(2));
 
         return res.render("albion-sell", {
             games: games,
@@ -155,14 +157,15 @@ module.exports = {
                 id: 1,
             },
         });
+
         const copDb = await db.Currencies_sell.findAll({
             where: {
                 id: 2,
             },
         });
 
-        const ves = Number(vesDb[0].precio).toFixed(2);
-        const cop = Number(copDb[0].precio).toFixed(2);
+        const ves = parseFloat(Number(vesDb[0].precio).toFixed(2));
+        const cop = parseFloat(Number(copDb[0].precio).toFixed(2));
 
         return res.render("faction-sell", {
             games: games,
