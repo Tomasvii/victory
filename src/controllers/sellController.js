@@ -52,11 +52,8 @@ module.exports = {
             },
         });
 
-        const ves_fixed = parseFloat(vesDb[0].precio).toFixed(2);
-        const cop_fixed = parseFloat(copDb[0].precio).toFixed(2);
-
-        const ves = parseFloat(ves_fixed);
-        const cop = parseFloat(cop_fixed);
+        const ves = Number(vesDb[0].precio).toFixed(2);
+        const cop = Number(copDb[0].precio).toFixed(2);
 
         return res.render("osrs-sell", {
             games: games,
@@ -88,11 +85,8 @@ module.exports = {
             },
         });
 
-        const ves_fixed = parseFloat(vesDb[0].precio).toFixed(2);
-        const cop_fixed = parseFloat(copDb[0].precio).toFixed(2);
-
-        const ves = parseFloat(ves_fixed);
-        const cop = parseFloat(cop_fixed);
+        const ves = Number(vesDb[0].precio).toFixed(2);
+        const cop = Number(copDb[0].precio).toFixed(2);
 
         return res.render("albion-sell", {
             games: games,
@@ -167,11 +161,8 @@ module.exports = {
             },
         });
 
-        const ves_fixed = parseFloat(vesDb[0].precio).toFixed(2);
-        const cop_fixed = parseFloat(copDb[0].precio).toFixed(2);
-
-        const ves = parseFloat(ves_fixed);
-        const cop = parseFloat(cop_fixed);
+        const ves = Number(vesDb[0].precio).toFixed(2);
+        const cop = Number(copDb[0].precio).toFixed(2);
 
         return res.render("faction-sell", {
             games: games,
