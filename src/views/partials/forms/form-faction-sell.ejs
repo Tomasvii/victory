@@ -172,7 +172,7 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /100k</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=Number(server[0].price).toFixed(2)%></strong> /100k</p>
                 <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
                 <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
@@ -388,7 +388,7 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /100k</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=Number(server[0].price).toFixed(2) %></strong> /100k</p>
                 <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs</p>
                 <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
