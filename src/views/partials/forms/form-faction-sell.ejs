@@ -158,20 +158,20 @@
             <% switch (game.juego_id) {
                 case 2: %> 
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
-                <p class="text-white m-1">$ <%=server[0].price * ves%> bs</p>
-                <p class="text-white m-1">$ <%=server[0].price * cop%> cop</p>
+                <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
+                <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 7: %> 
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
-                <p class="text-white m-1">$ <%=server[0].price * ves%> bs</p>
-                <p class="text-white m-1">$ <%=server[0].price * cop%> cop</p>
+                <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
+                <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 default: %>
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /k</p>
-                <p class="text-white m-1">$ <%=server[0].price * ves%> bs</p>
-                <p class="text-white m-1">$ <%=server[0].price * cop%> cop</p>
+                <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs</p>
+                <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
                 <% break; } %>
             <div class=" mx-4 border-bottom text-center mb-3">
@@ -365,20 +365,20 @@
             <% switch (game.juego_id) {
                 case 2: %> 
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /g</p>
-                <p class="m-1">$ <%=server[0].price * ves %> bs</p>
-                <p class="m-1">$ <%=server[0].price * cop %> cop</p>
+                <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs</p>
+                <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 7: %> 
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /g</p>
-                <p class="m-1">$ <%=server[0].price * ves %> bs</p>
-                <p class="m-1">$ <%=server[0].price * cop %> cop</p>
+                <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs</p>
+                <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 default: %>
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /k</p>
-                <p class="m-1">$ <%=server[0].price * ves %> bs</p>
-                <p class="m-1">$ <%=server[0].price * cop %> cop</p>
+                <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs</p>
+                <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; } %>
             <div class=" mx-4 border-bottom text-center mb-3">
