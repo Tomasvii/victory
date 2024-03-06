@@ -30,6 +30,7 @@ router.post(
     "/process-prices-currencies-sell",
     mainController.processPrices_currencies_sell
 );
+router.post("/process-prices-store", mainController.processPrices_store);
 
 router.get("/privacy", mainController.privacy);
 router.get("/copyright", mainController.copyright);
