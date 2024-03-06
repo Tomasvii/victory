@@ -16,8 +16,12 @@ unitInput.addEventListener("input", function () {
     const total = unitValue * pricePerUnit;
     if (!isNaN(total)) {
         quantity.innerHTML = `<strong>${unitValue.toLocaleString()}</strong>`;
-        totalDisplay.innerHTML = `<strong>$ ${total.toLocaleString()}</strong>`;
-        totalDisplay2.innerHTML = `Total: <strong>$ ${total.toLocaleString()}</strong>`;
+        totalDisplay.innerHTML = `<strong>$ ${total
+            .toFixed(2)
+            .toLocaleString()}</strong>`;
+        totalDisplay2.innerHTML = `Total: <strong>$ ${total
+            .toFixed(2)
+            .toLocaleString()}</strong>`;
     } else {
         quantity.innerHTML = `<strong>--</strong>`;
         totalDisplay.innerHTML = `--`;
@@ -31,8 +35,12 @@ unitInput2.addEventListener("input", function () {
     const total2 = unitValue2 * pricePerUnit2;
     if (!isNaN(total2)) {
         quantity2.innerHTML = `<strong>${unitValue2.toLocaleString()}</strong>`;
-        totalDisplay21.innerHTML = `<strong>$ ${total2.toLocaleString()}</strong>`;
-        totalDisplay22.innerHTML = `Total: <strong>$ ${total2.toLocaleString()}</strong>`;
+        totalDisplay21.innerHTML = `<strong>$ ${total2
+            .toFixed(2)
+            .toLocaleString()}</strong>`;
+        totalDisplay22.innerHTML = `Total: <strong>$ ${total2
+            .toFixed(2)
+            .toLocaleString()}</strong>`;
     } else {
         quantity2.innerHTML = `<strong>--</strong>`;
         totalDisplay21.innerHTML = `--`;
