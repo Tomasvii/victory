@@ -41,13 +41,13 @@ module.exports = {
             },
         });
 
-        const vesDb = await db.Currencies_sell.findAll({
+        const vesDb = await db.Currencies.findAll({
             where: {
                 id: 1,
             },
         });
 
-        const copDb = await db.Currencies_sell.findAll({
+        const copDb = await db.Currencies.findAll({
             where: {
                 id: 2,
             },
@@ -75,13 +75,13 @@ module.exports = {
             },
         });
 
-        const vesDb = await db.Currencies_sell.findAll({
+        const vesDb = await db.Currencies.findAll({
             where: {
                 id: 1,
             },
         });
 
-        const copDb = await db.Currencies_sell.findAll({
+        const copDb = await db.Currencies.findAll({
             where: {
                 id: 2,
             },
@@ -152,13 +152,13 @@ module.exports = {
             return res.status(404).render("notFound");
         }
 
-        const vesDb = await db.Currencies_sell.findAll({
+        const vesDb = await db.Currencies.findAll({
             where: {
                 id: 1,
             },
         });
 
-        const copDb = await db.Currencies_sell.findAll({
+        const copDb = await db.Currencies.findAll({
             where: {
                 id: 2,
             },

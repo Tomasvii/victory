@@ -86,7 +86,7 @@
                         <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
                     <% break; 
                         case 4: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
                     <% break; 
                         default: %>
                         <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
@@ -172,10 +172,10 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
-                <p class="text-white m-1">$ <%= ((server[0].price * ves * 1000).toFixed(2)) %> bs</p>
-                <p class="text-white m-1">$ <%= ((server[0].price * cop * 1000).toFixed(2)) %> cop</p>
-                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /k</p>
+                <p class="text-white m-1">$ <%= ((server[0].price * ves * 100).toFixed(2)) %> bs</p>
+                <p class="text-white m-1">$ <%= ((server[0].price * cop * 100).toFixed(2)) %> cop</p>
+                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; 
                 default: %>
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
@@ -304,7 +304,7 @@
                         <label for="cantidad-input2" class="form-label">Cantidad de oro:</label>
                     <% break; 
                         case 4: %> 
-                        <label for="cantidad-input2" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input2" class="form-label">Cantidad de oro /k:</label>
                     <% break; 
                         default: %>
                         <label for="cantidad-input2" class="form-label">Cantidad de oro:</label>
@@ -388,10 +388,10 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=(server[0].price) %></strong> /g</p>
-                <p class="m-1">$ <%= ((server[0].price * ves * 1000).toFixed(2)) %> bs</p>
-                <p class="m-1">$ <%= ((server[0].price * cop * 1000).toFixed(2)) %> cop</p>
-                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=(server[0].price) %></strong> /k</p>
+                <p class="m-1">$ <%= ((server[0].price * ves * 100).toFixed(2)) %> bs</p>
+                <p class="m-1">$ <%= ((server[0].price * cop * 100).toFixed(2)) %> cop</p>
+                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; 
                 default: %>
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /g</p>
