@@ -207,13 +207,13 @@
                                         required
                                         class="form-select shadow py-2 mb-3"
                                     >
-                                        <option selected disabled>Seleccionar Moneda</option>
+                                        <option selected disabled>Seleccionar Producto</option>
                                         <% for(oneProduct of products) { %>
                                         <option value="<%= oneProduct.nombre %>">
                                             <%= oneProduct.nombre %>
                                         </option>
                                         <% } %>
-                                        <option value="all">Todas</option>
+                                        <option value="all">Todos</option>
                                     </select>
                                     <textarea class="text-warning bg-dark border-0" name="rawData" rows="5" cols="20"> </textarea>
                                     <br />
