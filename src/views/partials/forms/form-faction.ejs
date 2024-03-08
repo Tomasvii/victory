@@ -80,24 +80,37 @@
                 <div class="m-3">
                     <% switch (game.juego_id) {
                         case 2: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
+                        <input type="range" id="cantidad-input" class="form-range" min="100" max="1000" step="10" value="100"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">100</small>
+                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                        </div>
                     <% break; 
                         case 7: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
+                        <input type="range" id="cantidad-input" class="form-range" min="100" max="1000" step="10" value="100"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">100</small>
+                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                        </div>
                     <% break; 
                         case 4: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <input type="range" id="cantidad-input" class="form-range" min="100" max="10000" step="100" value="100"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">100</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
                     <% break; 
                         default: %>
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <input type="range" id="cantidad-input" class="form-range" min="1" max="100" step="1" value="1"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">1</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
                         <% break; } %>
-                    <input
-                            type="number"
-                            required
-                            id="cantidad-input"
-                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="600"
-                        />
                     <small class="text-danger m-3 d-none" id="invalid-cantidad">* Ingresa una cantidad.</small>
                 </div>
                 <div class="m-3">
@@ -174,15 +187,15 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /k</p>
-                <p class="text-white m-1">$ <%= ((server[0].price * ves * 100).toFixed(2)) %> bs /100k</p>
-                <p class="text-white m-1">$ <%= ((server[0].price * cop * 100).toFixed(2)) %> cop /100k</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /100k</p>
+                <p class="text-white m-1">$ <%= ((server[0].price * ves).toFixed(2)) %> bs /100k</p>
+                <p class="text-white m-1">$ <%= ((server[0].price * cop).toFixed(2)) %> cop /100k</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; 
                 default: %>
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /g</p>
-                <p class="text-white m-1">$ <%= ((server[0].price * ves * 1000).toFixed(2)) %> bs /k</p>
-                <p class="text-white m-1">$ <%= ((server[0].price * cop * 1000).toFixed(2)) %> cop /k</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /k</p>
+                <p class="text-white m-1">$ <%= ((server[0].price * ves).toFixed(2)) %> bs /k</p>
+                <p class="text-white m-1">$ <%= ((server[0].price * cop).toFixed(2)) %> cop /k</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
                 <% break; } %>
             <div class=" mx-4 border-bottom text-center mb-3">
@@ -300,24 +313,37 @@
                     <div class="col-5 mt-4">
                       <% switch (game.juego_id) {
                         case 2: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="100" max="1000" step="10" value="100"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">100</small>
+                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                        </div>
                     <% break; 
                         case 7: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="100" max="1000" step="10" value="100"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">100</small>
+                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                        </div>
                     <% break; 
                         case 4: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="100" max="10000" step="100" value="100"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">100</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
                     <% break; 
                         default: %>
-                        <label for="cantidad-input" class="form-label">Cantidad de oro:</label>
+                        <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="1" max="100" step="1" value="1"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">1</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
                         <% break; } %>
-                      <input
-                            type="number"
-                            required
-                            id="cantidad-input2"
-                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="600"
-                        />
                         <small class="text-danger m-3 d-none" id="invalid-cantidad2">* Ingresa una cantidad.</small>
                     </div>
                     <div class="col-5 mt-4">
@@ -392,15 +418,15 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> g in Stock</p>
             <% break; 
                 case 4: %> 
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=(server[0].price) %></strong> /K</p>
-                <p class="m-1">$ <%= ((server[0].price * ves * 100).toFixed(2)) %> bs /100k</p>
-                <p class="m-1">$ <%= ((server[0].price * cop * 100).toFixed(2)) %> cop /100k</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=(server[0].price) %></strong> /100K</p>
+                <p class="m-1">$ <%= ((server[0].price * ves).toFixed(2)) %> bs /100k</p>
+                <p class="m-1">$ <%= ((server[0].price * cop).toFixed(2)) %> cop /100k</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; 
                 default: %>
-                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /g</p>
-                <p class="m-1">$ <%= ((server[0].price * ves * 1000).toFixed(2)) %> bs /k</p>
-                <p class="m-1">$ <%= ((server[0].price * cop * 1000).toFixed(2)) %> cop /k</p>
+                <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /k</p>
+                <p class="m-1">$ <%= ((server[0].price * ves).toFixed(2)) %> bs /k</p>
+                <p class="m-1">$ <%= ((server[0].price * cop).toFixed(2)) %> cop /k</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
             <% break; } %>
             <div class=" mx-4 border-bottom text-center mb-3">

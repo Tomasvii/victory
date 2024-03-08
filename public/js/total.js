@@ -3,12 +3,14 @@ const totalDisplay = document.getElementById("total");
 const totalDisplay2 = document.getElementById("total2");
 const quantity = document.getElementById("cantidad");
 const priceUnit = document.getElementById("price");
+const cantidadRange = document.getElementById("cantidad-range");
 
 const unitInput2 = document.getElementById("cantidad-input2");
 const totalDisplay21 = document.getElementById("total21");
 const totalDisplay22 = document.getElementById("total22");
 const quantity2 = document.getElementById("cantidad2");
 const priceUnit2 = document.getElementById("price2");
+const cantidadRange2 = document.getElementById("cantidad-range2");
 
 unitInput.addEventListener("input", function () {
     const unitValue = parseFloat(unitInput.value);
@@ -22,6 +24,7 @@ unitInput.addEventListener("input", function () {
         totalDisplay2.innerHTML = `Total: <strong>$ ${total
             .toFixed(2)
             .toLocaleString()}</strong>`;
+        cantidadRange.innerHTML = `${unitValue.toLocaleString()}`;
     } else {
         quantity.innerHTML = `<strong>--</strong>`;
         totalDisplay.innerHTML = `--`;
@@ -41,6 +44,7 @@ unitInput2.addEventListener("input", function () {
         totalDisplay22.innerHTML = `Total: <strong>$ ${total2
             .toFixed(2)
             .toLocaleString()}</strong>`;
+        cantidadRange2.innerHTML = `${unitValue2.toLocaleString()}`;
     } else {
         quantity2.innerHTML = `<strong>--</strong>`;
         totalDisplay21.innerHTML = `--`;
