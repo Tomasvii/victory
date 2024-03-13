@@ -22,12 +22,12 @@ unitInput.addEventListener("input", function () {
         juegoName2 == "WoW SoD" ||
         juegoName2 == "WoW Retail"
     ) {
-        total = (unitValue * pricePerUnit) / 100;
+        total = unitValue * pricePerUnit;
     } else {
         total = unitValue * pricePerUnit;
     }
     if (!isNaN(total)) {
-        quantity.innerHTML = `<strong>${unitValue.toLocaleString()}</strong>`;
+        quantity.innerHTML = `<strong id="cantidadFinal">${unitValue.toLocaleString()}</strong>`;
         totalDisplay.innerHTML = `<strong>$ ${total
             .toFixed(2)
             .toLocaleString()}</strong>`;
@@ -51,12 +51,12 @@ unitInput2.addEventListener("input", function () {
         juegoName2 == "WoW SoD" ||
         juegoName2 == "WoW Retail"
     ) {
-        total2 = (unitValue2 * pricePerUnit2) / 100;
+        total2 = unitValue2 * pricePerUnit2;
     } else {
         total2 = unitValue2 * pricePerUnit2;
     }
     if (!isNaN(total2)) {
-        quantity2.innerHTML = `<strong>${unitValue2.toLocaleString()}</strong>`;
+        quantity2.innerHTML = `<strong id="cantidadFinal2">${unitValue2.toLocaleString()}</strong>`;
         totalDisplay21.innerHTML = `<strong>$ ${total2
             .toFixed(2)
             .toLocaleString()}</strong>`;

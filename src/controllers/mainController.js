@@ -36,10 +36,10 @@ module.exports = {
                 {
                     price_data: {
                         product_data: {
-                            name: req.body.game + " Currency",
+                            name: req.body.game,
                             description:
                                 req.body.quantity +
-                                " K " +
+                                " " +
                                 req.body.server +
                                 " " +
                                 req.body.faction +
@@ -50,7 +50,7 @@ module.exports = {
                             images: [game[0].logo],
                         },
                         currency: "USD",
-                        unit_amount: server[0].price * 100,
+                        unit_amount: Math.round(server[0].price * 1.03 * 100),
                     },
                     quantity: req.body.quantity,
                 },
@@ -60,7 +60,7 @@ module.exports = {
                     req.body.game +
                     "-" +
                     req.body.quantity +
-                    " K-" +
+                    "-" +
                     req.body.server +
                     "-" +
                     req.body.faction +
@@ -94,7 +94,7 @@ module.exports = {
                             images: [game[0].image],
                         },
                         currency: "USD",
-                        unit_amount: game[0].price * 100 * 1.03,
+                        unit_amount: Math.round(game[0].price * 1.03 * 100),
                     },
                     quantity: req.body.quantity,
                 },

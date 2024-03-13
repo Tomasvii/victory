@@ -49,9 +49,17 @@ async function comprar() {
     const metodo2 = document.getElementById("pago-input2").value;
     const entrega = document.getElementById("entrega-input").value;
     const entrega2 = document.getElementById("entrega-input2").value;
+    const total = document
+        .getElementById("total22")
+        .innerText.match(/\d+(\.\d{1,2})?/)[0];
+    const total2 = document
+        .getElementById("total21")
+        .innerText.match(/\d+(\.\d{1,2})?/)[0];
 
-    if (cantidad == "" && cantidad2 == "") {
-        cantidad_input = document.getElementById("cantidad-input");
+    console.log(cantidad, cantidad2);
+
+    if (cantidad == 0 && cantidad2 == 0) {
+        cantidad_input = document.getElementById("cantidad-range");
         cantidad_input.classList.add("is-invalid");
         cantidad_input = document.getElementById("invalid-cantidad");
         cantidad_input.classList.add("d-flex");
@@ -61,6 +69,7 @@ async function comprar() {
         cantidad_input = document.getElementById("invalid-cantidad2");
         cantidad_input.classList.add("d-flex");
         cantidad_input.classList.remove("d-none");
+        return;
     }
 
     if (personaje == "" && personaje2 == "") {
@@ -74,6 +83,7 @@ async function comprar() {
         personaje_input = document.getElementById("invalid-personaje2");
         personaje_input.classList.add("d-flex");
         personaje_input.classList.remove("d-none");
+        return;
     }
 
     if (metodo == "-Seleccionar-" && metodo2 == "-Seleccionar-") {
@@ -87,6 +97,7 @@ async function comprar() {
         metodo_input = document.getElementById("invalid-pago2");
         metodo_input.classList.add("d-flex");
         metodo_input.classList.remove("d-none");
+        return;
     }
 
     if (entrega == "-Seleccionar-" && entrega2 == "-Seleccionar-") {
@@ -103,13 +114,27 @@ async function comprar() {
         return;
     }
 
+    if (total < 5 && total2 < 5) {
+        entrega_input = document.getElementById("invalid-total");
+        entrega_input.classList.add("is-invalid");
+        entrega_input = document.getElementById("invalid-total");
+        entrega_input.classList.add("d-block");
+        entrega_input.classList.remove("d-none");
+        entrega_input = document.getElementById("invalid-total2");
+        entrega_input.classList.add("is-invalid");
+        entrega_input = document.getElementById("invalid-total2");
+        entrega_input.classList.add("d-block");
+        entrega_input.classList.remove("d-none");
+        return;
+    }
+
     if (
         metodo == "VISA" ||
         metodo == "Master Card" ||
         metodo2 == "VISA" ||
         metodo2 == "Master Card"
     ) {
-        const quantity = cantidad || "" + cantidad2 || "";
+        const quantity = cantidad == 0 ? cantidad2 : cantidad;
         const char = personaje || "" + personaje2 || "";
         const gamee = game || "" + game2 || "";
         const serverr = server || "" + server2 || "";
@@ -145,7 +170,7 @@ async function comprar() {
         }
     } else {
         if (
-            cantidad != false &&
+            cantidad != 0 &&
             personaje != false &&
             metodo != "-Seleccionar-" &&
             entrega != "-Seleccionar-" &&
