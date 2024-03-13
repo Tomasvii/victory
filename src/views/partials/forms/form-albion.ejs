@@ -45,14 +45,12 @@
                     </select>
                 </div>
                 <div class="m-3">
-                    <label for="cantidad-input" class="form-label">Cantidad de silver /M:</label>
-                    <input
-                            type="number"
-                            required
-                            id="cantidad-input"
-                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="600"
-                        />
+                     <label for="cantidad-input" class="form-label">Cantidad de silver /M:</label>
+                    <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
+                    <div class="d-flex flex-row">
+                        <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
+                        <small class="text-white" style="font-size: 1.1em;"> M</small>
+                    </div>
                     <small class="text-danger m-3 d-none" id="invalid-cantidad">* Ingresa una cantidad.</small>
                 </div>
                 <div class="m-3">
@@ -76,8 +74,8 @@
                     >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Binance USDT">Binance USDT</option>
-                        <option value="VISA">VISA</option>
-                        <option value = "Master Card">Master Card</option>
+                        <option value="VISA">VISA (+3%)</option>
+                        <option value = "Master Card">Master Card (+3%)</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -105,6 +103,7 @@
             </form>
             <div class="col-12 text-center py-4">
               <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
               <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
             </div>
         </div>
@@ -112,10 +111,10 @@
     
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
         <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=(server[0].price).toLocaleString()%></strong> /M</p>
-            <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs /M</p>
-            <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop /M</p>
-            <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=Number((server[0].price)).toFixed(2) %>%></strong> /M</p>
+                <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs /M</p>
+                <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop /M</p>
+                <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
@@ -191,14 +190,12 @@
                     </select>
                     </div>
                     <div class="col-5 mt-4">
-                      <label for="cantidad-input2" class="form-label">Cantidad de silver /M:</label>
-                      <input
-                            type="number"
-                            required
-                            id="cantidad-input2"
-                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="600"
-                        />
+                      <label for="cantidad-input" class="form-label">Cantidad de silver /M:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-0" style="font-size: 1.1em;" id="cantidad-range2">0</small>
+                            <small class="text-white" style="font-size: 1.1em;"> M</small>
+                        </div>
                         <small class="text-danger m-3 d-none" id="invalid-cantidad2">* Ingresa una cantidad.</small>
                     </div>
                     <div class="col-5 mt-4">
@@ -222,8 +219,8 @@
                         >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Binance USDT">Binance USDT</option>
-                        <option value="VISA">VISA</option>
-                        <option value = "Master Card">Master Card</option>
+                        <option value="VISA">VISA (+3%)</option>
+                        <option value = "Master Card">Master Card (+3%)</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -252,23 +249,24 @@
             </form>
             <div class="col-12 text-center py-4">
               <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <small class="text-danger m-3 d-none " id="invalid-total2">* Debe ser un monto mayor a $5.</small>
+              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=server[0].price %></strong> /M</p>
-            <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs /M</p>
-            <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop /M</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=Number((server[0].price)).toFixed(2) %></strong> /M</p>
+            <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs /M</p>
+            <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop /M</p>
             <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
             <div class=" mx-4 border-bottom text-center mb-3">
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Juego:</p>
-                <p><strong><%=game.nombre%></strong></p>
+                <p><strong id="juego-name2"><%=game.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Juego:</p>
+                <p class="text-white-50">Server:</p>
                 <p><strong><%=server[0].nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">

@@ -56,8 +56,6 @@ async function comprar() {
         .getElementById("total21")
         .innerText.match(/\d+(\.\d{1,2})?/)[0];
 
-    console.log(cantidad, cantidad2);
-
     if (cantidad == 0 && cantidad2 == 0) {
         cantidad_input = document.getElementById("cantidad-range");
         cantidad_input.classList.add("is-invalid");
@@ -201,7 +199,7 @@ async function comprar() {
                 entrega;
             window.location.href = nuevaURL;
         } else if (
-            cantidad2 != false &&
+            cantidad2 != 0 &&
             personaje2 != false &&
             metodo2 != "-Seleccionar-" &&
             entrega2 != "-Seleccionar-" &&
