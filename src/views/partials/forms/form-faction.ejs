@@ -81,18 +81,18 @@
                     <% switch (game.juego_id) {
                         case 2: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /100g:</label>
-                        <input type="range" id="cantidad-input" class="form-range" min="0" max="1000" step="10" value="0"> 
+                        <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
-                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
-                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                            <small class="text-white" style="font-size: 1.1em;" id="cantidad-range">0</small>
+                            <small class="text-white" style="font-size: 1.1em;">00 g</small>
                         </div>
                     <% break; 
                         case 7: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /100g:</label>
-                        <input type="range" id="cantidad-input" class="form-range" min="0" max="1000" step="10" value="0"> 
+                        <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
-                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
-                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                            <small class="text-white" style="font-size: 1.1em;" id="cantidad-range">0</small>
+                            <small class="text-white" style="font-size: 1.1em;">00 g</small>
                         </div>
                     <% break; 
                         case 4: %> 
@@ -218,7 +218,7 @@
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Juego:</p>
-                <p class="text-white"><strong id="juego-name2><%=game.nombre%></strong></p>
+                <p class="text-white"><strong id="juego-name2"><%=game.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Server:</p>
@@ -329,18 +329,18 @@
                       <% switch (game.juego_id) {
                         case 2: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
-                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="1000" step="10" value="0"> 
+                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
-                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">0</small>
-                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                            <small class="text-white" style="font-size: 1.1em;" id="cantidad-range2">0</small>
+                            <small class="text-white" style="font-size: 1.1em;">00 g</small>
                         </div>
                     <% break; 
                         case 7: %> 
                         <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
-                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="1000" step="10" value="0"> 
+                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
-                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">0</small>
-                            <small class="text-white" style="font-size: 1.1em;"> g</small>
+                            <small class="text-white" style="font-size: 1.1em;" id="cantidad-range2">0</small>
+                            <small class="text-white" style="font-size: 1.1em;">00 g</small>
                         </div>
                     <% break; 
                         case 4: %> 
