@@ -56,6 +56,8 @@ async function comprar() {
         .getElementById("total21")
         .innerText.match(/\d+(\.\d{1,2})?/)[0];
 
+    console.log(total, total2);
+
     if (cantidad == 0 && cantidad2 == 0) {
         cantidad_input = document.getElementById("cantidad-range");
         cantidad_input.classList.add("is-invalid");
