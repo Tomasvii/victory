@@ -28,6 +28,8 @@ module.exports = {
                 juego_id: game[0].juego_id,
             },
         });
+        const x = Math.ceil(server[0].price * 1.03 * 100);
+        console.log(x, "---", server[0], "---", server[0].price);
         const session = await stripe.checkout.sessions.create({
             invoice_creation: {
                 enabled: true,
