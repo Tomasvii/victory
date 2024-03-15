@@ -50,7 +50,7 @@ module.exports = {
                             images: [game[0].logo],
                         },
                         currency: "USD",
-                        unit_amount: Math.ceil(server[0].price * 100),
+                        unit_amount: Math.ceil(server[0].price * 1.03 * 100),
                     },
                     quantity: req.body.quantity,
                 },
