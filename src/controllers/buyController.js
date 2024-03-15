@@ -164,8 +164,6 @@ module.exports = {
             },
         });
 
-        console.log(server[0], server);
-
         const ves = Math.round(vesDb[0].precio * 100) / 100;
         const cop = Math.round(copDb[0].precio * 100) / 100;
 

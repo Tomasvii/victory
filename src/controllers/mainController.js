@@ -24,13 +24,22 @@ module.exports = {
             },
         });
         const faccion = req.body.faction == "Horda" ? 2 : 1;
-        const server = await db.Servers.findAll({
-            where: {
-                juego_id: game[0].juego_id,
-                nombre: req.body.server,
-                faccion_id: faccion,
-            },
-        });
+        let server = "";
+        if (req.body.faction) {
+            server = await db.Servers.findAll({
+                where: {
+                    juego_id: game[0].juego_id,
+                    nombre: req.body.server,
+                    faccion_id: faccion,
+                },
+            });
+        } else {
+            server = await db.Servers.findAll({
+                where: {
+                    juego_id: game[0].juego_id,
+                },
+            });
+        }
         const session = await stripe.checkout.sessions.create({
             invoice_creation: {
                 enabled: true,
