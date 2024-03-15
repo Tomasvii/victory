@@ -66,14 +66,12 @@
                     </select>
                 </div>
                 <div class="m-3">
-                    <label for="cantidad-input" class="form-label">Cantidad de oro /K:</label>
-                    <input
-                            type="number"
-                            required
-                            id="cantidad-input"
-                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="600"
-                        />
+                    <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
                 </div>
                 <div class="m-3">
                     <label for="personaje-input" class="form-label">Personaje:</label>
@@ -236,14 +234,12 @@
                     </select>
                     </div>
                     <div class="col-5 mt-4">
-                      <label for="cantidad-input2" class="form-label">Cantidad de oro /K:</label>
-                      <input
-                            type="number"
-                            required
-                            id="cantidad-input2"
-                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="600"
-                        />
+                      <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-0" style="font-size: 1.1em;" id="cantidad-range2">0</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
                     </div>
                     <div class="col-5 mt-4">
                       <label for="personaje-input2" class="form-label">Personaje:</label>
