@@ -163,7 +163,6 @@ async function comprar() {
                 }),
             });
             const data = await res.json();
-            console.log(data);
             window.location.href = data.url;
         } catch (error) {
             console.error(error);
