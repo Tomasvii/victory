@@ -23,13 +23,14 @@ module.exports = {
                 nombre: req.body.game,
             },
         });
+        const faccion = req.body.faction == "Horda" ? 2 : 1;
         const server = await db.Servers.findAll({
             where: {
                 juego_id: game[0].juego_id,
+                nombre: req.body.server,
+                faccion_id: faccion,
             },
         });
-        const x = Math.ceil(server[0].price * 1.03 * 100);
-        console.log(x, "---", server[0], "---", server[0].price);
         const session = await stripe.checkout.sessions.create({
             invoice_creation: {
                 enabled: true,
@@ -301,8 +302,6 @@ module.exports = {
 
             const prices = lines.slice(1).map((price) => Number(price.trim()));
             const validPrices = prices.filter((price) => !isNaN(price));
-
-            console.log("Precios procesados:", validPrices);
 
             await updateCurrencies(game, validPrices);
             return res.redirect(`/${ADMIN}`);
