@@ -23,6 +23,7 @@ module.exports = {
                 nombre: req.body.game,
             },
         });
+        console.log(req.body);
         const faccion = req.body.faction == "Horda" ? 2 : 1;
         let server = "";
         if (req.body.faction) {
@@ -31,6 +32,12 @@ module.exports = {
                     juego_id: game[0].juego_id,
                     nombre: req.body.server,
                     faccion_id: faccion,
+                },
+            });
+            server = await db.Servers.findAll({
+                where: {
+                    juego_id: game[0].juego_id,
+                    nombre: req.body.server,
                 },
             });
         } else {
@@ -62,7 +69,7 @@ module.exports = {
                             images: [game[0].logo],
                         },
                         currency: "USD",
-                        unit_amount: Math.ceil(server[0].price * 1.03 * 100),
+                        unit_amount: Math.ceil(server[0].price * 1.04 * 100),
                     },
                     quantity: req.body.quantity,
                 },
@@ -106,7 +113,7 @@ module.exports = {
                             images: [game[0].image],
                         },
                         currency: "USD",
-                        unit_amount: Math.ceil(server[0].price * 1.03 * 100),
+                        unit_amount: Math.ceil(server[0].price * 1.04 * 100),
                     },
                     quantity: req.body.quantity,
                 },
