@@ -47,4 +47,7 @@ router.use("/sell", sellRouter);
 const storeRouter = require("./storeRouter");
 router.use("/store", storeRouter);
 
+const enRouter = require("./en/mainRouter");
+router.use("/en", enRouter);
+
 module.exports = router;
