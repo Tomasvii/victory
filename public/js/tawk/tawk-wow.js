@@ -188,30 +188,16 @@ async function comprar() {
                 "%20-%20" +
                 faction +
                 "%0A" +
-                cantidad;
-
-            if (game === "WoW Retail") {
-                nuevaURL += "%20M%0A";
-            }
-
-            if (game === "WoW WOTLK" || game === "WoW Classic") {
-                nuevaURL += "%20K%0A";
-            }
-
-            if (game === "WoW SoD" || game === "WoW Hardcore") {
-                nuevaURL += "00%20g%0A";
-            }
-
-            nuevaURL +=
+                cantidad +
+                "%20M%0A" +
                 "Personaje:%20" +
-                personaje2 +
+                personaje +
                 "%0A" +
                 "Método%20de%20pago:%20" +
-                metodo2 +
+                metodo +
                 "%0A" +
                 "Método%20de%20entrega:%20" +
-                entrega2;
-
+                entrega;
             window.location.href = nuevaURL;
         } else if (
             cantidad2 != 0 &&
@@ -222,7 +208,7 @@ async function comprar() {
             faction2 != false
         ) {
             const urlActual = window.location.href;
-            let nuevaURL =
+            const nuevaURL =
                 urlActual +
                 (urlActual.includes("?") ? "&" : "?") +
                 "HelpCrunchInputText=" +
@@ -233,21 +219,8 @@ async function comprar() {
                 "%20-%20" +
                 faction2 +
                 "%0A" +
-                cantidad2;
-
-            if (game === "WoW Retail") {
-                nuevaURL += "%20M%0A";
-            }
-
-            if (game === "WoW WOTLK" || game === "WoW Classic") {
-                nuevaURL += "%20K%0A";
-            }
-
-            if (game === "WoW SoD" || game === "WoW Hardcore") {
-                nuevaURL += "00%20g%0A";
-            }
-
-            nuevaURL +=
+                cantidad2 +
+                "%20M%0A" +
                 "Personaje:%20" +
                 personaje2 +
                 "%0A" +
@@ -256,7 +229,6 @@ async function comprar() {
                 "%0A" +
                 "Método%20de%20entrega:%20" +
                 entrega2;
-
             window.location.href = nuevaURL;
         }
     }
