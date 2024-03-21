@@ -188,7 +188,7 @@ async function comprar() {
                 faction +
                 "%0A" +
                 cantidad +
-                "%20M%0A" +
+                "%0A" +
                 "Personaje:%20" +
                 personaje +
                 "%0A" +
@@ -219,7 +219,7 @@ async function comprar() {
                 faction2 +
                 "%0A" +
                 cantidad2 +
-                "%20M%0A" +
+                "%0A" +
                 "Personaje:%20" +
                 personaje2 +
                 "%0A" +
