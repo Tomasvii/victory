@@ -113,7 +113,7 @@ module.exports = {
                             images: [game[0].image],
                         },
                         currency: "USD",
-                        unit_amount: Math.ceil(server[0].price * 1.04 * 100),
+                        unit_amount: Math.ceil(game[0].price * 1.04 * 100),
                     },
                     quantity: req.body.quantity,
                 },
