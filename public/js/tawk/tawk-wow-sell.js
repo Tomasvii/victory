@@ -191,9 +191,13 @@ async function comprar() {
 
             if (game === "WoW Retail") {
                 nuevaURL += "%20M%0A";
-            } else if (game === "WoW WOTLK" || game === "WoW Classic") {
+            }
+
+            if (game === "WoW WOTLK" || game === "WoW Classic") {
                 nuevaURL += "%20K%0A";
-            } else {
+            }
+
+            if (game === "WoW SoD" || game === "WoW Hardcore") {
                 nuevaURL += "00%20g%0A";
             }
 
@@ -232,9 +236,13 @@ async function comprar() {
 
             if (game === "WoW Retail") {
                 nuevaURL += "%20M%0A";
-            } else if (game === "WoW WOTLK" || game === "WoW Classic") {
+            }
+
+            if (game === "WoW WOTLK" || game === "WoW Classic") {
                 nuevaURL += "%20K%0A";
-            } else {
+            }
+
+            if (game === "WoW SoD" || game === "WoW Hardcore") {
                 nuevaURL += "00%20g%0A";
             }
 
