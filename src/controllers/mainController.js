@@ -223,8 +223,8 @@ module.exports = {
         return res.render("admin-log");
     },
     admin: async (req, res) => {
-        /*const pag = req.query.page || 1;
-        const limit = req.query.pageSize || 20;*/
+        const pag = req.query.page || 1;
+        const limit = req.query.pageSize || 20;
         const games = await db.Games.findAll();
         const currencies = await db.Currencies.findAll();
         const products = await db.Products.findAll();
@@ -234,8 +234,8 @@ module.exports = {
                 ["delivered", "ASC"],
                 ["created_at", "ASC"],
             ],
-            /*limit: limit,
-            offset: (pag - 1) * limit,*/
+            limit: limit,
+            offset: (pag - 1) * limit,
         });
 
         return res.render("admin", {
@@ -243,8 +243,8 @@ module.exports = {
             games: games,
             currencies: currencies,
             products: products,
-            /*pag,
-            limit,*/
+            pag,
+            limit,
         });
     },
     updateOrder: async (req, res) => {
