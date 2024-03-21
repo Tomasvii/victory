@@ -187,16 +187,26 @@ async function comprar() {
                 "%20-%20" +
                 faction +
                 "%0A" +
-                cantidad +
-                "%0A" +
+                cantidad;
+
+            if (game === "WoW Retail") {
+                nuevaURL += "%20M%0A";
+            } else if (game === "WoW WOTLK" || game === "WoW Classic") {
+                nuevaURL += "%20K%0A";
+            } else {
+                nuevaURL += "00%20g%0A";
+            }
+
+            nuevaURL +=
                 "Personaje:%20" +
-                personaje +
+                personaje2 +
                 "%0A" +
                 "Método%20de%20pago:%20" +
-                metodo +
+                metodo2 +
                 "%0A" +
                 "Método%20de%20entrega:%20" +
-                entrega;
+                entrega2;
+
             window.location.href = nuevaURL;
         } else if (
             cantidad2 != 0 &&
@@ -218,8 +228,17 @@ async function comprar() {
                 "%20-%20" +
                 faction2 +
                 "%0A" +
-                cantidad2 +
-                "%0A" +
+                cantidad2;
+
+            if (game === "WoW Retail") {
+                nuevaURL += "%20M%0A";
+            } else if (game === "WoW WOTLK" || game === "WoW Classic") {
+                nuevaURL += "%20K%0A";
+            } else {
+                nuevaURL += "00%20g%0A";
+            }
+
+            nuevaURL +=
                 "Personaje:%20" +
                 personaje2 +
                 "%0A" +
@@ -228,6 +247,7 @@ async function comprar() {
                 "%0A" +
                 "Método%20de%20entrega:%20" +
                 entrega2;
+
             window.location.href = nuevaURL;
         }
     }
