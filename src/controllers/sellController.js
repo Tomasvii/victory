@@ -145,8 +145,6 @@ module.exports = {
             },
         });
 
-        console.log(preserver[0].nombre);
-
         const server = await db.Servers_sell.findAll({
             where: {
                 nombre: preserver[0].nombre,
