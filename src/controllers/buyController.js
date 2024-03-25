@@ -139,9 +139,16 @@ module.exports = {
             group: ["nombre"],
         });
 
-        const server = await db.Servers.findAll({
+        const preserver = await db.Servers.findAll({
             where: {
                 servidor_id: req.params.serverId,
+            },
+        });
+
+        const server = await db.Servers.findAll({
+            where: {
+                nombre: preserver[0].nombre,
+                faccion_id: req.params.factionId,
             },
         });
 
