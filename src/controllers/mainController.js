@@ -144,7 +144,9 @@ module.exports = {
                     email: checkoutSessionCompleted.customer_details.email,
                     amount: checkoutSessionCompleted.amount_total / 100,
                     payment_intent: event.data.object.payment_intent,
-                    details: checkoutSessionCompleted.metadata.description,
+                    details:
+                        checkoutSessionCompleted.metadata.description ||
+                        "Send URL to chat",
                 });
                 await db.Orders.create({
                     url_id: checkoutSessionCompleted.id,
@@ -152,7 +154,9 @@ module.exports = {
                     email: checkoutSessionCompleted.customer_details.email,
                     amount: checkoutSessionCompleted.amount_total / 100,
                     payment_intent: event.data.object.payment_intent,
-                    details: checkoutSessionCompleted.metadata.description,
+                    details:
+                        checkoutSessionCompleted.metadata.description ||
+                        "Send URL to chat",
                 });
             } else {
                 console.log(`Evento no manejado: ${event.type}`);
