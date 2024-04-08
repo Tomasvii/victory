@@ -191,7 +191,7 @@ async function comprar() {
                 "Buy%20gold%0A" +
                 game +
                 "%0A" +
-                cantidad +
+                cantidad2 +
                 "%20M%0A" +
                 "Character:%20" +
                 personaje2 +
