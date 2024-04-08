@@ -34,6 +34,7 @@ async function comprar() {
     const metodo = document.getElementById("pago-input").value;
     const metodo2 = document.getElementById("pago-input2").value;
     const entrega = document.getElementById("entrega-input").value;
+    const entrega2 = document.getElementById("entrega-input2").value;
     let total;
     const totalElement = document.getElementById("total22");
     if (totalElement) {
@@ -80,7 +81,10 @@ async function comprar() {
         return;
     }
 
-    if (metodo == "-Seleccionar-" && metodo2 == "-Seleccionar-") {
+    if (
+        (metodo == "-Seleccionar-" && metodo2 == "-Seleccionar-") ||
+        (metodo == "-Select-" && metodo2 == "-Select-")
+    ) {
         metodo_input = document.getElementById("pago-input");
         metodo_input.classList.add("is-invalid");
         metodo_input = document.getElementById("invalid-pago");
@@ -94,7 +98,10 @@ async function comprar() {
         return;
     }
 
-    if (entrega == "-Seleccionar-" && entrega2 == "-Seleccionar-") {
+    if (
+        (entrega == "-Seleccionar-" && entrega2 == "-Seleccionar-") ||
+        (entrega == "-Select-" && entrega2 == "-Select-")
+    ) {
         entrega_input = document.getElementById("entrega-input");
         entrega_input.classList.add("is-invalid");
         entrega_input = document.getElementById("invalid-entrega");
@@ -173,20 +180,20 @@ async function comprar() {
                 urlActual +
                 (urlActual.includes("?") ? "&" : "?") +
                 "HelpCrunchInputText=" +
-                "Vender%20silver%0A" +
+                "Sell%20silver%0A" +
                 game +
                 "%20-%20" +
                 server +
                 "%0A" +
                 cantidad +
                 "%20M%0A" +
-                "Personaje:%20" +
+                "Character:%20" +
                 personaje +
                 "%0A" +
-                "Método%20de%20pago:%20" +
+                "Payment%20method:%20" +
                 metodo +
                 "%0A" +
-                "Método%20de%20entrega:%20" +
+                "Delivery%20method:%20" +
                 entrega;
             window.location.href = nuevaURL;
         } else if (
@@ -201,20 +208,20 @@ async function comprar() {
                 urlActual +
                 (urlActual.includes("?") ? "&" : "?") +
                 "HelpCrunchInputText=" +
-                "Vender%20silver%0A" +
+                "Sell%20silver%0A" +
                 game +
                 "%20-%20" +
                 server2 +
                 "%0A" +
                 cantidad2 +
                 "%20M%0A" +
-                "Personaje:%20" +
+                "Character:%20" +
                 personaje2 +
                 "%0A" +
-                "Método%20de%20pago:%20" +
+                "Payment%20method:%20" +
                 metodo2 +
                 "%0A" +
-                "Método%20de%20entrega:%20" +
+                "Delivery%20method:%20" +
                 entrega2;
             window.location.href = nuevaURL;
         }

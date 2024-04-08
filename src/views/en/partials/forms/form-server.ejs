@@ -1,0 +1,350 @@
+<div class="mobile-form">
+    <div class="w-100 mobile justify-content-center">
+        <div class="d-flex align-content-center col-10 mt-3">
+            <% switch (game.juego_id) {
+                case 1: %> 
+                <img src="/images/minis/wow-classic.webp" alt="WoW classic logo"  class="align-self-center m-2">
+            <% break; 
+                case 2: %> 
+                <img src="/images/minis/wow-classic.webp" alt="WoW Hardcore logo"  class="align-self-center m-2">
+            <% break; 
+                case 3: %> 
+                <img src="/images/minis/world-of-warcraft-wotlk.webp" alt="WoTLK logo" class="align-self-center m-2">
+            <% break; 
+                case 4: %> 
+                <img src="/images/minis/world-of-warcraft.webp" alt="WoW Retail logo"  class="align-self-center m-2">
+            <% break; 
+                case 7: %> 
+                <img src="/images/minis/wow-classic.webp" alt="WoW SoD logo"  class="align-self-center m-2">
+            <% break; 
+                default: %>
+                <% break; } %>
+            <h2 class="form-text-mobile mb-0 pb-2">Buy <%=game.nombre%> gold</h2>
+        </div>
+    </div>
+    
+    <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
+        <div class="d-flex flex-column col-10 bg-gray justify-content-center">
+            <form id="form-venta">
+                <div class="m-3">
+                    <select
+                        id="juegoInput"
+                        required
+                        class="form-select shadow py-2"
+                    >
+                        <% for(oneGame of games) { %>
+                        <option value="/buy/game/<%= oneGame.juego_id %>"
+                            <% if (oneGame.juego_id == game.juego_id) { %>
+                            <%="selected"%>
+                            <% } %>
+                            >
+                            <%= oneGame.nombre %>
+                        </option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="m-3">
+                    <select
+                    id="serverInput"
+                    required
+                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                    >
+                        <% for(oneServer of servers) { %>
+                        <option
+                            value="<%= oneServer.servidor_id %>"
+                            <% if (oneServer.servidor_id == server[0].servidor_id) { %>
+                            <%="selected"%>
+                            <% } %>
+                            >
+                            <%= oneServer.nombre %>
+                        </option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="m-3">
+                    <select id="faccionInput"
+                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                    >
+                        <option selected disabled>-Select Faction</option>
+                        <option value="1">Alliance</option>
+                        <option value="2">Horde</option>
+                    </select>
+                </div>
+                <div class="m-3">
+                    <label for="cantidad-input" class="form-label">Amount /k:</label>
+                        <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
+                </div>
+                <div class="m-3">
+                    <label for="personaje-input" class="form-label">Character:</label>
+                    <input
+                    type="text"
+                    required
+                    id="personaje-input"
+                        class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                        placeholder="Nombre de personaje"
+                    >
+                    </input>
+                </div>
+                <div class="m-3">
+                    <label for="pago-input" class="form-label">Payment method:</label>
+                    <select
+                    id="pago-input"
+                    required
+                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                    >
+                        <option selected disabled>-Select-</option>
+                        <option value="Binance USDT">Binance USDT</option>
+                        <option value="VISA">VISA</option>
+                        <option value = "Master Card">Master Card</option>
+                        <option value = "PagoMóvil">PagoMóvil</option>
+                        <option disabled>-Transferencia bancaria-</option>
+                        <option value="Banco Venezuela">Banco Venezuela</option>
+                        <option value="Bancolombia">Bancolombia</option>
+                        <option value="Nequi">Nequi</option>
+                        <option value="Zinli">Zinli</option>
+                        <option value="Yappy">Yappy (Banco Panamá)</option>
+                        <option value="Wise">Wise</option>
+                    </select>
+                </div>
+                <div class="m-3">
+                    <label for="entrega-input" class="form-label">Delivery method:</label>
+                    <select
+                    id="entrega-input"
+                    required
+                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                    >
+                        <option selected disabled>-Seleccionar-</option>
+                        <option value="Trade">Trade</option>
+                        <option value="Correo">Mail</option>
+                        <% if (game.juego_id == 4 || game.juego_id == 3) { %>
+                            <option value="Guild Bank">Guild bank</option>
+                        <% } %>
+                    </select>
+                </div>
+            </form>
+            <div class="col-12 text-center py-4">
+              <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>BUY</strong></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
+        <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> --</strong> /k</p>
+            <p class="white" style="color:#ffc950 ;">-- k in Stock</p>
+            <div class=" mx-4 border-bottom text-center mb-3">
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">SUMMARY</p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Game:</p>
+                <p class="text-white"><strong><%=game.nombre%></strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Server:</p>
+                <p class="text-white"><strong><%=server[0].nombre%></strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Faction:</p>
+                <p class="text-white"><strong>--</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Amount: </p>
+                <p id="cantidad" class="text-white"><strong>--</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between border-top">
+                <p class="form-resumen py-3 text-white-50">Total: </p>
+                <p class="py-3 text-white" id="total"><strong> --</strong></p>
+            </div>
+            <a href="https://www.trustpilot.com/review/victorygold.net?languages=es"
+                target="_blank"
+                class="url"
+            ><img
+                class="footer-trustpilot my-3"
+                src="/images/trustpilot.png"
+                alt="Logo Victory Gold"
+            /></a>
+        </div>
+    </div>
+</div>
+
+<div class="container justify-content-center desktop">
+    <div class="row m-5 text-start col-12 p-3 rounded-3">
+        <div class="col-12 d-flex">
+            <% switch (game.juego_id) {
+                case 1: %> 
+                <img src="/images/minis/wow-classic.webp" alt="WoW Classic Logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
+            <% break; 
+                case 2: %> 
+                <img src="/images/minis/wow-classic.webp" alt="WoW Hardcore Logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
+            <% break; 
+                case 3: %> 
+                <img src="/images/minis/world-of-warcraft-wotlk.webp" alt="WoW WOTLK Logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
+            <% break; 
+                case 4: %> 
+                <img src="/images/minis/world-of-warcraft.webp" alt="WoW retail Logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
+            <% break; 
+                case 7: %> 
+                <img src="/images/minis/wow-classic.webp" alt="WoW SoD Logo" style="width:2em ; height: 2em;" class="align-self-center m-2">
+            <% break; 
+                default: %>
+                <% break; } %>
+            <p class="form-text-desktop mb-0 pb-2 col-8">
+                Buy <%=game.nombre%> gold
+            </p>
+        </div>
+        <div class="col-8 bg-gray p-3 rounded-3 shadow">
+            <form id="form-venta2">
+                <div class="row gx-5 mt-3 m-auto">
+                    <div class="col-3">
+                        <select
+                            id="juegoInput2"
+                            required
+                            class="form-select shadow py-3"
+                            
+                        >
+                            <% for(oneGame of games) { %>
+                            <option value="/buy/game/<%= oneGame.juego_id %>" 
+                                <% if (oneGame.juego_id == game.juego_id) { %>
+                                <%="selected"%>
+                                <% } %>
+                                >
+                                <%= oneGame.nombre %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select
+                        id="serverInput2"
+                        required
+                        class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
+                        >
+                        <% for(oneServer of servers) { %>
+                        <option
+                            value="<%= oneServer.servidor_id %>"
+                            <% if (oneServer.servidor_id == server[0].servidor_id) { %>
+                            <%="selected"%>
+                            <% } %>
+                            >
+                            <%= oneServer.nombre %>
+                        </option>
+                        <% } %>
+                    </select>
+                    </div>
+                    <div class="col-4">
+                        <select id="faccionInput2"
+                        class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
+                        >
+                        <option selected disabled>-Select Faction-</option>
+                        <option value="1">Alliance</option>
+                        <option value="2">Horde</option>
+                    </select>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="cantidad-input" class="form-label">Amount /k:</label>
+                        <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
+                        <div class="d-flex flex-row">
+                            <small class="text-white mx-0" style="font-size: 1.1em;" id="cantidad-range2">0</small>
+                            <small class="text-white" style="font-size: 1.1em;"> k</small>
+                        </div>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="personaje-input2" class="form-label">Character:</label>
+                        <input
+                        type="text"
+                        required
+                        id="personaje-input2"
+                            class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                            placeholder="Nombre de personaje"
+                        >
+                        </input>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="pago-input2" class="form-label">Payment method:</label>
+                        <select
+                        id="pago-input2"
+                        required
+                        class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                        >
+                        <option selected disabled>-Select-</option>
+                        <option value="Binance USDT">Binance USDT</option>
+                        <option value="VISA">VISA</option>
+                        <option value = "Master Card">Master Card</option>
+                        <option value = "PagoMóvil">PagoMóvil</option>
+                        <option disabled>-Transferencia bancaria-</option>
+                        <option value="Banco Venezuela">Banco Venezuela</option>
+                        <option value="Bancolombia">Bancolombia</option>
+                        <option value="Nequi">Nequi</option>
+                        <option value="Zinli">Zinli</option>
+                        <option value="Yappy">Yappy (Banco Panamá)</option>
+                        <option value="Wise">Wise</option>
+                    </select>
+                    </div>
+                    <div class="col-5 mt-4">
+                      <label for="entrega-input2" class="form-label">Delivery method:</label>
+                        <select
+                        id="entrega-input2"
+                        required
+                        class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                        >
+                        <option selected disabled>-Select-</option>
+                        <option value="Trade">Trade</option>
+                        <option value="Correo">Mail</option>
+                        <% if (game.juego_id == 4 || game.juego_id == 3) { %>
+                            <option value="Guild Bank">Guild bank</option>
+                        <% } %>
+                    </select>
+                    </div>
+                </div>
+            </form>
+            <div class="col-12 text-center py-4">
+              <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>BUY</strong></button>
+            </div>
+        </div>
+        <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2">--</strong> /k</p>
+            <p class="white" style="color:#ffc950 ;">-- k in Stock</p>
+            <div class=" mx-4 border-bottom text-center mb-3">
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">SUMMARY</p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Game:</p>
+                <p><strong><%=game.nombre%></strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Server:</p>
+                <p><strong><%=server[0].nombre%></strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Faction:</p>
+                <p><strong>--</strong></p>
+            </div>
+            <div class="d-flex mx-4 justify-content-between">
+                <p class="text-white-50">Amount: </p>
+                <p id="cantidad2"><strong>--</strong></p>
+            </div>
+            <div class="d-flex flex-column">
+                <div class="d-flex mx-4 justify-content-between border-top">
+                    <p class="form-resumen py-3 text-white-50">Total: </p>
+                    <p class="py-3" id="total21"><strong> --</strong></p>
+                </div>
+                <a href="https://www.trustpilot.com/review/victorygold.net?languages=es"
+                    target="_blank"
+                    class="url mb-3"
+                ><img
+                    class="footer-trustpilot"
+                    src="/images/trustpilot.png"
+                    alt="Logo Victory Gold"
+                /></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/total.js"></script>

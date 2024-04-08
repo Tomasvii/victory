@@ -13,7 +13,7 @@ const stripe = new Stripe(SK);
 module.exports = {
     home: async (req, res) => {
         const games = await db.Games.findAll();
-        return res.render("home", {
+        return res.render("./en/home", {
             games: games,
         });
     },

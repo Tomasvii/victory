@@ -19,7 +19,7 @@
             <% break; 
                 default: %>
                 <% break; } %>
-            <h2 class="form-text-mobile mb-0 pb-2">Comprar oro en <%=game.nombre%></h2>
+            <h2 class="form-text-mobile mb-0 pb-2">Sell <%=game.nombre%> gold</h2>
         </div>
     </div>
     
@@ -33,7 +33,7 @@
                         class="form-select shadow py-2"
                     >
                         <% for(oneGame of games) { %>
-                        <option value="/buy/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
+                        <option value="/sell/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                             <% if (oneGame.juego_id == game.juego_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -80,7 +80,7 @@
                 <div class="m-3">
                     <% switch (game.juego_id) {
                         case 2: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /100g:</label>
+                        <label for="cantidad-input" class="form-label">Amount /100g:</label>
                         <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white" style="font-size: 1.1em;" id="cantidad-range">0</small>
@@ -88,7 +88,7 @@
                         </div>
                     <% break; 
                         case 7: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /100g:</label>
+                        <label for="cantidad-input" class="form-label">Amount /100g:</label>
                         <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white" style="font-size: 1.1em;" id="cantidad-range">0</small>
@@ -96,7 +96,7 @@
                         </div>
                     <% break; 
                         case 4: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /100k:</label>
+                        <label for="cantidad-input" class="form-label">Amount /100k:</label>
                         <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white" style="font-size: 1.1em;" id="cantidad-range">0</small>
@@ -104,7 +104,7 @@
                         </div>
                     <% break; 
                         case 3: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /10k:</label>
+                        <label for="cantidad-input" class="form-label">Amount /10k:</label>
                         <input type="range" id="cantidad-input" class="form-range" min="0" max="1000" step="10" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
@@ -112,38 +112,36 @@
                         </div>
                     <% break; 
                         default: %>
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <label for="cantidad-input" class="form-label">Amount /k:</label>
                         <input type="range" id="cantidad-input" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range">0</small>
                             <small class="text-white" style="font-size: 1.1em;"> k</small>
                         </div>
                         <% break; } %>
-                    <small class="text-danger m-3 d-none" id="invalid-cantidad">* Ingresa una cantidad.</small>
+                    <small class="text-danger m-3 d-none" id="invalid-cantidad">* Set an amount.</small>
                 </div>
                 <div class="m-3">
-                    <label for="personaje-input" class="form-label">Personaje:</label>
+                    <label for="personaje-input" class="form-label">Character:</label>
                     <input
                     type="text"
                     required
                     id="personaje-input"
                         class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                        placeholder="Nombre de personaje"
+                        placeholder="Character name"
                     >
                     </input>
-                    <small class="text-danger m-3 d-none" id="invalid-personaje">* Ingresa el nombre de tu personaje.</small>
+                    <small class="text-danger m-3 d-none" id="invalid-personaje">* Insert a character name.</small>
                 </div>
                 <div class="m-3">
-                    <label for="pago-input" class="form-label">Método de pago:</label>
+                    <label for="pago-input" class="form-label">Payment method:</label>
                     <select
                     id="pago-input"
                     required
                     class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
-                        <option selected disabled>-Seleccionar-</option>
+                        <option selected disabled>-Select-</option>
                         <option value="Binance USDT">Binance USDT</option>
-                        <option value="VISA">VISA (+4%)</option>
-                        <option value = "Master Card">Master Card (+4%)</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -153,35 +151,35 @@
                         <option value="Yappy">Yappy (Banco Panamá)</option>
                         <option value="Wise">Wise</option>
                     </select>
-                    <small class="text-danger m-3 d-none" id="invalid-pago">* Selecciona el método de pago.</small>
+                    <small class="text-danger m-3 d-none" id="invalid-pago">* Select a payment method.</small>
                 </div>
                 <div class="m-3">
-                    <label for="entrega-input" class="form-label">Método de entrega:</label>
+                    <label for="entrega-input" class="form-label">Delivery method:</label>
                     <select
                     id="entrega-input"
                     required
                     class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
-                        <option selected disabled>-Seleccionar-</option>
+                        <option selected disabled>-Select-</option>
                         <option value="Trade">Trade</option>
-                        <option value="Correo">Correo</option>
+                        <option value="Correo">Mail</option>
                         <% if (game.juego_id == 4 || game.juego_id == 3) { %>
-                            <option value="Guild Bank">Banco de Hermandad</option>
+                            <option value="Guild Bank">Guild bank</option>
                         <% } %>
                     </select>
-                    <small class="text-danger m-3 d-none" id="invalid-entrega">* Selecciona el método de entrega.</small>
+                    <small class="text-danger m-3 d-none" id="invalid-entrega">* Select a delivery method.</small>
                 </div>
             </form>
             <div class="col-12 text-center py-4">
               <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-              <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
-              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <small class="text-danger m-3 d-none" id="invalid-total">* Must be an amount greater than $5.</small>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>SELL</strong></button>
             </div>
         </div>
     </div>
     
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
-        <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
+<div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
             <% switch (game.juego_id) {
                 case 2: %> 
                 <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=Number((server[0].price)).toFixed(2) %>%></strong> /100g</p>
@@ -214,10 +212,10 @@
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> k in Stock</p>
                 <% break; } %>
             <div class=" mx-4 border-bottom text-center mb-3">
-                <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
+                <p class="form-resumen m-3 mb-1 pt-5 text-center">SUMMARY</p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Juego:</p>
+                <p class="text-white-50">Game:</p>
                 <p class="text-white"><strong id="juego-name2"><%=game.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
@@ -225,11 +223,11 @@
                 <p class="text-white"><strong><%=server[0].nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Facción:</p>
+                <p class="text-white-50">Faction:</p>
                 <p class="text-white"><strong><%=faction.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Cantidad: </p>
+                <p class="text-white-50">Amount: </p>
                 <p id="cantidad" class="text-white"><strong>--</strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between border-top">
@@ -267,7 +265,7 @@
                 default: %>
                 <% break; } %>
             <p class="form-text-desktop mb-0 pb-2 col-8">
-                Comprar oro en <%=game.nombre%>
+                Sell <%=game.nombre%> gold
             </p>
         </div>
         <div class="col-8 bg-gray p-3 rounded-3 shadow">
@@ -281,7 +279,7 @@
                             
                         >
                             <% for(oneGame of games) { %>
-                            <option value="/buy/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
+                            <option value="/sell/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>
@@ -328,7 +326,7 @@
                     <div class="col-5 mt-4">
                       <% switch (game.juego_id) {
                         case 2: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
+                        <label for="cantidad-input" class="form-label">Amount /g:</label>
                         <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white" style="font-size: 1.1em;" id="cantidad-range2">0</small>
@@ -336,7 +334,7 @@
                         </div>
                     <% break; 
                         case 7: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /g:</label>
+                        <label for="cantidad-input" class="form-label">Amount /g:</label>
                         <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white" style="font-size: 1.1em;" id="cantidad-range2">0</small>
@@ -344,7 +342,7 @@
                         </div>
                     <% break; 
                         case 4: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <label for="cantidad-input" class="form-label">Amount /k:</label>
                         <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white mx-0" style="font-size: 1.1em;" id="cantidad-range2">0</small>
@@ -352,7 +350,7 @@
                         </div>
                     <% break; 
                         case 3: %> 
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /10k:</label>
+                        <label for="cantidad-input" class="form-label">Amount /10k:</label>
                         <input type="range" id="cantidad-input2" class="form-range" min="0" max="1000" step="10" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">0</small>
@@ -360,38 +358,36 @@
                         </div>
                     <% break; 
                         default: %>
-                        <label for="cantidad-input" class="form-label">Cantidad de oro /k:</label>
+                        <label for="cantidad-input" class="form-label">Amount /k:</label>
                         <input type="range" id="cantidad-input2" class="form-range" min="0" max="100" step="1" value="0"> 
                         <div class="d-flex flex-row">
                             <small class="text-white mx-1" style="font-size: 1.1em;" id="cantidad-range2">0</small>
                             <small class="text-white" style="font-size: 1.1em;"> k</small>
                         </div>
                         <% break; } %>
-                        <small class="text-danger m-3 d-none" id="invalid-cantidad2">* Ingresa una cantidad.</small>
+                        <small class="text-danger m-3 d-none" id="invalid-cantidad2">* Set an amount.</small>
                     </div>
                     <div class="col-5 mt-4">
-                      <label for="personaje-input2" class="form-label">Personaje:</label>
+                      <label for="personaje-input2" class="form-label">Character:</label>
                         <input
                         type="text"
                         required
                         id="personaje-input2"
                             class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
-                            placeholder="Nombre de personaje"
+                            placeholder="Character name"
                         >
                         </input>
-                        <small class="text-danger m-3 d-none" id="invalid-personaje2">* Ingresa el nombre de tu personaje.</small>
+                        <small class="text-danger m-3 d-none" id="invalid-personaje2">* Insert a character name.</small>
                     </div>
                     <div class="col-5 mt-4">
-                      <label for="pago-input2" class="form-label">Método de pago:</label>
+                      <label for="pago-input2" class="form-label">Payment method:</label>
                         <select
                         id="pago-input2"
                         required
                         class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                         >
-                        <option selected disabled>-Seleccionar-</option>
+                        <option selected disabled>-Select-</option>
                         <option value="Binance USDT">Binance USDT</option>
-                        <option value="VISA">VISA (+4%)</option>
-                        <option value = "Master Card">Master Card (+4%)</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -401,30 +397,30 @@
                         <option value="Yappy">Yappy (Banco Panamá)</option>
                         <option value="Wise">Wise</option>
                     </select>
-                    <small class="text-danger m-3 d-none" id="invalid-pago2">* Selecciona el método de pago.</small>
+                    <small class="text-danger m-3 d-none" id="invalid-pago2">* Select a payment method.</small>
                     </div>
                     <div class="col-5 mt-4">
-                      <label for="entrega-input2" class="form-label">Método de entrega:</label>
+                      <label for="entrega-input2" class="form-label">Delivery method:</label>
                         <select
                         id="entrega-input2"
                         required
                         class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                         >
-                        <option selected disabled>-Seleccionar-</option>
+                        <option selected disabled>-Select-</option>
                         <option value="Trade">Trade</option>
-                        <option value="Correo">Correo</option>
+                        <option value="Correo">Mail</option>
                         <% if (game.juego_id == 4 || game.juego_id == 3) { %>
-                            <option value="Guild Bank">Banco de Hermandad</option>
+                            <option value="Guild Bank">Guild bank</option>
                         <% } %>
                     </select>
-                    <small class="text-danger m-3 d-none" id="invalid-entrega2">* Selecciona el método de entrega.</small>
+                    <small class="text-danger m-3 d-none" id="invalid-entrega2">* Select a delivery method.</small>
                     </div>
                 </div>
             </form>
             <div class="col-12 text-center py-4">
               <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
               <small class="text-danger m-3 d-none " id="invalid-total2">* Debe ser un monto mayor a $5.</small>
-              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>SELL</strong></button>
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
@@ -463,7 +459,7 @@
                 <p class="form-resumen m-3 mb-1 pt-5 text-center">RESUMEN</p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Juego:</p>
+                <p class="text-white-50">Game:</p>
                 <p><strong id="juego-name2"><%=game.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
@@ -471,11 +467,11 @@
                 <p><strong><%=server[0].nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Facción:</p>
+                <p class="text-white-50">Faction:</p>
                 <p><strong><%=faction.nombre%></strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
-                <p class="text-white-50">Cantidad: </p>
+                <p class="text-white-50">Amount: </p>
                 <p id="cantidad2"><strong>--</strong></p>
             </div>
             <div class="d-flex flex-column">

@@ -11,6 +11,13 @@ async function comprar() {
     const metodo2 = document.getElementById("pago-input2").value;
 
     if (
+        (metodo2 == "-Seleccionar-" && metodo == "-Método de pago-") ||
+        (metodo2 == "-Select-" && metodo == "-Payment method-")
+    ) {
+        return;
+    }
+
+    if (
         metodo == "VISA" ||
         metodo == "Master Card" ||
         metodo2 == "VISA" ||
@@ -37,9 +44,14 @@ async function comprar() {
         }
     } else {
         if (
-            game != false &&
-            cantidad != false &&
-            metodo != "-Método de pago-"
+            (game !== false &&
+                cantidad !== false &&
+                metodo.trim() !== "-Payment method-" &&
+                metodo.trim() !== "-Método de pago-") ||
+            (game !== false &&
+                cantidad !== false &&
+                metodo.trim() !== "-Payment method-" &&
+                metodo.trim() !== "-Método de pago-")
         ) {
             const urlActual = window.location.href;
             const nuevaURL =
@@ -52,13 +64,14 @@ async function comprar() {
                 "%20" +
                 game +
                 "%0A" +
-                "Método%20de%20pago:%20" +
+                "Payment%20method:%20" +
                 metodo;
             window.location.href = nuevaURL;
         } else if (
-            game2 != false &&
-            cantidad2 != false &&
-            metodo2 != "-Seleccionar-"
+            (game2 != false &&
+                cantidad2 != false &&
+                metodo2 != "-Seleccionar-") ||
+            (game2 != false && cantidad2 != false && metodo2 != "-Select-")
         ) {
             const urlActual = window.location.href;
             const nuevaURL =
@@ -71,7 +84,7 @@ async function comprar() {
                 "%20" +
                 game2 +
                 "%0A" +
-                "Método%20de%20pago:%20" +
+                "Payment%20method:%20" +
                 metodo2;
             window.location.href = nuevaURL;
         }
