@@ -201,27 +201,47 @@ module.exports = {
         );
         */
 
-        const details = transaction[0].details.split("-");
+        try {
+            const details = transaction[0].details.split("-");
 
-        return res.render("success", {
-            transaction: transaction[0],
-            details: details,
-        });
+            return res.render("success", {
+                transaction: transaction[0],
+                details: details,
+            });
+        } catch (error) {
+            console.error(
+                "Error al procesar los detalles de la transacción:",
+                error.message
+            );
+            res.status(500).send(
+                "Pago en proceso. Por favor, inténtalo de nuevo en unos minutos."
+            );
+        }
     },
     successStore: async (req, res) => {
-        const transactionId = req.params.transactionId;
-        const transaction = await db.Stripes.findAll({
-            where: {
-                url_id: transactionId,
-            },
-        });
+        try {
+            const transactionId = req.params.transactionId;
+            const transaction = await db.Stripes.findAll({
+                where: {
+                    url_id: transactionId,
+                },
+            });
 
-        const details = transaction[0].details.split("-");
+            const details = transaction[0].details.split("-");
 
-        return res.render("success-store", {
-            transaction: transaction[0],
-            details: details,
-        });
+            return res.render("success-store", {
+                transaction: transaction[0],
+                details: details,
+            });
+        } catch (error) {
+            console.error(
+                "Error al procesar los detalles de la transacción:",
+                error.message
+            );
+            res.status(500).send(
+                "Pago en proceso. Por favor, inténtalo de nuevo en unos minutos o contacta con el soporte."
+            );
+        }
     },
     admin_log: async (req, res) => {
         return res.render("admin-log");
