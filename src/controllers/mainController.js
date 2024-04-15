@@ -147,7 +147,16 @@ module.exports = {
                     details:
                         checkoutSessionCompleted.metadata.description ||
                         "Send URL to chat",
+                    status: "pending",
                 });
+                await db.Stripes.update(
+                    { status: "completo" },
+                    {
+                        where: {
+                            url_id: checkoutSessionCompleted.id,
+                        },
+                    }
+                );
                 await db.Orders.create({
                     url_id: checkoutSessionCompleted.id,
                     transaction_id: event.id,
@@ -201,8 +210,30 @@ module.exports = {
         );
         */
 
+        if (transaction.length === 0) {
+            console.error(
+                "No se encontró ninguna transacción para el ID proporcionado:",
+                transactionId
+            );
+            return res
+                .status(404)
+                .send(
+                    "No se encontró ninguna transacción para el ID proporcionado."
+                );
+        }
+
+        if (transaction[0].status === "pending") {
+            return res
+                .status(200)
+                .send(
+                    "La transacción está siendo procesada. Por favor, espere unos momentos antes de ver la confirmación final."
+                );
+        }
+
         try {
-            const details = transaction[0].details.split("-");
+            const details = transaction[0].details
+                ? transaction[0].details.split("-")
+                : [];
 
             return res.render("success", {
                 transaction: transaction[0],
@@ -213,9 +244,11 @@ module.exports = {
                 "Error al procesar los detalles de la transacción:",
                 error.message
             );
-            res.status(500).send(
-                "Pago en proceso. Por favor, inténtalo de nuevo en unos minutos."
-            );
+            return res
+                .status(500)
+                .send(
+                    "Pago en proceso. Por favor, inténtalo de nuevo en unos minutos."
+                );
         }
     },
     successStore: async (req, res) => {
