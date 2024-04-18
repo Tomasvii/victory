@@ -223,11 +223,7 @@ module.exports = {
         }
 
         if (transaction[0].status === "pending") {
-            return res
-                .status(200)
-                .send(
-                    "La transacción está siendo procesada. Por favor, espere unos momentos antes de ver la confirmación final."
-                );
+            return res.status(200).render("pending");
         }
 
         try {
@@ -244,11 +240,7 @@ module.exports = {
                 "Error al procesar los detalles de la transacción:",
                 error.message
             );
-            return res
-                .status(500)
-                .send(
-                    "Pago en proceso. Por favor, inténtalo de nuevo en unos minutos."
-                );
+            return res.status(500).render("pending");
         }
     },
     successStore: async (req, res) => {
