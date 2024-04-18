@@ -6,7 +6,7 @@ function coordinar() {
         urlActual +
         (urlActual.includes("?") ? "&" : "?") +
         "HelpCrunchInputText=" +
-        "Hola,%20he%20comprado%20éste%20producto:%0A" +
+        "Hi!%20I%20have%20purchased%20this%20product:%0A" +
         "ID:%20" +
         id;
     window.location.href = nuevaURL;
@@ -19,22 +19,22 @@ function copy() {
         .writeText(id)
         .then(() => {
             if (Notification.permission === "granted") {
-                new Notification("ID copiada al portapapeles: " + id);
+                new Notification("ID copied to clipboard: " + id);
             } else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then((permission) => {
                     if (permission === "granted") {
-                        new Notification("ID copiada al portapapeles: " + id);
+                        new Notification("ID copied to clipboard: " + id);
                     }
                 });
             }
         })
         .catch(() => {
             if (Notification.permission === "granted") {
-                new Notification("Error al copiar el ID" + id);
+                new Notification("Error trying to copy ID" + id);
             } else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then((permission) => {
                     if (permission === "granted") {
-                        new Notification("Error al copiar el ID" + id);
+                        new Notification("Error trying to copy ID" + id);
                     }
                 });
             }
