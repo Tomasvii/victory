@@ -8,6 +8,7 @@ router.get("/PC", storeController.pc);
 router.get("/Xbox", storeController.xbox);
 router.get("/PSN", storeController.psn);
 router.get("/Mobile", storeController.mobile);
+router.get("/Software", storeController.software);
 router.get("/product/:id", storeController.detail);
 
 module.exports = router;

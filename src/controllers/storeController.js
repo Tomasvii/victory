@@ -11,6 +11,7 @@ module.exports = {
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
+            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll();
         return res.render("store", {
@@ -26,6 +27,7 @@ module.exports = {
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
+            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -45,6 +47,7 @@ module.exports = {
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
+            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -64,6 +67,7 @@ module.exports = {
             { category: "Xbox", value: "Xbox", selected: true },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
+            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -83,6 +87,7 @@ module.exports = {
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: true },
             { category: "Mobile", value: "Mobile", selected: false },
+            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -102,10 +107,31 @@ module.exports = {
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: true },
+            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
                 plataforma: "Mobile",
+            },
+        });
+        return res.render("store", {
+            categories: categories,
+            products: products,
+        });
+    },
+    software: async (req, res) => {
+        const categories = [
+            { category: "All", value: "", selected: false },
+            { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "PC", value: "PC", selected: false },
+            { category: "Xbox", value: "Xbox", selected: false },
+            { category: "PSN", value: "PSN", selected: false },
+            { category: "Mobile", value: "Mobile", selected: false },
+            { category: "Software", value: "Software", selected: true },
+        ];
+        const products = await db.Products.findAll({
+            where: {
+                plataforma: "Software",
             },
         });
         return res.render("store", {
