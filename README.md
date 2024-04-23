@@ -13,5 +13,5 @@ Con más de 3 años de experiencia y cientos de reseñas positivas en Trustpilot
 
 <strong>Integrante del proyecto:</strong></br>
 Proyecto realizado por Tomás Villarreal, como Full Stack Web Developer, en base a los diseños wireframes propiciados por Victory Gold.
-</br></br>
+</br>
 <small>Repositorio subido con autorización de Victory Gold© Todos los derechos reservados.</small>
