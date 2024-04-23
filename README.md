@@ -3,10 +3,10 @@ Victory Gold page.
 Clon de muestra sobre la web de "Victory Gold" (www.victorygold.net).
 
 <strong>¿Qué servicios brinda el sitio?</strong></br>
-Victory gold brinda la oportunidad de facilitarle a las personas el "RMT" (Real Money Trading) de sus videojuegos favoritos directamente con nosotros.
+Victory gold brinda la oportunidad de facilitarle a las personas el "RMT" (Real Money Trading) de sus videojuegos favoritos.
 
 <strong>Audiencia objetiva:</strong></br>
-Todo aquél que quiera comprar o vender las divisas de sus videojuegos preferidos son totalmente bienvenidos.
+Todo aquél que quiera comprar o vender las divisas de videojuegos seleccionados.
 
 <strong>¿Por qué Victory Gold?</strong></br>
 Con más de 3 años de experiencia y cientos de reseñas positivas en Trustpilot, Victory Gold es una de las empresas mejor consolidadas de éste mercado.
