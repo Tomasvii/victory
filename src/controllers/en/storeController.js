@@ -7,11 +7,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: true },
             { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "Software", value: "Software", selected: false },
             { category: "PC", value: "PC", selected: false },
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
-            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll();
         return res.render("./en/store", {
@@ -23,11 +23,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: false },
             { category: "BattleNet", value: "BattleNet", selected: true },
+            { category: "Software", value: "Software", selected: false },
             { category: "PC", value: "PC", selected: false },
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
-            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -43,11 +43,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: false },
             { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "Software", value: "Software", selected: false },
             { category: "PC", value: "PC", selected: true },
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
-            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -63,11 +63,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: false },
             { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "Software", value: "Software", selected: false },
             { category: "PC", value: "PC", selected: false },
             { category: "Xbox", value: "Xbox", selected: true },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
-            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -83,11 +83,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: false },
             { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "Software", value: "Software", selected: false },
             { category: "PC", value: "PC", selected: false },
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: true },
             { category: "Mobile", value: "Mobile", selected: false },
-            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -103,11 +103,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: false },
             { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "Software", value: "Software", selected: false },
             { category: "PC", value: "PC", selected: false },
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: true },
-            { category: "Software", value: "Software", selected: false },
         ];
         const products = await db.Products.findAll({
             where: {
@@ -123,11 +123,11 @@ module.exports = {
         const categories = [
             { category: "All", value: "", selected: false },
             { category: "BattleNet", value: "BattleNet", selected: false },
+            { category: "Software", value: "Software", selected: true },
             { category: "PC", value: "PC", selected: false },
             { category: "Xbox", value: "Xbox", selected: false },
             { category: "PSN", value: "PSN", selected: false },
             { category: "Mobile", value: "Mobile", selected: false },
-            { category: "Software", value: "Software", selected: true },
         ];
         const products = await db.Products.findAll({
             where: {
