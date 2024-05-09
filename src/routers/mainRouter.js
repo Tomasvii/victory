@@ -50,4 +50,7 @@ router.use("/store", storeRouter);
 const enRouter = require("./en/mainRouter");
 router.use("/en", enRouter);
 
+const apiRouter = require("./apiRouter");
+router.use("/api", apiRouter);
+
 module.exports = router;
