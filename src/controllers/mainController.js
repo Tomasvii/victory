@@ -281,7 +281,7 @@ module.exports = {
         const orders = await db.Orders.findAll({
             order: [
                 ["delivered", "ASC"],
-                ["created_at", "DES"],
+                ["created_at", "DESC"],
             ],
             limit: limit,
             offset: (pag - 1) * limit,
