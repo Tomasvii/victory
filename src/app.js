@@ -19,6 +19,13 @@ app.use(
     })
 );
 
+const cors = require("cors");
+app.use(
+    cors({
+        origin: "*",
+    })
+);
+
 app.use(cookies());
 
 app.use(
