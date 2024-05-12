@@ -8,5 +8,6 @@ config.config();
 const ADMIN = process.env.ADMIN;
 
 router.get(`/${ADMIN}`, apiController.orders);
+router.put(`/${ADMIN}/:id`, apiController.update);
 
 module.exports = router;
