@@ -21,7 +21,7 @@ module.exports = {
     },
     update: (req, res) => {
         let orderId = req.params.id;
-        console.log(movieId);
+        console.log(orderId);
         console.log(req.body);
         db.Orders.update(
             {
