@@ -13,6 +13,8 @@ module.exports = {
             const { page = 1, pageSize = 20 } = req.query;
             const offset = (page - 1) * pageSize;
 
+            pageSize = parseInt(pageSize);
+
             db.Orders.findAndCountAll({
                 limit: pageSize,
                 offset: offset,
