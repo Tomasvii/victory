@@ -84,4 +84,14 @@ module.exports = {
             return res.status(500).json({ error: "Error en el servidor" });
         }
     },
+    currencies: (req, res) => {
+        try {
+            db.Currencies.findAll().then((games) => {
+                return res.json(games);
+            });
+        } catch (error) {
+            console.error("Error en la consulta a la base de datos:", error);
+            return res.status(500).json({ error: "Error en el servidor" });
+        }
+    },
 };
