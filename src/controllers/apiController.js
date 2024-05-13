@@ -9,14 +9,26 @@ const ADMIN = process.env.ADMIN;
 
 module.exports = {
     orders: (req, res) => {
-        db.Orders.findAll({
-            limit: 20,
+        const { page = 1, pageSize = 20 } = req.query;
+        const offset = (page - 1) * pageSize;
+
+        db.Orders.findAndCountAll({
+            limit: pageSize,
+            offset: offset,
             order: [
                 ["delivered", "ASC"],
                 ["created_at", "DESC"],
             ],
-        }).then((orders) => {
-            return res.json(orders);
+        }).then((result) => {
+            const { count, rows } = result;
+            const totalPages = Math.ceil(count / pageSize);
+
+            return res.json({
+                orders: rows,
+                totalPages: totalPages,
+                currentPage: parseInt(page),
+                totalOrders: count,
+            });
         });
     },
     update: (req, res) => {
