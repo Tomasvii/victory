@@ -40,8 +40,6 @@ module.exports = {
     },
     update: (req, res) => {
         let orderId = req.params.id;
-        console.log(orderId);
-        console.log(req.body);
         db.Orders.update(
             {
                 delivered: req.body.delivered,
@@ -75,5 +73,15 @@ module.exports = {
                 res.json(respuesta);
             })
             .catch((error) => res.send(error));
+    },
+    games: (req, res) => {
+        try {
+            db.Games.findAll().then((res) => {
+                return res.json();
+            });
+        } catch (error) {
+            console.error("Error en la consulta a la base de datos:", error);
+            return res.status(500).json({ error: "Error en el servidor" });
+        }
     },
 };
