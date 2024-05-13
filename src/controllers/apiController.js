@@ -9,27 +9,32 @@ const ADMIN = process.env.ADMIN;
 
 module.exports = {
     orders: (req, res) => {
-        const { page = 1, pageSize = 20 } = req.query;
-        const offset = (page - 1) * pageSize;
+        try {
+            const { page = 1, pageSize = 20 } = req.query;
+            const offset = (page - 1) * pageSize;
 
-        db.Orders.findAndCountAll({
-            limit: pageSize,
-            offset: offset,
-            order: [
-                ["delivered", "ASC"],
-                ["created_at", "DESC"],
-            ],
-        }).then((result) => {
-            const { count, rows } = result;
-            const totalPages = Math.ceil(count / pageSize);
+            db.Orders.findAndCountAll({
+                limit: pageSize,
+                offset: offset,
+                order: [
+                    ["delivered", "ASC"],
+                    ["created_at", "DESC"],
+                ],
+            }).then((result) => {
+                const { count, rows } = result;
+                const totalPages = Math.ceil(count / pageSize);
 
-            return res.json({
-                orders: rows,
-                totalPages: totalPages,
-                currentPage: parseInt(page),
-                totalOrders: count,
+                return res.json({
+                    orders: rows,
+                    totalPages: totalPages,
+                    currentPage: parseInt(page),
+                    totalOrders: count,
+                });
             });
-        });
+        } catch (error) {
+            console.error("Error en la consulta a la base de datos:", error);
+            return res.status(500).json({ error: "Error en el servidor" });
+        }
     },
     update: (req, res) => {
         let orderId = req.params.id;
