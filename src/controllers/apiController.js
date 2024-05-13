@@ -10,7 +10,7 @@ const ADMIN = process.env.ADMIN;
 module.exports = {
     orders: (req, res) => {
         try {
-            const { page = 1, pageSize = 20 } = req.query;
+            let { page = 1, pageSize = 20 } = req.query;
             const offset = (page - 1) * pageSize;
 
             pageSize = parseInt(pageSize);
