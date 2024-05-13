@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="./src/components/normalize.css" />
+        <link rel="stylesheet" href="./src/components/styles.css" />
+        <link rel="stylesheet" href="./src/components/bootstrap.css" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/7cd8dbde5d.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="icon" type="image/svg+xml" href="/images/icons/logo.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Panel de administrador | Victory Gold</title>
+    </head>
+    <body class="body">
+        <div id="root"></div>
+        <script type="module" src="/main.jsx"></script>
+    </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var dropdownButton = document.getElementById("dropdownMenuButton");
+            var dropdownButton2 = document.getElementById(
+                "dropdownMenuButton2"
+            );
+
+            dropdownButton.addEventListener("mouseenter", function () {
+                if (!dropdownButton.classList.contains("show")) {
+                    dropdownButton.click();
+                }
+            });
+            dropdownButton2.addEventListener("mouseenter", function () {
+                if (!dropdownButton2.classList.contains("show")) {
+                    dropdownButton2.click();
+                }
+            });
+        });
+    </script>
+</html>
