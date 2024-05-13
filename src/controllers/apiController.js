@@ -76,8 +76,8 @@ module.exports = {
     },
     games: (req, res) => {
         try {
-            db.Games.findAll().then((res) => {
-                return res.json();
+            db.Games.findAll().then((games) => {
+                return res.json(games);
             });
         } catch (error) {
             console.error("Error en la consulta a la base de datos:", error);
