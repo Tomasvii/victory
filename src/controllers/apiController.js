@@ -86,8 +86,18 @@ module.exports = {
     },
     currencies: (req, res) => {
         try {
-            db.Currencies.findAll().then((games) => {
-                return res.json(games);
+            db.Currencies.findAll().then((currencies) => {
+                return res.json(currencies);
+            });
+        } catch (error) {
+            console.error("Error en la consulta a la base de datos:", error);
+            return res.status(500).json({ error: "Error en el servidor" });
+        }
+    },
+    products: (req, res) => {
+        try {
+            db.Products.findAll().then((products) => {
+                return res.json(products);
             });
         } catch (error) {
             console.error("Error en la consulta a la base de datos:", error);

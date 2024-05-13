@@ -11,5 +11,6 @@ router.get(`/${ADMIN}`, apiController.orders);
 router.put(`/${ADMIN}/:id`, apiController.update);
 router.get(`/${ADMIN}/games`, apiController.games);
 router.get(`/${ADMIN}/currencies`, apiController.currencies);
+router.get(`/${ADMIN}/products`, apiController.products);
 
 module.exports = router;
