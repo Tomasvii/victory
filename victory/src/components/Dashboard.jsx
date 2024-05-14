@@ -5,7 +5,7 @@ const API = import.meta.env.VITE_API;
 const ADMIN = import.meta.env.VITE_ADMIN;
 
 export function Dashboard() {
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState(["cargando"]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 20;
 
@@ -77,7 +77,7 @@ export function Dashboard() {
         }
     };
 
-    if (!orders) {
+    if (orders === "cargando") {
         return (
             <div className="w-100 d-flex justify-content-center py-5 min-vh-100">
                 <p className="text-warning">Cargando...</p>
