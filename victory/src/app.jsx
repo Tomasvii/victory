@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./components/normalize.css";
 import "./components/bootstrap.css";
