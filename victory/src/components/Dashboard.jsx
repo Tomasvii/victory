@@ -5,7 +5,7 @@ const API = import.meta.env.VITE_API;
 const ADMIN = import.meta.env.VITE_ADMIN;
 
 export function Dashboard() {
-    const [orders, setOrders] = useState(null);
+    const [orders, setOrders] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 20;
 
