@@ -5,25 +5,6 @@ const API = import.meta.env.VITE_API;
 const ADMIN = import.meta.env.VITE_ADMIN;
 
 export function Dashboard() {
-    useEffect(() => {
-        const socket = new WebSocket("ws://172.31.13.220:3001");
-
-        socket.onopen = () => {
-            console.log("Conexión establecida con el servidor WebSocket");
-        };
-
-        socket.onmessage = (event) => {
-            console.log("Mensaje recibido del servidor:", event.data);
-        };
-
-        socket.onclose = () => {
-            console.log("Conexión cerrada con el servidor WebSocket");
-        };
-
-        return () => {
-            socket.close();
-        };
-    }, []);
     const [orders, setOrders] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 20;
@@ -96,7 +77,7 @@ export function Dashboard() {
         }
     };
 
-    if (!orders.length) {
+    if (orders.length > 0) {
         return (
             <div className="w-100 d-flex justify-content-center py-5 min-vh-100">
                 <p className="text-warning">Cargando...</p>
