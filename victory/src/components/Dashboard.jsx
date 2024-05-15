@@ -82,34 +82,42 @@ export function Dashboard() {
 
     if (!orders || !orders.orders) {
         return (
-            <div className="row m-5 text-center col-12 p-3 rounded-3">
-                <div className="col-12 d-flex justify-content-center">
-                    <img
-                        src="/images/icons/logo.svg"
-                        alt="logo Victory Gold"
-                        style={{ width: "2em", height: "2em" }}
-                        className="align-self-center m-2"
-                    />
-                    <p className="form-text-desktop mb-0 pb-2">
-                        Panel de administrador
-                    </p>
-                </div>
-                <ul className="nav nav-tabs w-100 justify-content-center mb-3">
-                    <li className="nav-item w-25">
-                        <a className="nav-link active" aria-current="page">
-                            Ordenes
-                        </a>
-                    </li>
-                    <li className="nav-item w-25">
-                        <Link className="nav-link" to={`/${ADMIN}/tasas`}>
-                            Tasas
-                        </Link>
-                    </li>
-                </ul>
-                <div className="w-100 d-flex justify-content-center py-5 min-vh-100">
-                    <p className="text-warning">Cargando...</p>
-                    <div className="spinner-border text-warning" role="status">
-                        <span className="visually-hidden">Loading...</span>
+            <div
+                className="container justify-content-center desktop mobile"
+                style={{ maxWidth: "100%" }}
+            >
+                <div className="row m-5 text-center col-12 p-3 rounded-3">
+                    <div className="col-12 d-flex justify-content-center">
+                        <img
+                            src="/images/icons/logo.svg"
+                            alt="logo Victory Gold"
+                            style={{ width: "2em", height: "2em" }}
+                            className="align-self-center m-2"
+                        />
+                        <p className="form-text-desktop mb-0 pb-2">
+                            Panel de administrador
+                        </p>
+                    </div>
+                    <ul className="nav nav-tabs w-100 justify-content-center mb-3">
+                        <li className="nav-item w-25">
+                            <a className="nav-link active" aria-current="page">
+                                Ordenes
+                            </a>
+                        </li>
+                        <li className="nav-item w-25">
+                            <Link className="nav-link" to={`/${ADMIN}/tasas`}>
+                                Tasas
+                            </Link>
+                        </li>
+                    </ul>
+                    <div className="w-100 d-flex justify-content-center py-5 min-vh-100">
+                        <p className="text-warning">Cargando...</p>
+                        <div
+                            className="spinner-border text-warning"
+                            role="status"
+                        >
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
                     </div>
                 </div>
             </div>
