@@ -57,6 +57,9 @@ export function Dashboard() {
 
             if (response.ok) {
                 setOrders((prevOrders) => {
+                    if (!Array.isArray(prevOrders)) {
+                        prevOrders = [];
+                    }
                     const updatedOrders = [...prevOrders];
                     const orderIndex = updatedOrders.findIndex(
                         (order) => order.id === orderId
