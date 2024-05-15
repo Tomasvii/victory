@@ -77,7 +77,7 @@ export function Dashboard() {
         }
     };
 
-    if (orders.length > 0) {
+    if (orders.length > 1) {
         return (
             <div className="w-100 d-flex justify-content-center py-5 min-vh-100">
                 <p className="text-warning">Cargando...</p>
