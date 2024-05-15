@@ -5,7 +5,7 @@ const API = import.meta.env.VITE_API;
 const ADMIN = import.meta.env.VITE_ADMIN;
 
 export function Dashboard() {
-    const [orders, setOrders] = useState(null);
+    const [orders, setOrders] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 20;
 
@@ -56,24 +56,22 @@ export function Dashboard() {
             });
 
             if (response.ok) {
-                setOrders((prevOrders) => {
-                    console.log(prevOrders);
-                    if (!Array.isArray(prevOrders)) {
-                        // Si prevOrders no es un array, inicialízalo como un array vacío
-                        prevOrders = [];
+                const fetchOrders = async () => {
+                    try {
+                        const response = await fetch(
+                            `${API}?page=${currentPage}&pageSize=${pageSize}`
+                        );
+                        if (response.ok) {
+                            const data = await response.json();
+                            setOrders(data);
+                        } else {
+                            throw new Error("Error fetching orders");
+                        }
+                    } catch (error) {
+                        console.error(error);
                     }
-                    const updatedOrders = [...prevOrders];
-                    const orderIndex = updatedOrders.findIndex(
-                        (order) => order.id === orderId
-                    );
-                    if (orderIndex !== -1) {
-                        updatedOrders[orderIndex] = {
-                            ...updatedOrders[orderIndex],
-                            delivered: checked,
-                        };
-                    }
-                    return updatedOrders;
-                });
+                };
+                fetchOrders();
             } else {
                 throw new Error("Error al actualizar la orden");
             }
