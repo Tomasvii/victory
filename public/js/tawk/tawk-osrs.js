@@ -1,4 +1,13 @@
 async function comprar() {
+    const check = document.getElementById("tos")
+        ? document.getElementById("tos")
+        : null;
+    const check2 = document.getElementById("tos-2")
+        ? document.getElementById("tos-2")
+        : null;
+    if (!check.checked && !check2.checked) {
+        return;
+    }
     const game = document.getElementById("juegoInput")
         ? document
               .getElementById("juegoInput")

@@ -100,6 +100,8 @@
                 </div>
             </form>
             <div class="col-12 text-center py-4">
+              <input type="checkbox" id="tos-2">
+              <label for="checkbox" class="text-white p-2">Aceptar <a href="https://www.victorygold.net/terms-of-service" target="_blank"><label class="text-warning text-decoration-underline">Términos y condiciones</label></a></label>
               <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
               <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
               <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
@@ -244,10 +246,13 @@
                 </div>
             </form>
             <div class="col-12 text-center py-4">
-              <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-              <small class="text-danger m-3 d-none " id="invalid-total2">* Debe ser un monto mayor a $5.</small>
-              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
+                <input type="checkbox" id="tos">
+              <label for="checkbox" class="text-white">Aceptar <a href="https://www.victorygold.net/terms-of-service" target="_blank"><label class="text-warning text-decoration-underline">Términos y condiciones</label></a></label>
+                <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+                <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
+                <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
             </div>
+
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
             <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=Number((server[0].price)).toFixed(2) %></strong> /M</p>
