@@ -6,7 +6,7 @@
                 alt="logo Albion Online"
                 class="align-self-center m-2"
             />
-            <h2 class="form-text-mobile mb-0 pb-2">Vender silver en <%=game.nombre%></h2>
+            <h2 class="form-text-mobile mb-0 pb-2">Comprar silver en <%=game.nombre%></h2>
         </div>
     </div>
     
@@ -20,7 +20,7 @@
                         class="form-select shadow py-2"
                     >
                         <% for(oneGame of games) { %>
-                        <option value="/sell/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
+                        <option value="/buy/game/<%= oneGame.juego_id %>" data-name="<%= oneGame.nombre %>"
                             <% if (oneGame.juego_id == game.juego_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -36,13 +36,12 @@
                     required
                     class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
-                    <option selected disabled>-Seleccionar Servidor-</option>
-                    <% for(oneServer of server) { %>
-                        <option
-                            value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
-                            <%= oneServer.nombre %>
-                        </option>
-                         <% } %>
+                        <% for(oneServer of server) { %>
+                            <option
+                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
+                                <%= oneServer.nombre %>
+                            </option>
+                             <% } %>
                     </select>
                 </div>
                 <div class="m-3">
@@ -75,6 +74,8 @@
                     >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Binance USDT">Binance USDT</option>
+                        <option value="VISA">VISA (+4%)</option>
+                        <option value = "Master Card">Master Card (+4%)</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -101,18 +102,18 @@
                 </div>
             </form>
             <div class="col-12 text-center py-4">
-              <input type="checkbox" id="tos-2">
+             <input type="checkbox" id="tos-2">
               <label for="checkbox" class="text-white p-2">Aceptar <a href="https://www.victorygold.net/terms-of-service" target="_blank"><label class="text-warning text-decoration-underline">Términos y condiciones</label></a></label>
               <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
               <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
-              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
             </div>
         </div>
     </div>
     
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
         <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> --</strong> /M</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=Number((server[0].price)).toFixed(2) %>%></strong> /M</p>
                 <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs /M</p>
                 <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop /M</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
@@ -152,7 +153,7 @@
         <div class="col-12 d-flex">
             <img src="/images/minis/albion-online.webp" alt="logo Albion Online" style="width:2em ; height: 2em;" class="align-self-center m-2">
             <p class="form-text-desktop mb-0 pb-2 col-8">
-                Vender silver en <%=game.nombre%>
+                Comprar silver en <%=game.nombre%>
             </p>
         </div>
         <div class="col-8 bg-gray p-3 rounded-3 shadow">
@@ -166,7 +167,7 @@
                             
                         >
                             <% for(oneGame of games) { %>
-                            <option value="/sell/game/<%= oneGame.juego_id %>"  data-name="<%= oneGame.nombre %>"
+                            <option value="/buy/game/<%= oneGame.juego_id %>"  data-name="<%= oneGame.nombre %>"
                                 <% if (oneGame.juego_id == game.juego_id) { %>
                                 <%="selected"%>
                                 <% } %>
@@ -182,13 +183,16 @@
                         required
                         class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
                         >
-                        <option selected disabled>-Seleccionar Servidor-</option>
-                        <% for(oneServer of server) { %>
-                            <option
-                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"> 
-                                <%= oneServer.nombre %>
-                            </option>
-                             <% } %>
+                        <% for(oneServer of servers) { %>
+                        <option
+                            value="<%= oneServer.servidor_id %>"
+                            <% if (oneServer.servidor_id == server[0].servidor_id) { %>
+                            <%="selected"%>
+                            <% } %>
+                            >
+                            <%= oneServer.nombre %>
+                        </option>
+                        <% } %>
                     </select>
                     </div>
                     <div class="col-5 mt-4">
@@ -221,6 +225,8 @@
                         >
                         <option selected disabled>-Seleccionar-</option>
                         <option value="Binance USDT">Binance USDT</option>
+                        <option value="VISA">VISA (+4%)</option>
+                        <option value = "Master Card">Master Card (+4%)</option>
                         <option value = "PagoMóvil">PagoMóvil</option>
                         <option disabled>-Transferencia bancaria-</option>
                         <option value="Banco Venezuela">Banco Venezuela</option>
@@ -248,16 +254,15 @@
                 </div>
             </form>
             <div class="col-12 text-center py-4">
-                <input type="checkbox" id="tos">
+              <input type="checkbox" id="tos">
               <label for="checkbox" class="text-white">Aceptar <a href="https://www.victorygold.net/terms-of-service" target="_blank"><label class="text-warning text-decoration-underline">Términos y condiciones</label></a></label>
-                <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
-                <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
-                <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
+              <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
+              <small class="text-danger m-3 d-none " id="invalid-total2">* Debe ser un monto mayor a $5.</small>
+              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
             </div>
-
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> --</strong> /M</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=Number((server[0].price)).toFixed(2) %></strong> /M</p>
             <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs /M</p>
             <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop /M</p>
             <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>

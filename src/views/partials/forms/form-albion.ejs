@@ -36,12 +36,13 @@
                     required
                     class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
-                        <% for(oneServer of server) { %>
-                            <option
-                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
-                                <%= oneServer.nombre %>
-                            </option>
-                             <% } %>
+                    <option selected disabled>-Seleccionar Servidor-</option>
+                    <% for(oneServer of server) { %>
+                        <option
+                            value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
+                            <%= oneServer.nombre %>
+                        </option>
+                         <% } %>
                     </select>
                 </div>
                 <div class="m-3">
@@ -113,7 +114,7 @@
     
     <div class="w-100 p-3 rounded-3 shadow mobile justify-content-center">
         <div class="d-flex flex-column col-10 bg-gray text-center justify-content-center">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price"> <%=Number((server[0].price)).toFixed(2) %>%></strong> /M</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price">--</strong> /M</p>
                 <p class="text-white m-1">$ <%=(server[0].price * ves).toFixed(2)%> bs /M</p>
                 <p class="text-white m-1">$ <%=(server[0].price * cop).toFixed(2)%> cop /M</p>
                 <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
@@ -183,6 +184,7 @@
                         required
                         class="form-control py-3 shadow my-1 bg-input text-white border-0 rounded-2 shadow"
                         >
+                        <option selected disabled>-Seleccionar Servidor-</option>
                         <% for(oneServer of server) { %>
                             <option
                                 value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"> 
@@ -258,7 +260,7 @@
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">
-            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2"> <%=Number((server[0].price)).toFixed(2) %></strong> /M</p>
+            <p class="unit-text m-3 pt-4"><strong>$ </strong><strong id="price2">--</strong> /M</p>
             <p class="m-1">$ <%=(server[0].price * ves).toFixed(2) %> bs /M</p>
             <p class="m-1">$ <%=(server[0].price * cop).toFixed(2) %> cop /M</p>
             <p class="white" style="color:#ffc950 ;"><%=(server[0].stock).toLocaleString()%> M in Stock</p>
@@ -271,7 +273,7 @@
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Server:</p>
-                <p><strong><%=server[0].nombre%></strong></p>
+                <p><strong>--</strong></p>
             </div>
             <div class="d-flex mx-4 justify-content-between">
                 <p class="text-white-50">Cantidad: </p>

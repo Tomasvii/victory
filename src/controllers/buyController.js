@@ -99,6 +99,54 @@ module.exports = {
         });
     },
 
+    albion_server: async (req, res) => {
+        const games = await db.Games.findAll();
+        const game = await db.Games.findByPk(6);
+
+        const servers = await db.Servers.findAll({
+            where: {
+                juego_id: 6,
+            },
+        });
+
+        const preserver = await db.Servers.findAll({
+            where: {
+                servidor_id: req.params.serverId,
+            },
+        });
+
+        const server = await db.Servers.findAll({
+            where: {
+                juego_id: 6,
+                nombre: preserver[0].nombre,
+            },
+        });
+
+        const vesDb = await db.Currencies.findAll({
+            where: {
+                id: 1,
+            },
+        });
+
+        const copDb = await db.Currencies.findAll({
+            where: {
+                id: 2,
+            },
+        });
+
+        const ves = Math.round(vesDb[0].precio * 100) / 100;
+        const cop = Math.round(copDb[0].precio * 100) / 100;
+
+        return res.render("albion-server", {
+            games: games,
+            game: game,
+            servers: servers,
+            server: server,
+            ves: ves,
+            cop: cop,
+        });
+    },
+
     server: async (req, res) => {
         const games = await db.Games.findAll();
         const game = await db.Games.findByPk(req.params.gameId);
