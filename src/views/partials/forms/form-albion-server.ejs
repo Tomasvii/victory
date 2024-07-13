@@ -36,12 +36,16 @@
                     required
                     class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
-                        <% for(oneServer of server) { %>
-                            <option
-                                value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>">
-                                <%= oneServer.nombre %>
-                            </option>
-                             <% } %>
+                        <% for(oneServer of servers) { %>
+                        <option
+                            value="<%= oneServer.servidor_id %>"
+                            <% if (oneServer.servidor_id == server[0].servidor_id) { %>
+                            <%="selected"%>
+                            <% } %>
+                            >
+                            <%= oneServer.nombre %>
+                        </option>
+                        <% } %>
                     </select>
                 </div>
                 <div class="m-3">
