@@ -6,7 +6,7 @@
                 alt="logo Albion Online"
                 class="align-self-center m-2"
             />
-            <h2 class="form-text-mobile mb-0 pb-2">Comprar silver en <%=game.nombre%></h2>
+            <h2 class="form-text-mobile mb-0 pb-2">Vender silver en <%=game.nombre%></h2>
         </div>
     </div>
     
@@ -32,22 +32,24 @@
                 </div>
                 <div class="m-3">
                     <select
-                    id="serverInput"
-                    required
-                    class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
+                        id="serverInput"
+                        required
+                        class="form-control py-2 bg-input text-white border-0 rounded-2 shadow"
                     >
                         <% for(oneServer of servers) { %>
                         <option
                             value="<%= oneServer.servidor_id %>"
+                            data-name="<%= oneServer.nombre %>"
                             <% if (oneServer.servidor_id == server[0].servidor_id) { %>
                             <%="selected"%>
                             <% } %>
-                            >
+                        >
                             <%= oneServer.nombre %>
                         </option>
                         <% } %>
                     </select>
                 </div>
+
                 <div class="m-3">
                      <label for="cantidad-input" class="form-label">Cantidad de silver /M:</label>
                     <input type="range" id="cantidad-input" class="form-range" min="0" max="1000" step="10" value="0"> 
@@ -110,7 +112,7 @@
               <label for="checkbox" class="text-white p-2">Aceptar <a href="https://www.victorygold.net/terms-of-service" target="_blank"><label class="text-warning text-decoration-underline">Términos y condiciones</label></a></label>
               <p id="total2" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
               <small class="text-danger m-3 d-none" id="invalid-total">* Debe ser un monto mayor a $5.</small>
-              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
             </div>
         </div>
     </div>
@@ -157,7 +159,7 @@
         <div class="col-12 d-flex">
             <img src="/images/minis/albion-online.webp" alt="logo Albion Online" style="width:2em ; height: 2em;" class="align-self-center m-2">
             <p class="form-text-desktop mb-0 pb-2 col-8">
-                Comprar silver en <%=game.nombre%>
+                Vender silver en <%=game.nombre%>
             </p>
         </div>
         <div class="col-8 bg-gray p-3 rounded-3 shadow">
@@ -190,6 +192,7 @@
                         <% for(oneServer of servers) { %>
                         <option
                             value="<%= oneServer.servidor_id %>"
+                            data-name="<%= oneServer.nombre %>"
                             <% if (oneServer.servidor_id == server[0].servidor_id) { %>
                             <%="selected"%>
                             <% } %>
@@ -262,7 +265,7 @@
               <label for="checkbox" class="text-white">Aceptar <a href="https://www.victorygold.net/terms-of-service" target="_blank"><label class="text-warning text-decoration-underline">Términos y condiciones</label></a></label>
               <p id="total22" class="form-total-text mt-3">Total: <strong>$ --</strong></p>
               <small class="text-danger m-3 d-none " id="invalid-total2">* Debe ser un monto mayor a $5.</small>
-              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>COMPRAR</strong></button>
+              <button type="submit" onclick="comprar()" id="comprar2" class="col-5 btn btn-primary form-submit p-2 mt-1 shadow"><strong>VENDER</strong></button>
             </div>
         </div>
         <div class="col-3 bg-gray text-white text-center mx-2 rounded-3 shadow">

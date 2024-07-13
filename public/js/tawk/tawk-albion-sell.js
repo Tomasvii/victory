@@ -149,7 +149,7 @@ async function comprar() {
         const gamee = game || "" + game2 || "";
         const serverr = server || "" + server2 || "";
         let delivery = "";
-        if (entrega == "-Seleccionar-") {
+        if (entrega == "-Seleccionar-" || entrega == "-Select-") {
             delivery = entrega2;
         } else {
             delivery = entrega;
@@ -195,7 +195,7 @@ async function comprar() {
                 server +
                 "%0A" +
                 cantidad +
-                "%20M%0A" +
+                "%0A" +
                 "Character:%20" +
                 personaje +
                 "%0A" +
@@ -223,7 +223,7 @@ async function comprar() {
                 server2 +
                 "%0A" +
                 cantidad2 +
-                "%20M%0A" +
+                "%0A" +
                 "Character:%20" +
                 personaje2 +
                 "%0A" +
