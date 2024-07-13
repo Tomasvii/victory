@@ -8,6 +8,8 @@ router.get("/game/5", sellController.osrs);
 
 router.get("/game/6", sellController.albion);
 
+router.get("/game/6/:serverId", sellController.albion_server);
+
 router.get("/game/:gameId", sellController.games);
 
 router.get("/game/:gameId/:serverId", sellController.server);
