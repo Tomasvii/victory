@@ -195,6 +195,7 @@ module.exports = {
 
         const server = await db.Servers_sell.findAll({
             where: {
+                juego_id: preserver[0].juego_id,
                 nombre: preserver[0].nombre,
                 faccion_id: req.params.factionId,
             },

@@ -195,7 +195,8 @@ module.exports = {
 
         const server = await db.Servers.findAll({
             where: {
-                servidor_id: preserver[0].servidor_id,
+                juego_id: preserver[0].juego_id,
+                nombre: preserver[0].nombre,
                 faccion_id: req.params.factionId,
             },
         });
@@ -221,6 +222,8 @@ module.exports = {
 
         const ves = Math.round(vesDb[0].precio * 100) / 100;
         const cop = Math.round(copDb[0].precio * 100) / 100;
+
+        console.log(preserver);
 
         return res.render("faction", {
             games: games,
