@@ -52,7 +52,7 @@
                         <% for(oneServer of servers) { %>
                         <option
                             value="<%= oneServer.servidor_id %>" data-name="<%= oneServer.nombre %>"
-                            <% if (oneServer.nombre == server[0].nombre) { %>
+                            <% if (oneServer.nombre == server.nombre) { %>
                             <%="selected"%>
                             <% } %>
                             >
