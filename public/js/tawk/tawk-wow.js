@@ -58,14 +58,23 @@ async function comprar() {
     const metodo2 = document.getElementById("pago-input2").value;
     const entrega = document.getElementById("entrega-input").value;
     const entrega2 = document.getElementById("entrega-input2").value;
-    const total = document
-        .getElementById("total22")
-        .innerText.match(/\d+(\.\d{1,2})?/)[0];
-    const total2 = document
-        .getElementById("total21")
-        .innerText.match(/\d+(\.\d{1,2})?/)[0];
+    let total;
+    const totalElement = document.getElementById("total22");
+    if (totalElement) {
+        const match = totalElement.innerText.match(/\d+(\.\d{1,2})?/);
+        if (match) {
+            total = match[0];
+        }
+    }
+    let total2;
 
-    console.log(total, total2);
+    const totalElement2 = document.getElementById("total21");
+    if (totalElement2) {
+        const match = totalElement2.innerText.match(/\d+(\.\d{1,2})?/);
+        if (match) {
+            total = match[0];
+        }
+    }
 
     if (cantidad == 0 && cantidad2 == 0) {
         cantidad_input = document.getElementById("cantidad-range");

@@ -223,8 +223,6 @@ module.exports = {
         const ves = Math.round(vesDb[0].precio * 100) / 100;
         const cop = Math.round(copDb[0].precio * 100) / 100;
 
-        console.log(preserver);
-
         return res.render("faction", {
             games: games,
             game: game,
