@@ -34,12 +34,6 @@ module.exports = {
                     faccion_id: faccion,
                 },
             });
-            server = await db.Servers.findAll({
-                where: {
-                    juego_id: game[0].juego_id,
-                    nombre: req.body.server,
-                },
-            });
         } else {
             server = await db.Servers.findAll({
                 where: {
