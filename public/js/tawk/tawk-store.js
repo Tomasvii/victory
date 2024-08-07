@@ -43,50 +43,31 @@ async function comprar() {
             console.error(error);
         }
     } else {
-        if (
-            (game !== false &&
-                cantidad !== false &&
-                metodo.trim() !== "-Payment method-" &&
-                metodo.trim() !== "-Método de pago-") ||
-            (game !== false &&
-                cantidad !== false &&
-                metodo.trim() !== "-Payment method-" &&
-                metodo.trim() !== "-Método de pago-")
-        ) {
-            const urlActual = window.location.href;
-            const nuevaURL =
-                urlActual +
-                (urlActual.includes("?") ? "&" : "?") +
-                "HelpCrunchInputText=" +
-                cantidad +
-                "%20" +
-                "x" +
-                "%20" +
-                game +
-                "%0A" +
-                "Payment%20method:%20" +
-                metodo;
-            window.location.href = nuevaURL;
-        } else if (
-            (game2 != false &&
-                cantidad2 != false &&
-                metodo2 != "-Seleccionar-") ||
-            (game2 != false && cantidad2 != false && metodo2 != "-Select-")
-        ) {
-            const urlActual = window.location.href;
-            const nuevaURL =
-                urlActual +
-                (urlActual.includes("?") ? "&" : "?") +
-                "HelpCrunchInputText=" +
-                cantidad2 +
-                "%20" +
-                "x" +
-                "%20" +
-                game2 +
-                "%0A" +
-                "Payment%20method:%20" +
-                metodo2;
-            window.location.href = nuevaURL;
+        const iframe = document.getElementById("wtt-widget-iframe");
+
+        if (iframe) {
+            iframe.onload = function () {
+                const iframeDocument =
+                    iframe.contentDocument || iframe.contentWindow.document;
+
+                const widgetButton = iframeDocument.querySelector(
+                    "div.fixed.bottom-5.right-5 button.flex.items-center.justify-center.w-12.h-12.rounded-full.hover\\:filter.hover\\:brightness-90.focus\\:outline-none"
+                );
+
+                if (widgetButton) {
+                    widgetButton.click();
+                } else {
+                    console.warn(
+                        "No se encontró el botón del widget con la ruta CSS especificada dentro del iframe."
+                    );
+                }
+            };
+
+            if (iframe.contentDocument || iframe.contentWindow.document) {
+                iframe.onload();
+            }
+        } else {
+            console.warn("No se encontró el iframe con el id especificado.");
         }
     }
 }

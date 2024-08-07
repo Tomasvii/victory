@@ -177,62 +177,31 @@ async function comprar() {
             console.error(error);
         }
     } else {
-        if (
-            cantidad != 0 &&
-            personaje != false &&
-            metodo != "-Seleccionar-" &&
-            entrega != "-Seleccionar-" &&
-            server != "-Seleccionar Servidor-"
-        ) {
-            const urlActual = window.location.href;
-            const nuevaURL =
-                urlActual +
-                (urlActual.includes("?") ? "&" : "?") +
-                "HelpCrunchInputText=" +
-                "Buy%20silver%0A" +
-                game +
-                "%20-%20" +
-                server +
-                "%0A" +
-                cantidad +
-                "%20M%0A" +
-                "Character:%20" +
-                personaje +
-                "%0A" +
-                "Payment%20method:%20" +
-                metodo +
-                "%0A" +
-                "Delivery%20method:%20" +
-                entrega;
-            window.location.href = nuevaURL;
-        } else if (
-            cantidad2 != 0 &&
-            personaje2 != false &&
-            metodo2 != "-Seleccionar-" &&
-            entrega2 != "-Seleccionar-" &&
-            server2 != "-Seleccionar Servidor-"
-        ) {
-            const urlActual = window.location.href;
-            const nuevaURL =
-                urlActual +
-                (urlActual.includes("?") ? "&" : "?") +
-                "HelpCrunchInputText=" +
-                "Buy%20silver%0A" +
-                game +
-                "%20-%20" +
-                server2 +
-                "%0A" +
-                cantidad2 +
-                "%20M%0A" +
-                "Character:%20" +
-                personaje2 +
-                "%0A" +
-                "Payment%20method:%20" +
-                metodo2 +
-                "%0A" +
-                "Delivery%20method:%20" +
-                entrega2;
-            window.location.href = nuevaURL;
+        const iframe = document.getElementById("wtt-widget-iframe");
+
+        if (iframe) {
+            iframe.onload = function () {
+                const iframeDocument =
+                    iframe.contentDocument || iframe.contentWindow.document;
+
+                const widgetButton = iframeDocument.querySelector(
+                    "div.fixed.bottom-5.right-5 button.flex.items-center.justify-center.w-12.h-12.rounded-full.hover\\:filter.hover\\:brightness-90.focus\\:outline-none"
+                );
+
+                if (widgetButton) {
+                    widgetButton.click();
+                } else {
+                    console.warn(
+                        "No se encontró el botón del widget con la ruta CSS especificada dentro del iframe."
+                    );
+                }
+            };
+
+            if (iframe.contentDocument || iframe.contentWindow.document) {
+                iframe.onload();
+            }
+        } else {
+            console.warn("No se encontró el iframe con el id especificado.");
         }
     }
 }
