@@ -130,6 +130,7 @@ async function comprar() {
         metodo2 == "VISA" ||
         metodo2 == "Master Card"
     ) {
+        return;
         const quantity = cantidad == 0 ? cantidad2 : cantidad;
         const char = personaje || "" + personaje2 || "";
         const gamee = game || "" + game2 || "";
