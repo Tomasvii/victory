@@ -177,7 +177,7 @@ async function comprar() {
             console.error(error);
         }
     } else {
-        const iframe = document.getElementById("wtt-widget-iframe");
+        /*         const iframe = document.getElementById("wtt-widget-iframe");
 
         if (iframe) {
             iframe.onload = function () {
@@ -202,6 +202,63 @@ async function comprar() {
             }
         } else {
             console.warn("No se encontró el iframe con el id especificado.");
+        } */
+        if (
+            cantidad != 0 &&
+            personaje != false &&
+            metodo != "-Seleccionar-" &&
+            entrega != "-Seleccionar-" &&
+            server != "-Seleccionar Servidor-"
+        ) {
+            const urlActual = window.location.href;
+            const nuevaURL =
+                urlActual +
+                (urlActual.includes("?") ? "&" : "?") +
+                "HelpCrunchInputText=" +
+                "Sell%20silver%0A" +
+                game +
+                "%20-%20" +
+                server +
+                "%0A" +
+                cantidad +
+                "%0A" +
+                "Character:%20" +
+                personaje +
+                "%0A" +
+                "Payment%20method:%20" +
+                metodo +
+                "%0A" +
+                "Delivery%20method:%20" +
+                entrega;
+            window.location.href = nuevaURL;
+        } else if (
+            cantidad2 != 0 &&
+            personaje2 != false &&
+            metodo2 != "-Seleccionar-" &&
+            entrega2 != "-Seleccionar-" &&
+            server2 != "-Seleccionar Servidor-"
+        ) {
+            const urlActual = window.location.href;
+            const nuevaURL =
+                urlActual +
+                (urlActual.includes("?") ? "&" : "?") +
+                "HelpCrunchInputText=" +
+                "Sell%20silver%0A" +
+                game +
+                "%20-%20" +
+                server2 +
+                "%0A" +
+                cantidad2 +
+                "%0A" +
+                "Character:%20" +
+                personaje2 +
+                "%0A" +
+                "Payment%20method:%20" +
+                metodo2 +
+                "%0A" +
+                "Delivery%20method:%20" +
+                entrega2;
+            window.location.href = nuevaURL;
         }
     }
 }
