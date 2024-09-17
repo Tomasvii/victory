@@ -104,7 +104,7 @@ module.exports = {
             return res.status(500).json({ error: "Error en el servidor" });
         }
     },
-    products: (req, res) => {
+    servers: (req, res) => {
         try {
             db.Servers.findAll().then((products) => {
                 return res.json(products);
