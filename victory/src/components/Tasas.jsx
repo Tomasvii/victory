@@ -149,7 +149,7 @@ export function Tasas() {
                                 method="post"
                             >
                                 <div className="d-flex justify-content-center">
-                                    <div className="m-3 col-2">
+                                    <div className="m-3 col-3">
                                         <h2 className="m-3 text-warning">
                                             CAMBIAR TASAS COMPRA
                                         </h2>
@@ -173,7 +173,7 @@ export function Tasas() {
                                             <option value="all">Todos</option>
                                         </select>
                                         <textarea
-                                            className="text-warning bg-dark border-0"
+                                            className="text-warning bg-dark border-0 w-100"
                                             name="rawData"
                                             rows="5"
                                             cols="20"
@@ -199,7 +199,7 @@ export function Tasas() {
                                 method="post"
                             >
                                 <div className="d-flex justify-content-center">
-                                    <div className="m-3 col-2">
+                                    <div className="m-3 col-3">
                                         <h2 className="m-3 text-warning">
                                             CAMBIAR TASAS VENTA
                                         </h2>
@@ -223,7 +223,7 @@ export function Tasas() {
                                             <option value="all">Todos</option>
                                         </select>
                                         <textarea
-                                            className="text-warning bg-dark border-0"
+                                            className="text-warning bg-dark border-0 w-100"
                                             name="rawData"
                                             rows="5"
                                             cols="20"
@@ -249,7 +249,7 @@ export function Tasas() {
                                 method="post"
                             >
                                 <div className="d-flex justify-content-center">
-                                    <div className="m-3 col-2">
+                                    <div className="m-3 col-3">
                                         <h2 className="m-3 text-warning">
                                             CAMBIAR TASA MONEDAS COMPRA
                                         </h2>
@@ -273,7 +273,7 @@ export function Tasas() {
                                             <option value="all">Todos</option>
                                         </select>
                                         <textarea
-                                            className="text-warning bg-dark border-0"
+                                            className="text-warning bg-dark border-0 w-100"
                                             name="rawData"
                                             rows="5"
                                             cols="20"
@@ -299,7 +299,7 @@ export function Tasas() {
                                 method="post"
                             >
                                 <div className="d-flex justify-content-center">
-                                    <div className="m-3 col-2">
+                                    <div className="m-3 col-3">
                                         <h2 className="m-3 text-warning">
                                             CAMBIAR TASA MONEDAS VENTA
                                         </h2>
@@ -323,7 +323,7 @@ export function Tasas() {
                                             <option value="all">Todos</option>
                                         </select>
                                         <textarea
-                                            className="text-warning bg-dark border-0"
+                                            className="text-warning bg-dark border-0 w-100"
                                             name="rawData"
                                             rows="5"
                                             cols="20"
@@ -349,7 +349,7 @@ export function Tasas() {
                                 method="post"
                             >
                                 <div className="d-flex justify-content-center">
-                                    <div className="m-3 col-2">
+                                    <div className="m-3 col-3">
                                         <h2 className="m-3 text-warning">
                                             CAMBIAR PRECIO DE PRODUCTOS
                                         </h2>
@@ -373,7 +373,7 @@ export function Tasas() {
                                             <option value="all">Todos</option>
                                         </select>
                                         <textarea
-                                            className="text-warning bg-dark border-0"
+                                            className="text-warning bg-dark border-0 w-100"
                                             name="rawData"
                                             rows="5"
                                             cols="20"

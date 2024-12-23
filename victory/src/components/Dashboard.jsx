@@ -153,7 +153,7 @@ export function Dashboard() {
                         </Link>
                     </li>
                 </ul>
-                <div>
+                <div className="d-flex align-self-center">
                     <ul className="pagination justify-content-center">
                         <li
                             className={`page-item ${
@@ -300,7 +300,7 @@ export function Dashboard() {
                                 ))}
                             </ul>
                         </form>
-                        <div aria-label="Page navigation example">
+                        <div className="d-flex align-self-center">
                             <ul className="pagination justify-content-center">
                                 <li
                                     className={`page-item ${
